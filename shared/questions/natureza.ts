@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual é a maior floresta tropical do mundo?', a: 'Amazônia', w: ['Mata Atlântica', 'Floresta do Congo', 'Taiga'], fact: 'Cerca de 60% da Floresta Amazônica fica em território brasileiro.' },
+  { q: 'Qual é o planeta mais próximo do Sol?', a: 'Mercúrio', w: ['Vênus', 'Marte', 'Terra'], fact: 'Mercúrio completa uma volta ao redor do Sol em apenas 88 dias.' },
+  { q: 'Qual gás as plantas absorvem do ar para fazer a fotossíntese?', a: 'Gás carbônico', w: ['Oxigênio', 'Nitrogênio', 'Hélio'], fact: 'Na fotossíntese, as plantas usam luz, água e gás carbônico e liberam oxigênio.' },
+  { q: 'Qual é o maior oceano do planeta?', a: 'Pacífico', w: ['Atlântico', 'Índico', 'Ártico'], fact: 'O Pacífico é maior do que todas as terras emersas do planeta somadas.' },
+  { q: 'Qual é a montanha mais alta do mundo em relação ao nível do mar?', a: 'Everest', w: ['K2', 'Aconcágua', 'Kilimanjaro'], fact: 'O Everest, no Himalaia, tem cerca de 8.849 metros de altitude.' },
+  { q: 'Qual bioma brasileiro é conhecido como a savana brasileira?', a: 'Cerrado', w: ['Caatinga', 'Pampa', 'Pantanal'], fact: 'O Cerrado é considerado a savana com maior biodiversidade do mundo.' },
+  { q: 'Qual planeta é conhecido como o planeta vermelho?', a: 'Marte', w: ['Júpiter', 'Vênus', 'Saturno'], fact: 'A cor avermelhada vem do óxido de ferro, a famosa ferrugem, no solo marciano.' },
+  { q: 'Qual é o maior planeta do Sistema Solar?', a: 'Júpiter', w: ['Saturno', 'Netuno', 'Urano'], fact: 'Caberiam mais de 1.300 planetas Terra dentro de Júpiter.' },
+  { q: 'Qual planeta é famoso por seus anéis bem visíveis?', a: 'Saturno', w: ['Júpiter', 'Urano', 'Netuno'], fact: 'Júpiter, Urano e Netuno também têm anéis, mas eles são bem mais tênues.' },
+  { q: 'Qual é a estrela mais próxima da Terra?', a: 'O Sol', w: ['Proxima Centauri', 'Sirius', 'Alfa Centauri A'], fact: 'Depois do Sol, a estrela mais próxima é Proxima Centauri, a cerca de 4,2 anos-luz.' },
+  { q: 'Qual árvore deu nome ao Brasil?', a: 'Pau-brasil', w: ['Ipê', 'Jatobá', 'Jacarandá'], fact: 'Da madeira do pau-brasil se extraía uma tinta vermelha, cor de brasa.' },
+  { q: 'Quantos planetas existem no Sistema Solar?', a: '8', w: ['7', '9', '10'], fact: 'Plutão foi reclassificado como planeta-anão em 2006.' },
+  { q: 'Qual bioma brasileiro é considerado a maior planície alagável contínua do planeta?', a: 'Pantanal', w: ['Caatinga', 'Pampa', 'Mata Atlântica'], fact: 'O Pantanal se estende pelo Brasil, Bolívia e Paraguai.' },
+  { q: 'Qual é o único bioma exclusivamente brasileiro?', a: 'Caatinga', w: ['Cerrado', 'Pantanal', 'Mata Atlântica'], fact: 'A Caatinga ocupa boa parte do Nordeste e tem plantas adaptadas à seca.' },
+  { q: 'Quanto tempo, aproximadamente, a luz do Sol leva para chegar à Terra?', a: 'Cerca de 8 minutos', w: ['Cerca de 8 segundos', 'Cerca de 1 hora', 'Cerca de 1 dia'], fact: 'Ou seja, quando olhamos o Sol, vemos como ele estava uns 8 minutos atrás.' },
+  { q: 'Em qual camada da atmosfera fica a maior parte da camada de ozônio?', a: 'Estratosfera', w: ['Troposfera', 'Mesosfera', 'Termosfera'], fact: 'A camada de ozônio filtra boa parte da radiação ultravioleta do Sol.' },
+  { q: 'Qual é o maior deserto quente do mundo?', a: 'Saara', w: ['Atacama', 'Gobi', 'Kalahari'], fact: 'Se contarmos os desertos frios, o maior de todos é a Antártida.' },
+  { q: 'Como se chama o aquecimento anormal das águas do Pacífico que altera o clima global?', a: 'El Niño', w: ['La Niña', 'Monção', 'Corrente do Golfo'], fact: 'La Niña é o fenômeno oposto: o resfriamento dessas águas.' },
+  { q: 'Qual gás é o mais abundante na atmosfera da Terra?', a: 'Nitrogênio', w: ['Oxigênio', 'Gás carbônico', 'Argônio'], fact: 'O nitrogênio forma cerca de 78% do ar; o oxigênio, cerca de 21%.' },
+  { q: 'Como se chama a rocha derretida que sai de um vulcão e escorre pela superfície?', a: 'Lava', w: ['Magma', 'Basalto', 'Cinza vulcânica'], fact: 'Enquanto está no subsolo, a rocha derretida é chamada de magma.' },
+  { q: 'Qual é o ponto mais alto do Brasil?', a: 'Pico da Neblina', w: ['Pico da Bandeira', 'Pico 31 de Março', 'Monte Roraima'], fact: 'O Pico da Neblina, no Amazonas, tem cerca de 2.995 metros.' },
+  { q: 'Qual é a maior ilha do mundo, sem contar os continentes?', a: 'Groenlândia', w: ['Madagascar', 'Bornéu', 'Nova Guiné'], fact: 'A Groenlândia é um território autônomo ligado à Dinamarca.' },
+  { q: 'Por que o céu é azul durante o dia?', a: 'Espalhamento da luz solar', w: ['Reflexo dos oceanos', 'Cor do ozônio', 'Poeira no ar'], fact: 'O ar espalha mais a luz azul, de onda curta, do que as outras cores.' },
+  { q: 'Qual tipo de nuvem, alta e carregada, está associada a tempestades e raios?', a: 'Cumulonimbus', w: ['Cirrus', 'Estratos', 'Cúmulos'], fact: 'Uma cumulonimbus pode passar de 10 km de altura.' },
+  { q: 'Qual é o deserto mais seco do mundo, sem contar as regiões polares?', a: 'Atacama', w: ['Saara', 'Gobi', 'Namibe'], fact: 'O Atacama fica no Chile, e há pontos nele onde quase nunca chove.' },
+  { q: 'Qual escala mede a dureza dos minerais?', a: 'Escala de Mohs', w: ['Escala Richter', 'Escala Kelvin', 'Escala Beaufort'], fact: 'Na escala de Mohs, o talco tem dureza 1 e o diamante, dureza 10.' },
+  { q: 'Qual é a montanha mais alta da América do Sul?', a: 'Aconcágua', w: ['Chimborazo', 'Huascarán', 'Ojos del Salado'], fact: 'O Aconcágua fica na Argentina e tem cerca de 6.961 metros.' },
+  { q: 'Qual planeta gira praticamente deitado, com o eixo inclinado cerca de 98 graus?', a: 'Urano', w: ['Netuno', 'Vênus', 'Saturno'], fact: 'Por causa disso, cada polo de Urano passa décadas seguidas iluminado pelo Sol.' },
+  { q: 'Em qual planeta uma volta completa no próprio eixo demora mais do que uma volta ao redor do Sol?', a: 'Vênus', w: ['Júpiter', 'Marte', 'Netuno'], fact: 'Vênus leva 243 dias terrestres para girar no próprio eixo e 225 para orbitar o Sol.' },
+  { q: 'Como se chama o ponto da órbita da Terra mais próximo do Sol?', a: 'Periélio', w: ['Afélio', 'Solstício', 'Equinócio'], fact: 'Ele ocorre no início de janeiro: as estações vêm da inclinação do eixo, não da distância.' },
+];
+
+export default questions;

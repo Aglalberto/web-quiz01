@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual cantora brasileira estourou em 2013 com o hit \'Show das Poderosas\'?', a: 'Anitta', w: ['Ludmilla', 'Pabllo Vittar', 'IZA'], fact: 'Anitta nasceu no Rio de Janeiro e seu nome de batismo é Larissa de Macedo Machado.' },
+  { q: 'Em que país nasceu a cantora Shakira?', a: 'Colômbia', w: ['México', 'Venezuela', 'Argentina'], fact: 'Shakira nasceu em Barranquilla, em 1977.' },
+  { q: 'Quantas Copas do Mundo Pelé conquistou como jogador?', a: '3', w: ['2', '4', '5'], fact: 'Venceu em 1958, 1962 e 1970: é o único jogador tricampeão mundial.' },
+  { q: 'Qual ator interpretou o pirata Jack Sparrow em \'Piratas do Caribe\'?', a: 'Johnny Depp', w: ['Orlando Bloom', 'Brad Pitt', 'Keanu Reeves'], fact: 'O primeiro filme da franquia foi lançado em 2003.' },
+  { q: 'Fernanda Torres ganhou o Globo de Ouro de Melhor Atriz em Drama por qual filme?', a: 'Ainda Estou Aqui', w: ['Central do Brasil', 'Cidade de Deus', 'Que Horas Ela Volta?'], fact: 'Ela venceu em janeiro de 2025, interpretando Eunice Paiva.' },
+  { q: 'Fernanda Montenegro foi indicada ao Oscar de Melhor Atriz por qual filme?', a: 'Central do Brasil', w: ['O Auto da Compadecida', 'Ainda Estou Aqui', 'Eles Não Usam Black-Tie'], fact: 'Foi a primeira brasileira indicada ao Oscar de Melhor Atriz, em 1999.' },
+  { q: 'Qual piloto brasileiro foi campeão da Fórmula 1 em 1988, 1990 e 1991?', a: 'Ayrton Senna', w: ['Nelson Piquet', 'Emerson Fittipaldi', 'Rubens Barrichello'], fact: 'Senna conquistou os três títulos pilotando pela McLaren.' },
+  { q: 'Qual apresentador ficou famoso pelo bordão \'Ô loco, meu!\'?', a: 'Faustão', w: ['Silvio Santos', 'Gugu Liberato', 'Chacrinha'], fact: 'Fausto Silva comandou o Domingão do Faustão na Globo de 1989 a 2021.' },
+  { q: 'Qual é o nome de batismo do apresentador Silvio Santos?', a: 'Senor Abravanel', w: ['Samuel Abravanel', 'Silvio Abrantes', 'Saul Abramovich'], fact: 'Ele fundou o SBT, que entrou no ar em 1981.' },
+  { q: 'O velocista Usain Bolt representou qual país?', a: 'Jamaica', w: ['Estados Unidos', 'Trinidad e Tobago', 'Bahamas'], fact: 'Seu recorde mundial nos 100 metros é de 9s58, de 2009.' },
+  { q: 'Qual cantor é conhecido mundialmente como o \'Rei do Pop\'?', a: 'Michael Jackson', w: ['Elvis Presley', 'Prince', 'Justin Timberlake'], fact: 'Seu álbum \'Thriller\', de 1982, é o mais vendido da história.' },
+  { q: 'Qual é o apelido mais famoso do cantor Roberto Carlos?', a: 'O Rei', w: ['O Imperador', 'O Príncipe', 'O Maestro'], fact: 'Seu especial de fim de ano na TV Globo é tradição desde 1974.' },
+  { q: 'Qual jogadora brasileira foi eleita seis vezes a melhor do mundo pela FIFA?', a: 'Marta', w: ['Formiga', 'Cristiane', 'Debinha'], fact: 'Marta é a maior artilheira da história das Copas, com 17 gols.' },
+  { q: 'Qual ator protagonizou \'Titanic\' (1997) ao lado de Kate Winslet?', a: 'Leonardo DiCaprio', w: ['Brad Pitt', 'Matt Damon', 'Tom Cruise'], fact: 'DiCaprio só ganhou seu Oscar de Melhor Ator em 2016, por \'O Regresso\'.' },
+  { q: 'Qual ginasta brasileira ganhou o ouro no solo nos Jogos de Paris 2024?', a: 'Rebeca Andrade', w: ['Daiane dos Santos', 'Flávia Saraiva', 'Jade Barbosa'], fact: 'Ela ficou à frente da americana Simone Biles, que levou a prata.' },
+  { q: 'Taylor Swift começou a carreira em qual gênero musical?', a: 'Country', w: ['Rock', 'Hip-hop', 'Jazz'], fact: 'Seu primeiro álbum, chamado \'Taylor Swift\', saiu em 2006.' },
+  { q: 'Qual atriz interpretou Hermione Granger nos filmes de \'Harry Potter\'?', a: 'Emma Watson', w: ['Emma Stone', 'Keira Knightley', 'Natalie Portman'], fact: 'Ela tinha 11 anos quando o primeiro filme da saga estreou, em 2001.' },
+  { q: 'A supermodelo Gisele Bündchen nasceu em qual estado brasileiro?', a: 'Rio Grande do Sul', w: ['Santa Catarina', 'Paraná', 'São Paulo'], fact: 'Gisele é natural de Horizontina, no noroeste gaúcho.' },
+  { q: 'Qual surfista brasileiro foi o primeiro campeão olímpico da história do surfe?', a: 'Ítalo Ferreira', w: ['Gabriel Medina', 'Filipe Toledo', 'Adriano de Souza'], fact: 'Ele levou o ouro em Tóquio 2020, quando o surfe estreou nos Jogos.' },
+  { q: 'Qual atleta tem o maior número de medalhas olímpicas da história?', a: 'Michael Phelps', w: ['Usain Bolt', 'Carl Lewis', 'Larisa Latynina'], fact: 'O nadador americano somou 28 medalhas, sendo 23 de ouro.' },
+  { q: 'Antes de virar astro de cinema, Will Smith fez sucesso em qual série?', a: 'Um Maluco no Pedaço', w: ['Friends', 'Todo Mundo Odeia o Chris', 'Eu, a Patroa e as Crianças'], fact: 'O nome original da série é \'The Fresh Prince of Bel-Air\'.' },
+  { q: 'Em qual clube Neymar começou a carreira profissional?', a: 'Santos', w: ['Corinthians', 'São Paulo', 'Palmeiras'], fact: 'Neymar estreou como profissional pelo Santos em 2009.' },
+  { q: 'Qual cantora americana é conhecida como a \'Rainha do Pop\'?', a: 'Madonna', w: ['Britney Spears', 'Lady Gaga', 'Cher'], fact: 'Em 2024, Madonna fez um show gratuito para mais de 1 milhão de pessoas em Copacabana.' },
+  { q: 'De qual grupo Beyoncé fez parte antes da carreira solo?', a: 'Destiny\'s Child', w: ['TLC', 'Spice Girls', 'Pussycat Dolls'], fact: 'Beyoncé é a artista com mais prêmios Grammy da história.' },
+  { q: 'Qual tenista brasileiro foi número 1 do mundo e tricampeão de Roland Garros?', a: 'Gustavo Kuerten', w: ['Fernando Meligeni', 'João Fonseca', 'Thomaz Bellucci'], fact: 'Guga venceu em Paris em 1997, 2000 e 2001.' },
+  { q: 'Ivete Sangalo ficou conhecida como vocalista de qual banda antes da carreira solo?', a: 'Banda Eva', w: ['Chiclete com Banana', 'Asa de Águia', 'Timbalada'], fact: 'Ela deixou a Banda Eva e partiu para a carreira solo em 1999.' },
+  { q: 'Rodrigo Santoro interpretou qual rei persa no filme \'300\'?', a: 'Xerxes', w: ['Dario', 'Ciro', 'Leônidas'], fact: 'O filme, de 2006, é baseado na HQ de Frank Miller.' },
+  { q: 'Qual dupla sertaneja lançou o sucesso \'É o Amor\', em 1991?', a: 'Zezé Di Camargo & Luciano', w: ['Chitãozinho & Xororó', 'Leandro & Leonardo', 'Bruno & Marrone'], fact: 'A música foi composta pelo próprio Zezé Di Camargo.' },
+  { q: 'Wagner Moura interpretou qual personagem na série \'Narcos\', da Netflix?', a: 'Pablo Escobar', w: ['El Chapo', 'Gilberto Rodríguez', 'Javier Peña'], fact: 'Em 2025, ele ganhou o prêmio de Melhor Ator em Cannes por \'O Agente Secreto\'.' },
+  { q: 'Cristiano Ronaldo nasceu em qual ilha portuguesa?', a: 'Madeira', w: ['São Miguel', 'Porto Santo', 'Terceira'], fact: 'O aeroporto da Madeira leva o nome do jogador.' },
+];
+
+export default questions;

@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual é o livro sagrado do islamismo?', a: 'Alcorão', w: ['Torá', 'Vedas', 'Tripitaka'], fact: 'Escrito em árabe, o Alcorão é dividido em 114 capítulos chamados suratas.' },
+  { q: 'O que os cristãos celebram na Páscoa?', a: 'A ressurreição de Jesus', w: ['O nascimento de Jesus', 'O batismo de Jesus', 'A Última Ceia'], fact: 'A Páscoa é uma data móvel, ligada ao calendário lunar.' },
+  { q: 'Segundo os Evangelhos, quantos apóstolos Jesus escolheu?', a: '12', w: ['7', '10', '40'], fact: 'Entre eles estavam Pedro, João, Tiago e Mateus.' },
+  { q: 'Quem é o deus dos mares na mitologia grega?', a: 'Poseidon', w: ['Zeus', 'Hades', 'Apolo'], fact: 'Seu símbolo é o tridente; na mitologia romana, ele é Netuno.' },
+  { q: 'Segundo a Bíblia, quem construiu uma grande arca antes do dilúvio?', a: 'Noé', w: ['Moisés', 'Abraão', 'Jonas'], fact: 'Segundo o Gênesis, a arca abrigou Noé, sua família e casais de animais.' },
+  { q: 'Qual é o primeiro livro da Bíblia?', a: 'Gênesis', w: ['Êxodo', 'Salmos', 'Levítico'], fact: 'Gênesis significa "origem"; o livro narra a criação do mundo.' },
+  { q: 'Qual orixá é conhecida como a rainha do mar?', a: 'Iemanjá', w: ['Oxum', 'Iansã', 'Nanã'], fact: 'Em Salvador, sua festa acontece em 2 de fevereiro, no bairro do Rio Vermelho.' },
+  { q: 'Segundo a Bíblia, quem conduziu os hebreus na saída do Egito?', a: 'Moisés', w: ['Abraão', 'Davi', 'Salomão'], fact: 'A saída dos hebreus do Egito é narrada no livro do Êxodo.' },
+  { q: 'Na mitologia nórdica, qual deus empunha um martelo e controla o trovão?', a: 'Thor', w: ['Odin', 'Loki', 'Freyr'], fact: 'Seu martelo se chama Mjölnir; "Thursday", quinta em inglês, homenageia Thor.' },
+  { q: 'Qual herói da mitologia greco-romana realizou os famosos 12 trabalhos?', a: 'Hércules', w: ['Aquiles', 'Perseu', 'Teseu'], fact: 'Na Grécia ele era chamado de Héracles; Hércules é o nome romano.' },
+  { q: 'Quem é a deusa grega da sabedoria?', a: 'Atena', w: ['Afrodite', 'Hera', 'Ártemis'], fact: 'Segundo o mito, Atena venceu Poseidon na disputa para ser padroeira de Atenas.' },
+  { q: 'Quem é a padroeira do Brasil?', a: 'Nossa Senhora Aparecida', w: ['Nossa Senhora de Fátima', 'Nossa Senhora de Lourdes', 'Nossa Senhora de Guadalupe'], fact: 'Sua imagem foi encontrada por pescadores no rio Paraíba do Sul em 1717.' },
+  { q: 'Qual era o nome de nascimento de Buda, fundador do budismo?', a: 'Sidarta Gautama', w: ['Lao-Tsé', 'Confúcio', 'Mahavira'], fact: 'Buda significa "o desperto" ou "o iluminado".' },
+  { q: 'Em direção a qual cidade os muçulmanos se voltam para rezar?', a: 'Meca', w: ['Medina', 'Jerusalém', 'Istambul'], fact: 'A direção da oração, rumo à Caaba, é chamada de qibla.' },
+  { q: 'Em que mês sagrado os muçulmanos jejuam do amanhecer ao pôr do sol?', a: 'Ramadã', w: ['Muharram', 'Rajab', 'Shawwal'], fact: 'O Ramadã é o nono mês do calendário islâmico.' },
+  { q: 'Qual é o famoso festival hindu das luzes?', a: 'Diwali', w: ['Holi', 'Navratri', 'Pongal'], fact: 'O Diwali celebra a vitória da luz sobre as trevas, com lamparinas e fogos.' },
+  { q: 'Quantas noites dura a festa judaica de Hanucá?', a: 'Oito', w: ['Sete', 'Dez', 'Doze'], fact: 'Relembra a rededicação do Templo de Jerusalém; a cada noite, acende-se uma vela a mais no candelabro.' },
+  { q: 'Como se chama o dia de descanso semanal no judaísmo?', a: 'Shabat', w: ['Sucot', 'Purim', 'Shavuot'], fact: 'O Shabat começa no pôr do sol de sexta-feira e vai até o anoitecer de sábado.' },
+  { q: 'Qual divindade hindu é representada com cabeça de elefante?', a: 'Ganesha', w: ['Shiva', 'Vishnu', 'Hanuman'], fact: 'Ganesha é venerado como removedor de obstáculos e patrono dos novos começos.' },
+  { q: 'Qual capela do Vaticano tem o teto pintado por Michelangelo?', a: 'Capela Sistina', w: ['Capela Paulina', 'Capela Médici', 'Capela Scrovegni'], fact: 'É na Capela Sistina que os cardeais se reúnem para eleger o papa.' },
+  { q: 'Qual orixá é associado à justiça, aos raios e ao trovão?', a: 'Xangô', w: ['Ogum', 'Oxóssi', 'Oxalá'], fact: 'Seu símbolo é o oxê, um machado de duas lâminas.' },
+  { q: 'Quem é considerado o iniciador da Reforma Protestante, em 1517?', a: 'Martinho Lutero', w: ['João Calvino', 'Henrique VIII', 'Erasmo de Roterdã'], fact: 'Lutero divulgou suas 95 teses na cidade alemã de Wittenberg.' },
+  { q: 'Qual deus egípcio é representado com cabeça de chacal?', a: 'Anúbis', w: ['Hórus', 'Osíris', 'Rá'], fact: 'Anúbis era associado à mumificação e à proteção dos mortos.' },
+  { q: 'Na mitologia nórdica, como se chama o salão de Odin para os guerreiros mortos em batalha?', a: 'Valhala', w: ['Asgard', 'Midgard', 'Yggdrasil'], fact: 'Segundo os mitos, as valquírias escolhiam os guerreiros dignos do salão.' },
+  { q: 'No judaísmo, como se chamam os cinco primeiros livros da Bíblia hebraica?', a: 'Torá', w: ['Talmude', 'Mishná', 'Cabala'], fact: 'Nas sinagogas, a Torá é lida em rolos de pergaminho escritos à mão.' },
+  { q: 'Como se chama a peregrinação a Meca que todo muçulmano deve fazer, se puder?', a: 'Hajj', w: ['Zakat', 'Salat', 'Sawm'], fact: 'O Hajj é um dos cinco pilares do Islã.' },
+  { q: 'Segundo a tradição, sob que árvore Buda alcançou a iluminação?', a: 'Figueira-sagrada', w: ['Cerejeira', 'Carvalho', 'Palmeira'], fact: 'Isso teria ocorrido em Bodh Gaya, na Índia, hoje um grande local de peregrinação.' },
+  { q: 'O Templo Dourado de Amritsar, na Índia, é o local mais sagrado de qual religião?', a: 'Sikhismo', w: ['Hinduísmo', 'Budismo', 'Jainismo'], fact: 'Sua cozinha comunitária serve refeições gratuitas a milhares de pessoas por dia.' },
+  { q: 'Qual religião tradicional japonesa tem santuários marcados por portais torii?', a: 'Xintoísmo', w: ['Taoísmo', 'Confucionismo', 'Jainismo'], fact: 'O xintoísmo cultua os kami, espíritos ligados à natureza e aos ancestrais.' },
+  { q: 'Qual destes é um texto sagrado do hinduísmo?', a: 'Bhagavad Gita', w: ['Tao Te Ching', 'Talmude', 'Avesta'], fact: 'Faz parte do épico Mahabharata e traz um diálogo entre Krishna e Arjuna.' },
+];
+
+export default questions;

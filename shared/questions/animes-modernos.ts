@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Quem é o protagonista de Attack on Titan?', a: 'Eren Yeager', w: ['Levi Ackerman', 'Armin Arlert', 'Reiner Braun'], fact: 'No Japão, a obra se chama Shingeki no Kyojin.' },
+  { q: 'Quais são os nomes das três muralhas de Attack on Titan?', a: 'Maria, Rose e Sina', w: ['Maria, Sina e Eldia', 'Rose, Ymir e Sina', 'Maria, Rose e Paradis'], fact: 'A Muralha Maria, a mais externa, é a primeira a cair.' },
+  { q: 'Em Attack on Titan, quem é chamado de "o soldado mais forte da humanidade"?', a: 'Capitão Levi', w: ['Erwin Smith', 'Hange Zoë', 'Mikasa Ackerman'] },
+  { q: 'Em Demon Slayer, qual é o nome da irmã de Tanjiro que virou oni?', a: 'Nezuko', w: ['Kanao', 'Shinobu', 'Mitsuri'], fact: 'Nezuko anda com um bambu na boca para não morder ninguém.' },
+  { q: 'Em 2020, qual filme superou A Viagem de Chihiro como maior bilheteria do Japão?', a: 'Demon Slayer: Mugen Train', w: ['Your Name', 'One Piece Film: Red', 'Jujutsu Kaisen 0'], fact: 'O filme arrecadou mais de 40 bilhões de ienes no Japão.' },
+  { q: 'Qual técnica de respiração Tanjiro aprende primeiro em Demon Slayer?', a: 'Respiração da Água', w: ['Respiração das Chamas', 'Respiração do Trovão', 'Respiração da Fera'], fact: 'Depois ele passa a usar a Dança do Deus do Fogo, herdada do pai.' },
+  { q: 'Qual maldição passa a habitar o corpo de Yuji Itadori em Jujutsu Kaisen?', a: 'Ryomen Sukuna', w: ['Mahito', 'Jogo', 'Hanami'], fact: 'Yuji engole um dos dedos de Sukuna para salvar os amigos.' },
+  { q: 'Qual professor de Jujutsu Kaisen usa venda nos olhos e é o feiticeiro mais forte?', a: 'Satoru Gojo', w: ['Kento Nanami', 'Suguru Geto', 'Masamichi Yaga'] },
+  { q: 'Qual estúdio produziu o anime de Jujutsu Kaisen?', a: 'MAPPA', w: ['Ufotable', 'Wit Studio', 'Bones'], fact: 'A MAPPA também animou Chainsaw Man e a fase final de Attack on Titan.' },
+  { q: 'Quantos quilômetros Saitama corria por dia no treino que o deixou careca?', a: '10', w: ['5', '21', '42'], fact: 'Além de 100 flexões, 100 abdominais e 100 agachamentos, todo dia.' },
+  { q: 'Qual ciborgue se torna discípulo de Saitama em One Punch Man?', a: 'Genos', w: ['Mumen Rider', 'King', 'Sonic'] },
+  { q: 'Como se chama o poder herdado por Deku em My Hero Academia?', a: 'One For All', w: ['All For One', 'Explosão', 'Meio-Frio Meio-Quente'] },
+  { q: 'Qual herói de My Hero Academia é conhecido como o "Símbolo da Paz"?', a: 'All Might', w: ['Endeavor', 'Hawks', 'Eraserhead'] },
+  { q: 'Qual shinigami deixa cair o Death Note no mundo humano?', a: 'Ryuk', w: ['Rem', 'Sidoh', 'Gelus'], fact: 'Ryuk é viciado em maçãs do mundo humano.' },
+  { q: 'Qual apelido o público dá a Light Yagami em Death Note?', a: 'Kira', w: ['L', 'Near', 'Mello'] },
+  { q: 'Em Death Note, quantos segundos após o nome ser escrito a vítima morre?', a: '40', w: ['10', '30', '60'], fact: 'Se nenhuma causa for escrita, a morte é por ataque cardíaco.' },
+  { q: 'Qual é o poder secreto de Anya em Spy x Family?', a: 'Ler mentes', w: ['Ver o futuro', 'Ficar invisível', 'Falar com animais'] },
+  { q: 'Qual é a profissão secreta de Yor Forger em Spy x Family?', a: 'Assassina', w: ['Espiã', 'Policial secreta', 'Hacker'], fact: 'De dia, ela trabalha na prefeitura de Berlint.' },
+  { q: 'Qual é o codinome do espião Loid Forger em Spy x Family?', a: 'Twilight', w: ['Midnight', 'Sunset', 'Eclipse'] },
+  { q: 'Como se chama o demônio-cachorro motosserra de Denji em Chainsaw Man?', a: 'Pochita', w: ['Meowy', 'Kon', 'Beam'], fact: 'Pochita se torna o coração de Denji.' },
+  { q: 'Quem é o autor do mangá Chainsaw Man?', a: 'Tatsuki Fujimoto', w: ['Gege Akutami', 'Hajime Isayama', 'Koyoharu Gotouge'], fact: 'Fujimoto também criou Fire Punch e Look Back.' },
+  { q: 'Em Naruto Shippuden, qual organização usa mantos pretos com nuvens vermelhas?', a: 'Akatsuki', w: ['Anbu', 'Raiz', 'Sete Espadachins'] },
+  { q: 'Com quem Naruto treina durante os dois anos e meio antes de Shippuden?', a: 'Jiraiya', w: ['Kakashi', 'Iruka', 'Yamato'], fact: 'Jiraiya é o autor da série de livros Icha Icha, que Kakashi adora.' },
+  { q: 'Em Fullmetal Alchemist, o que Alphonse perde ao tentar ressuscitar a mãe?', a: 'O corpo inteiro', w: ['O braço direito', 'A perna esquerda', 'A memória'], fact: 'Edward prende a alma do irmão em uma armadura.' },
+  { q: 'Qual é a raça de Frieren, protagonista de Frieren e a Jornada para o Além?', a: 'Elfa', w: ['Anã', 'Humana', 'Demônio'], fact: 'Frieren tem mais de mil anos de idade.' },
+  { q: 'Em Frieren, como se chama o Herói do antigo grupo, cuja morte abre a história?', a: 'Himmel', w: ['Heiter', 'Eisen', 'Stark'], fact: 'O grupo levou dez anos para derrotar o Rei Demônio.' },
+  { q: 'Qual forma Luffy revela na luta contra Kaido em Wano?', a: 'Gear 5', w: ['Gear 4', 'Boundman', 'Snakeman'], fact: 'Sua fruta é, na verdade, a Hito Hito no Mi, modelo Nika.' },
+  { q: 'Qual Imperador do Mar Luffy derrota na saga de Wano?', a: 'Kaido', w: ['Big Mom', 'Barba Negra', 'Shanks'] },
+  { q: 'Quem dirigiu o filme Your Name (2016)?', a: 'Makoto Shinkai', w: ['Mamoru Hosoda', 'Hayao Miyazaki', 'Satoshi Kon'] },
+  { q: 'Qual esporte é o tema do anime Haikyu!!?', a: 'Vôlei', w: ['Basquete', 'Futebol', 'Beisebol'], fact: 'Hinata se inspira em um jogador baixinho apelidado de Pequeno Gigante.' },
+];
+
+export default questions;

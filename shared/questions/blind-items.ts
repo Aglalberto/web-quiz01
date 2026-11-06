@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Adivinhe quem: apresentadora, a “Rainha dos Baixinhos”, tem uma filha chamada Sasha.', a: 'Xuxa', w: ['Angélica', 'Eliana', 'Mara Maravilha'], fact: 'O Xou da Xuxa estreou na TV Globo em 1986.' },
+  { q: 'Adivinhe quem: cantor baiano, foi ministro da Cultura e compôs \'Andar com Fé\'.', a: 'Gilberto Gil', w: ['Caetano Veloso', 'Djavan', 'Milton Nascimento'], fact: 'Gil foi ministro da Cultura entre 2003 e 2008.' },
+  { q: 'Adivinhe quem: cantora nascida em Barbados, estourou com o hit \'Umbrella\'.', a: 'Rihanna', w: ['Beyoncé', 'Nicki Minaj', 'Alicia Keys'], fact: '\'Umbrella\' foi lançada em 2007 e venceu um Grammy.' },
+  { q: 'Adivinhe quem: ator, viveu o Homem de Ferro nos filmes da Marvel.', a: 'Robert Downey Jr.', w: ['Chris Evans', 'Chris Hemsworth', 'Mark Ruffalo'], fact: 'O primeiro \'Homem de Ferro\' estreou em 2008 e abriu o universo Marvel no cinema.' },
+  { q: 'Adivinhe quem: cantora, a “Rainha do Rock brasileiro”, integrou Os Mutantes.', a: 'Rita Lee', w: ['Gal Costa', 'Elis Regina', 'Pitty'], fact: 'Ela é a voz de sucessos como \'Ovelha Negra\' e \'Lança Perfume\'.' },
+  { q: 'Adivinhe quem: piloto britânico, heptacampeão mundial de Fórmula 1.', a: 'Lewis Hamilton', w: ['Michael Schumacher', 'Max Verstappen', 'Fernando Alonso'], fact: 'Hamilton divide com Schumacher o recorde de sete títulos mundiais.' },
+  { q: 'Adivinhe quem: cantora apelidada de “Pimentinha”, eternizou \'Como Nossos Pais\'.', a: 'Elis Regina', w: ['Gal Costa', 'Maria Bethânia', 'Clara Nunes'], fact: '\'Como Nossos Pais\' foi composta por Belchior.' },
+  { q: 'Adivinhe quem: humorista, criou o personagem Didi Mocó, de \'Os Trapalhões\'.', a: 'Renato Aragão', w: ['Dedé Santana', 'Mussum', 'Zacarias'], fact: 'Renato Aragão nasceu em Sobral, no Ceará.' },
+  { q: 'Adivinhe quem: cantora, filha de Xororó, fez dupla com o irmão desde criança.', a: 'Sandy', w: ['Wanessa Camargo', 'Kelly Key', 'Paula Fernandes'], fact: 'A dupla Sandy & Junior lançou o primeiro disco em 1991.' },
+  { q: 'Adivinhe quem: nadador brasileiro, campeão olímpico dos 50 m livre em Pequim 2008.', a: 'César Cielo', w: ['Gustavo Borges', 'Thiago Pereira', 'Bruno Fratus'], fact: 'Foi o primeiro ouro olímpico da natação brasileira.' },
+  { q: 'Adivinhe quem: escritor, autor de \'O Alquimista\', membro da Academia Brasileira de Letras.', a: 'Paulo Coelho', w: ['Jorge Amado', 'Ariano Suassuna', 'Machado de Assis'], fact: '\'O Alquimista\' foi traduzido para dezenas de idiomas.' },
+  { q: 'Adivinhe quem: o “Rei do Baião”, tocava sanfona e gravou \'Asa Branca\'.', a: 'Luiz Gonzaga', w: ['Dominguinhos', 'Jackson do Pandeiro', 'Sivuca'], fact: 'Luiz Gonzaga nasceu em Exu, no sertão de Pernambuco.' },
+  { q: 'Adivinhe quem: atriz nascida em Israel, viveu a Mulher-Maravilha no cinema em 2017.', a: 'Gal Gadot', w: ['Scarlett Johansson', 'Margot Robbie', 'Brie Larson'], fact: 'Antes de atuar, ela foi Miss Israel em 2004.' },
+  { q: 'Adivinhe quem: cantora, a “Rainha da Sofrência”, gravou o sucesso \'Infiel\'.', a: 'Marília Mendonça', w: ['Paula Fernandes', 'Simone Mendes', 'Naiara Azevedo'], fact: 'Além de cantora, foi uma compositora de muito sucesso no sertanejo.' },
+  { q: 'Adivinhe quem: jogador, melhor do mundo pela FIFA em 2007, brilhou no Milan e no São Paulo.', a: 'Kaká', w: ['Ronaldinho', 'Ronaldo', 'Rivaldo'], fact: 'Em 2007 ele também ganhou a Bola de Ouro.' },
+  { q: 'Adivinhe quem: cantor, ex-One Direction, fez sucesso solo com \'As It Was\'.', a: 'Harry Styles', w: ['Zayn Malik', 'Niall Horan', 'Louis Tomlinson'], fact: 'O One Direction foi formado em 2010, no programa The X Factor.' },
+  { q: 'Adivinhe quem: apresentador, comandou o \'Caldeirão\' e depois assumiu o Domingão.', a: 'Luciano Huck', w: ['Rodrigo Faro', 'Marcos Mion', 'Celso Portiolli'], fact: 'O Caldeirão do Huck esteve no ar aos sábados de 2000 a 2021.' },
+  { q: 'Adivinhe quem: atriz, viveu a Bebel, do bordão “catiguria”, em \'Paraíso Tropical\'.', a: 'Camila Pitanga', w: ['Taís Araujo', 'Juliana Paes', 'Grazi Massafera'], fact: 'A novela das nove foi exibida pela TV Globo em 2007.' },
+  { q: 'Adivinhe quem: o “Rei do Rock”, nascido em Tupelo, no Mississippi.', a: 'Elvis Presley', w: ['Chuck Berry', 'Little Richard', 'Jerry Lee Lewis'], fact: 'Sua mansão, Graceland, em Memphis, virou museu.' },
+  { q: 'Adivinhe quem: diretor de cinema, criou \'E.T.\' e \'Tubarão\'.', a: 'Steven Spielberg', w: ['George Lucas', 'James Cameron', 'Martin Scorsese'], fact: 'Ele também dirigiu \'Jurassic Park\' e \'A Lista de Schindler\'.' },
+  { q: 'Adivinhe quem: cantora baiana, lançou \'O Canto da Cidade\' em 1992.', a: 'Daniela Mercury', w: ['Ivete Sangalo', 'Claudia Leitte', 'Margareth Menezes'], fact: 'O disco ajudou a levar o axé para todo o Brasil.' },
+  { q: 'Adivinhe quem: ator britânico, viveu o bruxo Harry Potter em oito filmes.', a: 'Daniel Radcliffe', w: ['Rupert Grint', 'Tom Felton', 'Elijah Wood'], fact: 'O primeiro filme da saga estreou em 2001.' },
+  { q: 'Adivinhe quem: cantor e compositor, autor de \'Construção\' e \'A Banda\'.', a: 'Chico Buarque', w: ['Caetano Veloso', 'Gilberto Gil', 'Tom Jobim'], fact: 'Chico também é escritor e ganhou o Prêmio Camões em 2019.' },
+  { q: 'Adivinhe quem: o “Fenômeno”, artilheiro do Brasil na conquista do penta, em 2002.', a: 'Ronaldo', w: ['Rivaldo', 'Romário', 'Ronaldinho'], fact: 'Ele marcou 8 gols naquela Copa, incluindo os dois da final.' },
+  { q: 'Adivinhe quem: cantora, chama os fãs de “Little Monsters” e ganhou o Oscar por \'Shallow\'.', a: 'Lady Gaga', w: ['Katy Perry', 'Madonna', 'Christina Aguilera'], fact: '\'Shallow\' é do filme \'Nasce uma Estrela\' (2018).' },
+  { q: 'Adivinhe quem: apresentadora do \'Mais Você\', fez dupla por anos com o Louro José.', a: 'Ana Maria Braga', w: ['Fátima Bernardes', 'Palmirinha', 'Angélica'], fact: 'O \'Mais Você\' estreou na TV Globo em 1999.' },
+  { q: 'Adivinhe quem: cantor jamaicano, o “Rei do Reggae”, gravou \'No Woman, No Cry\'.', a: 'Bob Marley', w: ['Peter Tosh', 'Jimmy Cliff', 'Ziggy Marley'], fact: 'Sua banda se chamava Bob Marley & The Wailers.' },
+  { q: 'Adivinhe quem: atriz, viveu Katniss Everdeen na saga \'Jogos Vorazes\'.', a: 'Jennifer Lawrence', w: ['Emma Stone', 'Shailene Woodley', 'Kristen Stewart'], fact: 'Ela ganhou o Oscar de Melhor Atriz por \'O Lado Bom da Vida\'.' },
+  { q: 'Adivinhe quem: skatista, a “Fadinha”, ganhou medalha olímpica aos 13 anos.', a: 'Rayssa Leal', w: ['Pâmela Rosa', 'Letícia Bufoni', 'Dora Varella'], fact: 'Ela levou a prata em Tóquio 2020 e o bronze em Paris 2024.' },
+  { q: 'Adivinhe quem: cartunista, criou a Turma da Mônica e o Cebolinha.', a: 'Maurício de Sousa', w: ['Ziraldo', 'Monteiro Lobato', 'Henfil'], fact: 'A Mônica foi inspirada em uma das filhas do próprio Maurício.' },
+];
+
+export default questions;

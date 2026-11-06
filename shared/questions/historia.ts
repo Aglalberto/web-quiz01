@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Em que ano Cristóvão Colombo chegou à América?', a: '1492', w: ['1500', '1488', '1519'], fact: 'Colombo desembarcou nas Bahamas achando que tinha chegado às Índias.' },
+  { q: 'Quem foi o primeiro ser humano a pisar na Lua?', a: 'Neil Armstrong', w: ['Buzz Aldrin', 'Yuri Gagarin', 'Michael Collins'], fact: 'Foi em julho de 1969, na missão Apollo 11.' },
+  { q: 'Em que ano caiu o Muro de Berlim?', a: '1989', w: ['1991', '1985', '1961'], fact: 'O muro foi erguido em 1961 e dividiu Berlim por 28 anos.' },
+  { q: 'Qual civilização construiu Machu Picchu, no Peru?', a: 'Incas', w: ['Maias', 'Astecas', 'Olmecas'], fact: 'Machu Picchu foi construída no século XV, no alto dos Andes.' },
+  { q: 'Em que ano começou a Primeira Guerra Mundial?', a: '1914', w: ['1939', '1918', '1905'], fact: 'O estopim foi o assassinato do arquiduque Francisco Ferdinando, em Sarajevo.' },
+  { q: 'Em que ano terminou a Segunda Guerra Mundial?', a: '1945', w: ['1944', '1939', '1950'], fact: 'A guerra acabou oficialmente com a rendição do Japão, em setembro de 1945.' },
+  { q: 'Qual cientista criou a Teoria da Relatividade?', a: 'Albert Einstein', w: ['Isaac Newton', 'Galileu Galilei', 'Nikola Tesla'], fact: 'Einstein publicou a relatividade restrita em 1905 e a geral em 1915.' },
+  { q: 'Qual navio afundou em 1912 em sua viagem inaugural, após bater em um iceberg?', a: 'Titanic', w: ['Lusitania', 'Britannic', 'Queen Mary'], fact: 'O Titanic era tido como praticamente inafundável.' },
+  { q: 'A Guerra Fria foi a disputa entre os Estados Unidos e qual país?', a: 'União Soviética', w: ['China', 'Alemanha', 'Japão'], fact: 'A Guerra Fria terminou com o fim da União Soviética, em 1991.' },
+  { q: 'Qual líder francês foi derrotado na Batalha de Waterloo, em 1815?', a: 'Napoleão Bonaparte', w: ['Luís XVI', 'Carlos Magno', 'Robespierre'], fact: 'Depois da derrota, Napoleão foi exilado na ilha de Santa Helena.' },
+  { q: 'Em qual país surgiram os Jogos Olímpicos da Antiguidade?', a: 'Grécia', w: ['Itália', 'Egito', 'Pérsia'], fact: 'A tradição situa os primeiros jogos em Olímpia, no ano de 776 a.C.' },
+  { q: 'Qual líder sul-africano ficou 27 anos preso e depois virou presidente do país?', a: 'Nelson Mandela', w: ['Desmond Tutu', 'Steve Biko', 'Kofi Annan'], fact: 'Mandela ganhou o Nobel da Paz em 1993 e foi eleito presidente em 1994.' },
+  { q: 'Quem foi o primeiro ser humano a ir ao espaço?', a: 'Yuri Gagarin', w: ['Neil Armstrong', 'John Glenn', 'Alan Shepard'], fact: 'O soviético Gagarin orbitou a Terra em abril de 1961, a bordo da Vostok 1.' },
+  { q: 'Em que ano começou a Revolução Francesa?', a: '1789', w: ['1776', '1815', '1848'], fact: 'O marco inicial é a Queda da Bastilha, em 14 de julho de 1789.' },
+  { q: 'Quem criou a prensa de tipos móveis que revolucionou a impressão na Europa?', a: 'Johannes Gutenberg', w: ['Galileu Galilei', 'Leonardo da Vinci', 'Isaac Newton'], fact: 'A prensa surgiu por volta de 1450, e a Bíblia foi um dos primeiros livros impressos.' },
+  { q: 'Qual navegador português chegou à Índia por mar em 1498?', a: 'Vasco da Gama', w: ['Pedro Álvares Cabral', 'Bartolomeu Dias', 'Fernão de Magalhães'], fact: 'Ele contornou a África e chegou a Calicute, abrindo a rota das especiarias.' },
+  { q: 'Quem comandou a expedição que iniciou a primeira volta ao mundo, em 1519?', a: 'Fernão de Magalhães', w: ['Vasco da Gama', 'Cristóvão Colombo', 'Américo Vespúcio'], fact: 'Magalhães morreu nas Filipinas; a viagem foi concluída por Juan Sebastián Elcano.' },
+  { q: 'Qual ataque japonês levou os Estados Unidos a entrar na Segunda Guerra Mundial?', a: 'Pearl Harbor', w: ['Normandia', 'Hiroshima', 'Midway'], fact: 'O ataque à base naval no Havaí ocorreu em 7 de dezembro de 1941.' },
+  { q: 'Quem foi o primeiro imperador de Roma?', a: 'Augusto', w: ['Júlio César', 'Nero', 'Calígula'], fact: 'Júlio César foi ditador, mas nunca imperador. Augusto assumiu em 27 a.C.' },
+  { q: 'Qual cidade romana foi soterrada pela erupção do Vesúvio em 79 d.C.?', a: 'Pompeia', w: ['Atenas', 'Cartago', 'Troia'], fact: 'As cinzas preservaram casas, pinturas e até pães dentro dos fornos.' },
+  { q: 'Quem descobriu a penicilina, o primeiro antibiótico, em 1928?', a: 'Alexander Fleming', w: ['Louis Pasteur', 'Marie Curie', 'Edward Jenner'], fact: 'Fleming notou que um fungo matava as bactérias de uma placa esquecida no laboratório.' },
+  { q: 'Quem foi a primeira mulher a ganhar um Prêmio Nobel?', a: 'Marie Curie', w: ['Ada Lovelace', 'Florence Nightingale', 'Rosalind Franklin'], fact: 'Ela ganhou dois Nobel: Física em 1903 e Química em 1911.' },
+  { q: 'Quem publicou as 95 teses que deram início à Reforma Protestante, em 1517?', a: 'Martinho Lutero', w: ['João Calvino', 'Henrique VIII', 'Erasmo de Roterdã'], fact: 'Lutero criticava a venda de indulgências pela Igreja Católica.' },
+  { q: 'Gengis Khan fundou qual império?', a: 'Império Mongol', w: ['Império Otomano', 'Império Persa', 'Império Chinês'], fact: 'O Império Mongol se tornou o maior império de terras contínuas da história.' },
+  { q: 'Quem liderou os bolcheviques na Revolução Russa de 1917?', a: 'Vladimir Lênin', w: ['Josef Stálin', 'Nicolau II', 'Mikhail Gorbachev'], fact: 'Os bolcheviques tomaram o poder na Revolução de Outubro, que levou à criação da União Soviética em 1922.' },
+  { q: 'Qual faraó mandou construir a Grande Pirâmide de Gizé?', a: 'Quéops', w: ['Tutancâmon', 'Ramsés II', 'Akhenaton'], fact: 'Ela foi a construção humana mais alta do mundo por cerca de 3.800 anos.' },
+  { q: 'Em que ano caiu o Império Romano do Ocidente?', a: '476', w: ['1453', '313', '800'], fact: 'A data marca tradicionalmente o fim da Antiguidade e o início da Idade Média.' },
+  { q: 'Qual explorador viking chegou à América do Norte por volta do ano 1000?', a: 'Leif Erikson', w: ['Erik, o Vermelho', 'Ragnar Lothbrok', 'Haroldo Dente-Azul'], fact: 'Ruínas vikings foram encontradas em L\'Anse aux Meadows, no Canadá.' },
+  { q: 'A tomada de Constantinopla pelos turcos, em 1453, marca o fim de qual período?', a: 'Idade Média', w: ['Idade Antiga', 'Idade Moderna', 'Idade Contemporânea'], fact: 'Constantinopla, atual Istambul, era a capital do Império Bizantino.' },
+  { q: 'Qual tratado, assinado em 1919, encerrou oficialmente a Primeira Guerra Mundial?', a: 'Tratado de Versalhes', w: ['Tratado de Tordesilhas', 'Tratado de Utrecht', 'Tratado de Westfália'], fact: 'O tratado impôs duras punições à Alemanha, o que alimentou tensões futuras.' },
+];
+
+export default questions;

@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Quem é o pai de Luke Skywalker em Star Wars?', a: 'Darth Vader', w: ['Obi-Wan Kenobi', 'Darth Sidious', 'Han Solo'], fact: 'A revelação acontece em O Império Contra-Ataca, de 1980.' },
+  { q: 'Como se chama a nave de Han Solo em Star Wars?', a: 'Millennium Falcon', w: ['Star Destroyer', 'Slave I', 'Tantive IV'], fact: 'Han se gaba de ter feito o Percurso de Kessel em menos de 12 parsecs.' },
+  { q: 'Qual é a cor do sabre de luz de Mace Windu?', a: 'Roxo', w: ['Verde', 'Azul', 'Vermelho'], fact: 'Samuel L. Jackson pediu a George Lucas um sabre roxo.' },
+  { q: 'Qual é o nome do droide dourado e falante de Star Wars?', a: 'C-3PO', w: ['R2-D2', 'BB-8', 'K-2SO'], fact: 'Ele é fluente em mais de seis milhões de formas de comunicação.' },
+  { q: 'Em que dia os fãs comemoram o Dia de Star Wars?', a: '4 de maio', w: ['25 de maio', '1º de abril', '31 de outubro'], fact: 'Trocadilho com "May the Fourth be with you".' },
+  { q: 'Qual é o nome da nave comandada pelo Capitão Kirk em Star Trek?', a: 'USS Enterprise', w: ['USS Voyager', 'USS Discovery', 'USS Defiant'] },
+  { q: 'Em Star Trek, Spock é metade humano e metade o quê?', a: 'Vulcano', w: ['Klingon', 'Romulano', 'Betazoide'], fact: 'Leonard Nimoy criou a saudação vulcana inspirado numa bênção judaica.' },
+  { q: 'Quem escreveu O Senhor dos Anéis?', a: 'J.R.R. Tolkien', w: ['C.S. Lewis', 'George R.R. Martin', 'Terry Pratchett'] },
+  { q: 'Em qual montanha o Um Anel precisa ser destruído?', a: 'Montanha da Perdição', w: ['Montanha Solitária', 'Caradhras', 'Monte Gundabad'], fact: 'Ela fica em Mordor e também é chamada de Orodruin.' },
+  { q: 'Quantos membros formam a Sociedade do Anel?', a: '9', w: ['7', '8', '12'], fact: 'Nove companheiros, para fazer frente aos nove Nazgûl.' },
+  { q: 'Qual criatura chama o Um Anel de "meu precioso"?', a: 'Gollum', w: ['Smaug', 'Sauron', 'Saruman'] },
+  { q: 'Qual é a identidade secreta do Homem de Ferro?', a: 'Tony Stark', w: ['Steve Rogers', 'Bruce Banner', 'Bruce Wayne'] },
+  { q: 'De qual metal são feitas as garras de Wolverine?', a: 'Adamantium', w: ['Vibranium', 'Uru', 'Titânio'], fact: 'Já o escudo do Capitão América é feito de vibranium.' },
+  { q: 'Em qual cidade fictícia o Batman protege os cidadãos?', a: 'Gotham City', w: ['Metrópolis', 'Central City', 'Star City'] },
+  { q: 'Qual é o planeta natal do Superman?', a: 'Krypton', w: ['Thanagar', 'Oa', 'Apokolips'], fact: 'Superman estreou em 1938, na revista Action Comics #1.' },
+  { q: 'Quem criou o Homem-Aranha junto com o desenhista Steve Ditko?', a: 'Stan Lee', w: ['Jack Kirby', 'Bob Kane', 'Jerry Siegel'], fact: 'O herói estreou em Amazing Fantasy #15, em 1962.' },
+  { q: 'Como se chama o martelo do Thor?', a: 'Mjolnir', w: ['Rompe-Tormentas', 'Gungnir', 'Excalibur'] },
+  { q: 'Quantas Joias do Infinito Thanos procura reunir?', a: '6', w: ['5', '7', '9'], fact: 'Espaço, Mente, Realidade, Poder, Tempo e Alma.' },
+  { q: 'Qual é a ilha natal da Mulher-Maravilha?', a: 'Themyscira', w: ['Atlântida', 'Avalon', 'Asgard'], fact: 'É a ilha das amazonas, escondida do resto do mundo.' },
+  { q: 'Quem escreveu a graphic novel Watchmen?', a: 'Alan Moore', w: ['Frank Miller', 'Neil Gaiman', 'Grant Morrison'], fact: 'Foi desenhada por Dave Gibbons e publicada entre 1986 e 1987.' },
+  { q: 'Em RPG de mesa, como se chama quem narra a aventura e controla o mundo?', a: 'Mestre', w: ['Líder', 'Capitão', 'Comandante'], fact: 'Em Dungeons & Dragons, ele é chamado de Dungeon Master.' },
+  { q: 'Em que ano foi lançado o primeiro Dungeons & Dragons?', a: '1974', w: ['1968', '1981', '1990'], fact: 'O jogo foi criado por Gary Gygax e Dave Arneson.' },
+  { q: 'Qual RPG brasileiro de fantasia se passa no mundo de Arton?', a: 'Tormenta', w: ['Old Dragon', 'Ordem Paranormal', 'Space Dragon'], fact: 'Tormenta nasceu em 1999, nas páginas da revista Dragão Brasil.' },
+  { q: 'Qual autor criou as famosas Três Leis da Robótica?', a: 'Isaac Asimov', w: ['Arthur C. Clarke', 'Philip K. Dick', 'Ray Bradbury'] },
+  { q: 'No Guia do Mochileiro das Galáxias, qual é a resposta para a vida, o universo e tudo mais?', a: '42', w: ['7', '13', '100'], fact: 'Em homenagem a Douglas Adams, fãs celebram o Dia da Toalha em 25 de maio.' },
+  { q: 'Qual computador de 2001: Uma Odisseia no Espaço se recusa a abrir as portas?', a: 'HAL 9000', w: ['Skynet', 'Mãe', 'JARVIS'] },
+  { q: 'Como se chama o planeta desértico de Duna?', a: 'Arrakis', w: ['Tatooine', 'Jakku', 'Caladan'], fact: 'É a única fonte da especiaria melange no universo.' },
+  { q: 'Qual carro vira máquina do tempo em De Volta para o Futuro?', a: 'DeLorean', w: ['Mustang', 'Camaro', 'Fusca'], fact: 'Para viajar no tempo, ele precisa atingir 88 milhas por hora.' },
+  { q: 'Em Matrix, qual pílula Neo escolhe tomar?', a: 'Vermelha', w: ['Azul', 'Verde', 'Branca'] },
+  { q: 'Em que ano foi lançado o primeiro iPhone?', a: '2007', w: ['2005', '2008', '2010'], fact: 'Steve Jobs apresentou o aparelho em janeiro de 2007.' },
+];
+
+export default questions;

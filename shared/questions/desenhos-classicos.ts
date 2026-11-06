@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual é o famoso grito de alegria de Fred Flintstone?', a: 'Yabba Dabba Doo!', w: ['Cowabunga!', 'Shazam!', 'Uh-hu!'], fact: 'Fred trabalha numa pedreira operando um dinossauro.' },
+  { q: 'Como se chama o vizinho e melhor amigo de Fred Flintstone?', a: 'Barney', w: ['Dino', 'Bambam', 'Sr. Pedregulho'], fact: 'Barney é casado com Betty, melhor amiga de Wilma.' },
+  { q: 'Em qual cidade vivem os Flintstones?', a: 'Bedrock', w: ['Springfield', 'Patópolis', 'Townsville'], fact: 'Na cidade, tudo é feito de pedra, até os carros.' },
+  { q: 'Qual desenho de 1960 foi a primeira sitcom animada do horário nobre da TV americana?', a: 'Os Flintstones', w: ['Os Jetsons', 'Scooby-Doo', 'Os Simpsons'], fact: 'Ficou no ar por seis temporadas, de 1960 a 1966, na rede americana ABC.' },
+  { q: 'Que raça de cachorro é o Scooby-Doo?', a: 'Dogue alemão', w: ['São-bernardo', 'Basset hound', 'Labrador'], fact: 'O desenho estreou em 1969.' },
+  { q: 'Como se chama o dono magricela e comilão do Scooby-Doo?', a: 'Salsicha', w: ['Fred', 'Dino', 'Pateta'], fact: 'No original, ele se chama Shaggy.' },
+  { q: 'Como se chama o furgão da turma do Scooby-Doo?', a: 'Máquina de Mistério', w: ['Mach 5', 'Ecto-1', 'Carro Maluco'], fact: 'No original, o furgão se chama Mystery Machine.' },
+  { q: 'Que animal é o Jerry, de Tom & Jerry?', a: 'Rato', w: ['Gato', 'Hamster', 'Esquilo'], fact: 'Na estreia, em 1940, o gato Tom se chamava Jasper.' },
+  { q: 'Quem criou Tom & Jerry?', a: 'William Hanna e Joseph Barbera', w: ['Walt Disney e Ub Iwerks', 'Chuck Jones e Tex Avery', 'Stan Lee e Jack Kirby'], fact: 'Eles criaram a dupla em 1940, ainda no estúdio MGM.' },
+  { q: 'Quantos Oscars os curtas de Tom & Jerry ganharam?', a: 'Sete', w: ['Três', 'Cinco', 'Dez'], fact: 'Muitos episódios quase não têm falas: a graça está na ação.' },
+  { q: 'Qual é a cor do topete do Pica-Pau?', a: 'Vermelho', w: ['Azul', 'Amarelo', 'Laranja'], fact: 'No Brasil, o desenho foi exibido por décadas na TV aberta.' },
+  { q: 'O Pica-Pau nasceu no estúdio de qual produtor?', a: 'Walter Lantz', w: ['Walt Disney', 'Chuck Jones', 'Max Fleischer'], fact: 'O personagem estreou nos cinemas em 1940.' },
+  { q: 'Qual destes é um inimigo clássico do Pica-Pau?', a: 'Zeca Urubu', w: ['Frajola', 'Dick Vigarista', 'Tom'], fact: 'No original, ele se chama Buzz Buzzard.' },
+  { q: 'De qual empresa o Coiote compra as engenhocas para pegar o Papa-Léguas?', a: 'ACME', w: ['Wayne Enterprises', 'Stark Industries', 'Umbrella'], fact: 'Apesar de tantas invenções, o Coiote nunca pega o Papa-Léguas.' },
+  { q: 'Qual gato vive tentando pegar o canário Piu-Piu?', a: 'Frajola', w: ['Tom', 'Manda-Chuva', 'Garfield'], fact: 'O bordão do Piu-Piu é "Eu acho que vi um gatinho!".' },
+  { q: 'Em qual parque vive o Zé Colmeia?', a: 'Jellystone', w: ['Yellowstone', 'Central Park', 'Bedrock'], fact: 'O nome brinca com o parque real de Yellowstone, nos EUA.' },
+  { q: 'Como se chama o companheiro baixinho do Zé Colmeia?', a: 'Catatau', w: ['Bambam', 'Muttley', 'Dino'], fact: 'Zé Colmeia vive tentando roubar as cestas de piquenique dos visitantes.' },
+  { q: 'Manda-Chuva é o líder de uma turma de quê?', a: 'Gatos de rua', w: ['Cães de rua', 'Ratos', 'Pombos'], fact: 'No original, ele se chama Top Cat.' },
+  { q: 'Em Corrida Maluca, qual vilão trapaceiro anda com o cão Muttley?', a: 'Dick Vigarista', w: ['Peter Perfeito', 'Professor Aéreo', 'Barão Vermelho'], fact: 'Apesar de tanta trapaça, ele nunca vence uma corrida.' },
+  { q: 'O que Popeye come para ficar forte?', a: 'Espinafre', w: ['Cenoura', 'Brócolis', 'Feijão'], fact: 'A namorada de Popeye é a Olívia Palito.' },
+  { q: 'Quem criou a Turma da Mônica?', a: 'Mauricio de Sousa', w: ['Ziraldo', 'Monteiro Lobato', 'Laerte'], fact: 'A Mônica foi inspirada em uma das filhas de Mauricio.' },
+  { q: 'Qual é o nome do coelhinho de pelúcia da Mônica?', a: 'Sansão', w: ['Floquinho', 'Bidu', 'Mingau'], fact: 'A Mônica usa o Sansão como arma contra os meninos.' },
+  { q: 'Qual personagem da Turma da Mônica morre de medo de água?', a: 'Cascão', w: ['Cebolinha', 'Chico Bento', 'Franjinha'], fact: 'Ele foge até de chuva para não se molhar.' },
+  { q: 'Qual personagem da Turma da Mônica troca o R pelo L ao falar?', a: 'Cebolinha', w: ['Cascão', 'Chico Bento', 'Franjinha'], fact: 'Ele vive bolando "planos infalíveis" contra a Mônica.' },
+  { q: 'Qual é a fruta preferida da comilona Magali?', a: 'Melancia', w: ['Banana', 'Maçã', 'Morango'], fact: 'O gatinho de estimação da Magali se chama Mingau.' },
+  { q: 'Qual Menina Superpoderosa usa a cor verde?', a: 'Docinho', w: ['Florzinha', 'Lindinha', 'Penélope'], fact: 'Foram criadas com açúcar, tempero, tudo que há de bom e o Elemento X.' },
+  { q: 'Qual é o nome da irmã que vive invadindo o laboratório de Dexter?', a: 'Dee Dee', w: ['Dot', 'Mandy', 'Mary'], fact: 'O Laboratório de Dexter estreou no Cartoon Network em 1996.' },
+  { q: 'Em que ano o canal Cartoon Network foi lançado nos EUA?', a: '1992', w: ['1985', '1998', '2001'], fact: 'No início, o canal exibia principalmente desenhos antigos da Hanna-Barbera.' },
+  { q: 'Em que tipo de casa mora o Bob Esponja?', a: 'Num abacaxi', w: ['Numa pedra', 'Num coco', 'Numa concha'], fact: 'O desenho estreou na Nickelodeon em 1999.' },
+  { q: 'O protagonista de Hey Arnold! tem a cabeça no formato de quê?', a: 'Bola de futebol americano', w: ['Lâmpada', 'Ovo', 'Pera'], fact: 'Hey Arnold! estreou na Nickelodeon em 1996.' },
+];
+
+export default questions;

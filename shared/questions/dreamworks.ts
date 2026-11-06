@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual é a cor do ogro Shrek?', a: 'Verde', w: ['Azul', 'Marrom', 'Cinza'], fact: 'O primeiro Shrek estreou nos cinemas em 2001.' },
+  { q: 'Qual animal falante é o fiel companheiro de Shrek?', a: 'Burro', w: ['Cavalo', 'Bode', 'Lhama'], fact: 'No original, quem dá voz ao Burro é Eddie Murphy.' },
+  { q: 'Onde Shrek mora no começo do primeiro filme?', a: 'Num pântano', w: ['Numa caverna', 'Num castelo', 'Numa torre'], fact: 'Ele tenta expulsar os personagens de contos de fadas que invadem seu lar.' },
+  { q: 'Em que a Princesa Fiona se transforma quando o sol se põe?', a: 'Numa ogra', w: ['Num dragão', 'Num sapo', 'Numa bruxa'], fact: 'O feitiço só seria quebrado com um beijo de amor verdadeiro.' },
+  { q: 'Em Shrek, quem guarda o castelo onde Fiona está presa?', a: 'Uma dragoa', w: ['Um gigante', 'Um troll', 'Uma bruxa'], fact: 'A dragoa se apaixona pelo Burro, e os dois têm filhotes em Shrek 2.' },
+  { q: 'Qual vilão baixinho governa Duloc no primeiro Shrek?', a: 'Lorde Farquaad', w: ['Príncipe Encantado', 'Rumpelstiltskin', 'Capitão Gancho'], fact: 'Ele quer se casar com Fiona só para virar rei.' },
+  { q: 'Em Shrek 2, como se chama o reino dos pais de Fiona?', a: 'Tão Tão Distante', w: ['Reino Encantado', 'Duloc', 'Terra do Nunca'], fact: 'No original, o reino se chama Far Far Away.' },
+  { q: 'Quem dá voz ao Gato de Botas na versão original?', a: 'Antonio Banderas', w: ['Javier Bardem', 'Andy García', 'Benicio del Toro'], fact: 'O personagem ganhou filmes solo em 2011 e 2022.' },
+  { q: 'Shrek foi o primeiro vencedor de qual categoria do Oscar?', a: 'Melhor Filme de Animação', w: ['Melhor Trilha Sonora', 'Melhores Efeitos Visuais', 'Melhor Canção Original'], fact: 'Venceu em 2002, superando Monstros S.A. e Jimmy Neutron.' },
+  { q: 'Shrek foi inspirado no livro infantil de qual autor?', a: 'William Steig', w: ['Dr. Seuss', 'Roald Dahl', 'Maurice Sendak'], fact: 'O livro original foi publicado em 1990.' },
+  { q: 'Qual banda canta "All Star", que toca na abertura de Shrek?', a: 'Smash Mouth', w: ['Sugar Ray', 'Weezer', 'Barenaked Ladies'], fact: 'A mesma banda canta "I\'m a Believer" no final do filme.' },
+  { q: 'Qual é o nome da zebra de Madagascar?', a: 'Marty', w: ['Melman', 'Alex', 'Julien'], fact: 'A fuga começa no aniversário de 10 anos de Marty.' },
+  { q: 'De qual zoológico os animais de Madagascar escapam?', a: 'Zoológico do Central Park', w: ['Zoológico do Bronx', 'Zoológico de San Diego', 'Zoológico de Londres'], fact: 'Eles queriam voltar a Nova York, mas foram parar em Madagascar.' },
+  { q: 'Que animal é o Rei Julien, de Madagascar?', a: 'Lêmure', w: ['Macaco', 'Suricato', 'Bicho-preguiça'], fact: 'Sua música-tema é "I Like to Move It".' },
+  { q: 'Como se chama o líder dos pinguins de Madagascar?', a: 'Capitão', w: ['Kowalski', 'Recruta', 'Rico'], fact: 'Os pinguins ganharam série própria em 2008 e filme em 2014.' },
+  { q: 'Qual é o nome do panda protagonista de Kung Fu Panda?', a: 'Po', w: ['Shifu', 'Oogway', 'Ping'], fact: 'No original, Po é dublado por Jack Black.' },
+  { q: 'Que animal é o Mestre Shifu, de Kung Fu Panda?', a: 'Panda-vermelho', w: ['Guaxinim', 'Raposa', 'Furão'], fact: 'No original, ele é dublado por Dustin Hoffman.' },
+  { q: 'Que título lendário Po recebe em Kung Fu Panda?', a: 'Dragão Guerreiro', w: ['Tigre de Jade', 'Mestre Supremo', 'Punho Lendário'], fact: 'O Pergaminho do Dragão estava em branco: o segredo era acreditar em si.' },
+  { q: 'Quem é o vilão do primeiro Kung Fu Panda?', a: 'Tai Lung', w: ['Lorde Shen', 'Kai', 'Fenghuang'], fact: 'Ele é um leopardo-das-neves e ex-aluno de Shifu.' },
+  { q: 'Em Como Treinar o Seu Dragão, qual é o nome do dragão de Soluço?', a: 'Banguela', w: ['Tempestade', 'Dentuço', 'Faísca'], fact: 'No original em inglês, ele se chama Toothless.' },
+  { q: 'Banguela pertence a qual espécie de dragão?', a: 'Fúria da Noite', w: ['Nadder Mortal', 'Pesadelo Monstruoso', 'Gronckel'], fact: 'Ele perde parte da cauda, e Soluço cria uma prótese para ele voar.' },
+  { q: 'Como se chama a ilha viking de Como Treinar o Seu Dragão?', a: 'Berk', w: ['Asgard', 'Valhala', 'Midgard'], fact: 'A saga é baseada nos livros da autora britânica Cressida Cowell.' },
+  { q: 'Qual é o nome do pai de Soluço, chefe dos vikings de Berk?', a: 'Stoico', w: ['Bocão', 'Melequento', 'Perna-de-Peixe'], fact: 'No original, ele é dublado por Gerard Butler.' },
+  { q: 'Qual diretor famoso foi um dos fundadores da DreamWorks?', a: 'Steven Spielberg', w: ['George Lucas', 'James Cameron', 'Martin Scorsese'], fact: 'Ele fundou o estúdio em 1994 com Jeffrey Katzenberg e David Geffen.' },
+  { q: 'Qual foi o primeiro longa animado da DreamWorks?', a: 'FormiguinhaZ', w: ['O Príncipe do Egito', 'Shrek', 'A Fuga das Galinhas'], fact: 'Saiu em 1998, mesmo ano de Vida de Inseto, da Pixar.' },
+  { q: 'O Príncipe do Egito (1998) conta a história de qual personagem bíblico?', a: 'Moisés', w: ['José', 'Davi', 'Noé'], fact: 'A canção "When You Believe" ganhou o Oscar de Melhor Canção Original.' },
+  { q: 'Qual estúdio britânico fez A Fuga das Galinhas com a DreamWorks?', a: 'Aardman', w: ['Laika', 'Blue Sky', 'Illumination'], fact: 'É o mesmo estúdio de Wallace & Gromit.' },
+  { q: 'Quem é o protagonista de Spirit: O Corcel Indomável?', a: 'Um cavalo selvagem', w: ['Um lobo', 'Uma águia', 'Um búfalo'], fact: 'Os cavalos do filme não falam: Spirit só narra seus pensamentos.' },
+  { q: 'Qual é a cor da Princesa Poppy, de Trolls?', a: 'Rosa', w: ['Azul', 'Roxo', 'Verde'], fact: '"Can\'t Stop the Feeling!", de Justin Timberlake, foi indicada ao Oscar.' },
+  { q: 'Os Croods são uma família de quê?', a: 'Homens das cavernas', w: ['Vikings', 'Piratas', 'Astronautas'], fact: 'No original, Nicolas Cage dubla o pai da família, Grug.' },
+];
+
+export default questions;

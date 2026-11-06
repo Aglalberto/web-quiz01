@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Em Cavaleiros do Zodíaco, Seiya é o cavaleiro de qual constelação?', a: 'Pégaso', w: ['Dragão', 'Cisne', 'Fênix'], fact: 'No Brasil, o anime estreou na Rede Manchete em 1994 e virou febre.' },
+  { q: 'Qual deusa os Cavaleiros do Zodíaco juram proteger?', a: 'Atena', w: ['Hera', 'Afrodite', 'Ártemis'], fact: 'Saori Kido é a reencarnação de Atena na Terra.' },
+  { q: 'Qual Cavaleiro de Bronze é o irmão mais velho de Shun de Andrômeda?', a: 'Ikki de Fênix', w: ['Seiya de Pégaso', 'Hyoga de Cisne', 'Shiryu de Dragão'] },
+  { q: 'Em qual região gelada Hyoga de Cisne treinou?', a: 'Sibéria', w: ['Alasca', 'Groenlândia', 'Antártida'] },
+  { q: 'Quantos Cavaleiros de Ouro protegem o Santuário?', a: '12', w: ['7', '10', '13'], fact: 'Um para cada signo do zodíaco, cada um guardando uma das Doze Casas.' },
+  { q: 'Qual Cavaleiro de Ouro de Virgem é chamado de "o homem mais próximo de Deus"?', a: 'Shaka', w: ['Mu', 'Aiolia', 'Camus'] },
+  { q: 'Quantas Esferas do Dragão é preciso reunir para invocar o dragão?', a: '7', w: ['5', '9', '12'], fact: 'Ao reunir todas, aparece o dragão Shenlong para realizar um desejo.' },
+  { q: 'Qual é o nome saiyajin de Goku?', a: 'Kakaroto', w: ['Bardock', 'Raditz', 'Nappa'] },
+  { q: 'Quem ensinou o Kamehameha a Goku?', a: 'Mestre Kame', w: ['Senhor Kaioh', 'Kami-Sama', 'Mestre Karin'], fact: 'Mestre Kame levou 50 anos para desenvolver a técnica.' },
+  { q: 'Qual vilão de Dragon Ball Z destruiu o planeta Vegeta?', a: 'Freeza', w: ['Cell', 'Majin Boo', 'Cooler'] },
+  { q: 'Qual é o nome da fusão de Goten e Trunks?', a: 'Gotenks', w: ['Vegetto', 'Gogeta', 'Kefla'], fact: 'Eles se fundem usando a Dança da Fusão.' },
+  { q: 'Quem é o criador do mangá Dragon Ball?', a: 'Akira Toriyama', w: ['Masami Kurumada', 'Eiichiro Oda', 'Masashi Kishimoto'], fact: 'Toriyama também criou o visual dos personagens de Dragon Quest.' },
+  { q: 'Quem derrota Cell com um Kamehameha em Dragon Ball Z?', a: 'Gohan', w: ['Goku', 'Vegeta', 'Trunks'], fact: 'Foi nessa luta que Gohan virou Super Saiyajin 2 pela primeira vez.' },
+  { q: 'Qual Pokémon acompanha Ash desde o primeiro episódio?', a: 'Pikachu', w: ['Bulbasaur', 'Charmander', 'Squirtle'], fact: 'Pikachu se recusa a ficar dentro da Pokébola.' },
+  { q: 'Como se chama o grupo vilão formado por Jessie, James e Meowth?', a: 'Equipe Rocket', w: ['Equipe Aqua', 'Equipe Magma', 'Equipe Galáctica'] },
+  { q: 'Qual Pokémon lendário Ash vê voando no fim do primeiro episódio?', a: 'Ho-Oh', w: ['Lugia', 'Moltres', 'Articuno'], fact: 'Ho-Oh apareceu no anime antes mesmo de existir nos jogos.' },
+  { q: 'Na dublagem brasileira, qual é o nome da garota que vira Sailor Moon?', a: 'Serena', w: ['Ami', 'Rei', 'Lita'], fact: 'No original japonês, ela se chama Usagi Tsukino.' },
+  { q: 'Qual é o nome da gata preta com uma lua na testa que orienta Sailor Moon?', a: 'Luna', w: ['Artemis', 'Diana', 'Kuro'] },
+  { q: 'Quem é o detetive sobrenatural protagonista de Yu Yu Hakusho?', a: 'Yusuke Urameshi', w: ['Kazuma Kuwabara', 'Hiei', 'Kurama'], fact: 'Yusuke morre logo no primeiro episódio ao salvar uma criança.' },
+  { q: 'Em Yu Yu Hakusho, qual guia de almas voa montada em um remo?', a: 'Botan', w: ['Keiko', 'Yukina', 'Genkai'] },
+  { q: 'O "X" de Samurai X faz referência a quê?', a: 'Cicatriz no rosto de Kenshin', w: ['Brasão da espada de Kenshin', 'Símbolo do clã de Kenshin', 'Tatuagem no braço de Kenshin'], fact: 'A espada de Kenshin tem a lâmina invertida para não matar.' },
+  { q: 'Em qual era da história japonesa se passa Samurai X?', a: 'Era Meiji', w: ['Era Edo', 'Período Sengoku', 'Era Showa'], fact: 'A história começa em 1878, o 11º ano da Era Meiji.' },
+  { q: 'Qual criatura está selada dentro de Naruto?', a: 'Raposa de Nove Caudas', w: ['Tanuki de Uma Cauda', 'Gato de Duas Caudas', 'Macaco de Quatro Caudas'] },
+  { q: 'Quem é o irmão mais velho de Sasuke Uchiha?', a: 'Itachi', w: ['Obito', 'Madara', 'Shisui'] },
+  { q: 'Quem pilota o EVA-01 em Neon Genesis Evangelion?', a: 'Shinji Ikari', w: ['Asuka Langley', 'Rei Ayanami', 'Kaworu Nagisa'], fact: 'Seu pai, Gendo Ikari, é o comandante da NERV.' },
+  { q: 'Como são chamadas as criaturas que atacam Tóquio-3 em Evangelion?', a: 'Anjos', w: ['Titãs', 'Kaijus', 'Hollows'], fact: 'A série estreou na TV japonesa em 1995.' },
+  { q: 'Qual filme do Studio Ghibli ganhou o Oscar de Melhor Animação em 2003?', a: 'A Viagem de Chihiro', w: ['Meu Amigo Totoro', 'Princesa Mononoke', 'O Castelo Animado'], fact: 'Em 2024, O Menino e a Garça deu a Miyazaki seu segundo Oscar.' },
+  { q: 'Quem dirigiu o filme Meu Amigo Totoro (1988)?', a: 'Hayao Miyazaki', w: ['Isao Takahata', 'Mamoru Hosoda', 'Makoto Shinkai'], fact: 'Totoro virou o símbolo do logotipo do Studio Ghibli.' },
+  { q: 'Em Digimon Adventure, qual é o Digimon parceiro de Tai?', a: 'Agumon', w: ['Gabumon', 'Patamon', 'Tentomon'], fact: 'Agumon digievolui para Greymon.' },
+  { q: 'Qual emissora exibiu Cavaleiros do Zodíaco e Yu Yu Hakusho nos anos 90?', a: 'Rede Manchete', w: ['SBT', 'Rede Globo', 'Band'], fact: 'A Rede Manchete saiu do ar em 1999.' },
+];
+
+export default questions;

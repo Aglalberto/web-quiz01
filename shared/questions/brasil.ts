@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual é a capital do Brasil?', a: 'Brasília', w: ['Rio de Janeiro', 'São Paulo', 'Salvador'], fact: 'Foi inaugurada em 21 de abril de 1960, no governo de Juscelino Kubitschek.' },
+  { q: 'Quem proclamou a Independência do Brasil?', a: 'Dom Pedro I', w: ['Dom Pedro II', 'Dom João VI', 'Tiradentes'], fact: 'O grito foi dado em 7 de setembro de 1822, às margens do riacho Ipiranga.' },
+  { q: 'Qual lema está escrito na bandeira do Brasil?', a: 'Ordem e Progresso', w: ['Independência ou Morte', 'Pátria Amada', 'União e Liberdade'], fact: 'O lema foi inspirado no positivismo do filósofo francês Auguste Comte.' },
+  { q: 'Qual personagem do folclore tem uma perna só e usa gorro vermelho?', a: 'Saci-Pererê', w: ['Curupira', 'Boitatá', 'Mula sem cabeça'], fact: 'Segundo a lenda, ele vive aprontando travessuras e some dentro de redemoinhos.' },
+  { q: 'Qual é o maior estado brasileiro em área?', a: 'Amazonas', w: ['Pará', 'Mato Grosso', 'Minas Gerais'], fact: 'O Amazonas tem mais de 1,5 milhão de km², área maior que a de muitos países.' },
+  { q: 'Qual prato leva feijão-preto cozido com carnes de porco?', a: 'Feijoada', w: ['Moqueca', 'Vatapá', 'Baião de dois'], fact: 'Costuma ser servida com arroz, couve refogada, farofa e laranja.' },
+  { q: 'Em qual cidade fica o Cristo Redentor?', a: 'Rio de Janeiro', w: ['Salvador', 'São Paulo', 'Belo Horizonte'], fact: 'Inaugurado em 1931 no Corcovado, é uma das Novas 7 Maravilhas do Mundo.' },
+  { q: 'Quem assinou a Lei Áurea, que aboliu a escravidão no Brasil?', a: 'Princesa Isabel', w: ['Dom Pedro II', 'Imperatriz Leopoldina', 'Dona Maria I'], fact: 'A Lei Áurea foi assinada em 13 de maio de 1888.' },
+  { q: 'Qual navegador português chegou ao Brasil em 1500?', a: 'Pedro Álvares Cabral', w: ['Vasco da Gama', 'Cristóvão Colombo', 'Américo Vespúcio'], fact: 'A frota chegou em 22 de abril de 1500 ao litoral da atual Bahia.' },
+  { q: 'Qual é o primeiro verso do Hino Nacional Brasileiro?', a: 'Ouviram do Ipiranga às margens plácidas', w: ['Já podeis da Pátria filhos', 'Salve, lindo pendão da esperança', 'Liberdade! Liberdade!'], fact: 'A letra é de Osório Duque Estrada e a música, de Francisco Manuel da Silva.' },
+  { q: 'Qual rio brasileiro é carinhosamente chamado de "Velho Chico"?', a: 'São Francisco', w: ['Paraná', 'Tietê', 'Parnaíba'], fact: 'O rio São Francisco nasce na Serra da Canastra, em Minas Gerais.' },
+  { q: 'Qual é a moeda oficial do Brasil desde 1994?', a: 'Real', w: ['Cruzeiro', 'Cruzado', 'Cruzeiro Real'], fact: 'O real substituiu o cruzeiro real e entrou em circulação em 1º de julho de 1994.' },
+  { q: 'Em que ano o Brasil conquistou sua primeira Copa do Mundo de futebol?', a: '1958', w: ['1950', '1962', '1970'], fact: 'O título veio na Suécia, com Pelé de apenas 17 anos no time.' },
+  { q: 'Qual ser do folclore tem os pés virados para trás para enganar caçadores?', a: 'Curupira', w: ['Saci-Pererê', 'Boto-cor-de-rosa', 'Iara'], fact: 'O Curupira é conhecido como protetor das matas e dos animais.' },
+  { q: 'Qual é a capital de Pernambuco?', a: 'Recife', w: ['Olinda', 'Caruaru', 'Petrolina'], fact: 'Cortada por rios e cheia de pontes, Recife é chamada de "Veneza brasileira".' },
+  { q: 'Qual é a capital do Tocantins?', a: 'Palmas', w: ['Araguaína', 'Gurupi', 'Porto Nacional'], fact: 'Fundada em 1989, Palmas é a capital estadual mais jovem do Brasil.' },
+  { q: 'Qual cidade foi a primeira capital do Brasil?', a: 'Salvador', w: ['Rio de Janeiro', 'Recife', 'São Vicente'], fact: 'Salvador foi sede do governo da colônia de 1549 a 1763.' },
+  { q: 'Em qual clube brasileiro Pelé jogou a maior parte da carreira?', a: 'Santos', w: ['Corinthians', 'Botafogo', 'Flamengo'], fact: 'Depois do Santos, Pelé encerrou a carreira no New York Cosmos, dos EUA.' },
+  { q: 'Tiradentes foi o principal líder de qual movimento?', a: 'Inconfidência Mineira', w: ['Revolução Farroupilha', 'Cabanagem', 'Balaiada'], fact: 'Foi executado em 21 de abril de 1792, data que hoje é feriado nacional.' },
+  { q: 'O acarajé, frito no azeite de dendê, é símbolo da culinária de qual estado?', a: 'Bahia', w: ['Pernambuco', 'Maranhão', 'Pará'], fact: 'O ofício das baianas de acarajé é patrimônio cultural imaterial do Brasil.' },
+  { q: 'Qual bebida típica do Rio Grande do Sul é tomada quente na cuia?', a: 'Chimarrão', w: ['Tereré', 'Quentão', 'Caldo de cana'], fact: 'É feito com erva-mate e água quente e bebido com uma bomba de metal.' },
+  { q: 'Quem foi o primeiro presidente do Brasil?', a: 'Deodoro da Fonseca', w: ['Floriano Peixoto', 'Getúlio Vargas', 'Prudente de Morais'], fact: 'Deodoro proclamou a República em 15 de novembro de 1889.' },
+  { q: 'Qual é o estado mais ao sul do Brasil?', a: 'Rio Grande do Sul', w: ['Santa Catarina', 'Paraná', 'Mato Grosso do Sul'], fact: 'O ponto extremo sul do país fica no Arroio Chuí, na fronteira com o Uruguai.' },
+  { q: 'Qual arquiteto projetou os principais prédios de Brasília?', a: 'Oscar Niemeyer', w: ['Lúcio Costa', 'Burle Marx', 'Lina Bo Bardi'], fact: 'Lúcio Costa fez o plano urbanístico da cidade, o famoso Plano Piloto.' },
+  { q: 'Qual é a capital de Roraima?', a: 'Boa Vista', w: ['Macapá', 'Porto Velho', 'Rio Branco'], fact: 'Boa Vista é a única capital brasileira inteiramente no hemisfério norte.' },
+  { q: 'Qual é a cidade mais populosa do Brasil?', a: 'São Paulo', w: ['Rio de Janeiro', 'Brasília', 'Salvador'], fact: 'A capital paulista tem mais de 11 milhões de habitantes.' },
+  { q: 'Qual bioma existe exclusivamente no Brasil?', a: 'Caatinga', w: ['Pantanal', 'Cerrado', 'Mata Atlântica'], fact: 'A Caatinga ocupa boa parte do Nordeste e tem plantas adaptadas à seca.' },
+  { q: 'Quais dois países da América do Sul NÃO fazem fronteira com o Brasil?', a: 'Chile e Equador', w: ['Peru e Bolívia', 'Uruguai e Paraguai', 'Colômbia e Venezuela'], fact: 'O Brasil faz fronteira com todos os outros países sul-americanos.' },
+  { q: 'Com qual avião Santos Dumont voou em Paris, em 1906?', a: '14-Bis', w: ['Demoiselle', 'Blériot XI', 'Flyer'], fact: 'O voo aconteceu no Campo de Bagatelle, diante de testemunhas e jornalistas.' },
+  { q: 'Os bois Garantido e Caprichoso disputam o festival de qual cidade amazonense?', a: 'Parintins', w: ['Manaus', 'Tefé', 'Itacoatiara'], fact: 'O Garantido é representado pelo vermelho e o Caprichoso, pelo azul.' },
+];
+
+export default questions;

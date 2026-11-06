@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual é o maior animal que já existiu na Terra, até onde se sabe?', a: 'Baleia-azul', w: ['Elefante-africano', 'Cachalote', 'Tubarão-baleia'], fact: 'A baleia-azul pode passar de 30 metros e é mais pesada que qualquer dinossauro conhecido.' },
+  { q: 'Qual é o animal terrestre mais rápido do mundo?', a: 'Guepardo', w: ['Leão', 'Antílope', 'Cavalo'], fact: 'O guepardo pode passar de 100 km/h, mas só aguenta arrancadas curtas.' },
+  { q: 'Quantas patas tem uma aranha?', a: '8', w: ['6', '10', '12'], fact: 'Aranhas são aracnídeas, não insetos. Os insetos têm 6 patas.' },
+  { q: 'O golfinho pertence a qual grupo de animais?', a: 'Mamíferos', w: ['Peixes', 'Anfíbios', 'Répteis'], fact: 'Golfinhos respiram ar por um orifício no alto da cabeça e amamentam os filhotes.' },
+  { q: 'Qual é a maior ave do mundo?', a: 'Avestruz', w: ['Ema', 'Emu', 'Condor'], fact: 'O avestruz não voa, mas bota o maior ovo entre as aves vivas.' },
+  { q: 'Qual é o maior roedor do mundo?', a: 'Capivara', w: ['Castor', 'Porco-espinho', 'Paca'], fact: 'A capivara pode passar de 60 kg e vive sempre perto da água.' },
+  { q: 'Qual é o único mamífero capaz de voar de verdade?', a: 'Morcego', w: ['Esquilo-voador', 'Colugo', 'Petauro-do-açúcar'], fact: 'Esquilos-voadores e colugos apenas planam; só o morcego bate asas.' },
+  { q: 'Qual é o principal alimento do panda-gigante?', a: 'Bambu', w: ['Eucalipto', 'Peixe', 'Frutas'], fact: 'O bambu forma quase toda a dieta do panda, que passa horas por dia comendo.' },
+  { q: 'Como se chama o filhote do cavalo?', a: 'Potro', w: ['Bezerro', 'Cabrito', 'Leitão'], fact: 'A fêmea jovem do cavalo também pode ser chamada de potra ou potranca.' },
+  { q: 'Qual é o coletivo de lobos?', a: 'Alcateia', w: ['Cardume', 'Manada', 'Enxame'], fact: 'Cardume é de peixes, manada de bois e enxame de abelhas.' },
+  { q: 'Do que o tamanduá-bandeira se alimenta principalmente?', a: 'Formigas e cupins', w: ['Frutas', 'Peixes', 'Folhas'], fact: 'A língua do tamanduá-bandeira pode chegar a uns 60 cm de comprimento.' },
+  { q: 'O jacaré pertence a qual grupo de animais?', a: 'Répteis', w: ['Anfíbios', 'Mamíferos', 'Peixes'], fact: 'O Brasil abriga seis espécies de jacarés.' },
+  { q: 'Qual é o maior felino das Américas?', a: 'Onça-pintada', w: ['Puma', 'Jaguatirica', 'Lince'], fact: 'A onça-pintada é o terceiro maior felino do mundo, atrás do tigre e do leão.' },
+  { q: 'Qual é a maior ave do Brasil?', a: 'Ema', w: ['Tuiuiú', 'Harpia', 'Seriema'], fact: 'A ema não voa, mas é ótima corredora. Quem choca os ovos é o macho.' },
+  { q: 'Qual ave de pernas longas e pescoço preto e vermelho é o símbolo do Pantanal?', a: 'Tuiuiú', w: ['Arara-azul', 'Garça-branca', 'Colhereiro'], fact: 'Com as asas abertas, o tuiuiú pode passar de 2,5 metros de ponta a ponta.' },
+  { q: 'Quantos corações tem um polvo?', a: '3', w: ['1', '2', '8'], fact: 'Além de três corações, o polvo tem sangue azul, por causa de uma proteína com cobre.' },
+  { q: 'Qual primata de pelagem alaranjada é símbolo da conservação da Mata Atlântica?', a: 'Mico-leão-dourado', w: ['Sagui-de-tufo-branco', 'Macaco-prego', 'Bugio'], fact: 'O mico-leão-dourado estampa a nota de 20 reais.' },
+  { q: 'Qual cobra é considerada a mais pesada do mundo?', a: 'Sucuri', w: ['Píton-reticulada', 'Jiboia', 'Naja-real'], fact: 'A píton-reticulada pode ser mais comprida, mas a sucuri é mais pesada.' },
+  { q: 'Qual mamífero bota ovos e tem bico parecido com o de um pato?', a: 'Ornitorrinco', w: ['Lontra', 'Castor', 'Tamanduá'], fact: 'O ornitorrinco vive na Austrália, e o macho tem um esporão venenoso nas patas.' },
+  { q: 'O bicho-preguiça desce da árvore cerca de uma vez por semana para fazer o quê?', a: 'Fazer cocô', w: ['Beber água', 'Dormir', 'Caçar'], fact: 'A preguiça é tão lenta que algas chegam a crescer em seus pelos.' },
+  { q: 'Qual é o maior peixe do mundo?', a: 'Tubarão-baleia', w: ['Tubarão-branco', 'Pirarucu', 'Peixe-lua'], fact: 'Apesar do tamanho, o tubarão-baleia se alimenta de plâncton e pequenos peixes.' },
+  { q: 'Qual ave consegue voar para trás?', a: 'Beija-flor', w: ['Andorinha', 'Pica-pau', 'Bem-te-vi'], fact: 'Os beija-flores também conseguem ficar parados no ar, batendo as asas muito rápido.' },
+  { q: 'Qual animal aparece na nota de 200 reais?', a: 'Lobo-guará', w: ['Onça-pintada', 'Mico-leão-dourado', 'Garoupa'], fact: 'A nota de 200 reais foi lançada em 2020.' },
+  { q: 'Em qual animal é o macho que carrega os ovos até os filhotes nascerem?', a: 'Cavalo-marinho', w: ['Tubarão-martelo', 'Polvo', 'Peixe-palhaço'], fact: 'A fêmea deposita os ovos numa bolsa na barriga do macho.' },
+  { q: 'Quantas vértebras tem o pescoço de uma girafa?', a: '7', w: ['14', '21', '3'], fact: 'É o mesmo número do pescoço humano; as vértebras da girafa é que são enormes.' },
+  { q: 'Em qual estado brasileiro fica Abrolhos, principal berçário das baleias-jubarte no país?', a: 'Bahia', w: ['Santa Catarina', 'Rio de Janeiro', 'Pernambuco'], fact: 'Já Santa Catarina é famosa por receber a baleia-franca no inverno.' },
+  { q: 'Qual é o invertebrado mais pesado conhecido?', a: 'Lula-colossal', w: ['Lula-gigante', 'Polvo-gigante', 'Caranguejo-aranha'], fact: 'Um exemplar capturado em 2007 pesava cerca de 495 kg.' },
+  { q: 'Qual animal tem impressões digitais muito parecidas com as dos humanos?', a: 'Coala', w: ['Panda', 'Bicho-preguiça', 'Guaxinim'], fact: 'As digitais do coala são tão parecidas que poderiam confundir até especialistas.' },
+  { q: 'Qual animal terrestre é um dos parentes vivos mais próximos do peixe-boi?', a: 'Elefante', w: ['Hipopótamo', 'Porco', 'Cavalo'], fact: 'Peixes-bois e elefantes descendem de um ancestral comum que viveu há milhões de anos.' },
+  { q: 'Qual é o maior macaco das Américas?', a: 'Muriqui', w: ['Bugio', 'Macaco-prego', 'Uacari'], fact: 'O muriqui vive na Mata Atlântica e está ameaçado de extinção.' },
+];
+
+export default questions;

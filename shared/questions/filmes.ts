@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual filme de 1997, dirigido por James Cameron, ganhou 11 Oscars?', a: 'Titanic', w: ['Gladiador', 'Coração Valente', 'O Resgate do Soldado Ryan'], fact: 'Leonardo DiCaprio e Kate Winslet viveram o casal Jack e Rose.' },
+  { q: 'Quem dirigiu "Jurassic Park" (1993)?', a: 'Steven Spielberg', w: ['James Cameron', 'George Lucas', 'Ridley Scott'], fact: 'O filme é baseado no livro de Michael Crichton.' },
+  { q: 'A frase "Que a Força esteja com você" é de qual saga?', a: 'Star Wars', w: ['Star Trek', 'Duna', 'Matrix'], fact: 'O primeiro filme da saga estreou em 1977.' },
+  { q: 'Em "Matrix", de que cor é a pílula que Neo escolhe tomar?', a: 'Vermelha', w: ['Azul', 'Verde', 'Amarela'], fact: 'A pílula azul o faria voltar à vida comum, sem saber a verdade.' },
+  { q: 'Qual ator interpretou o capitão Jack Sparrow em "Piratas do Caribe"?', a: 'Johnny Depp', w: ['Orlando Bloom', 'Brad Pitt', 'Leonardo DiCaprio'], fact: 'Depp foi indicado ao Oscar de Melhor Ator pelo papel.' },
+  { q: 'Em "O Mágico de Oz" (1939), de que cor são os sapatos de Dorothy?', a: 'Vermelhos', w: ['Dourados', 'Azuis', 'Verdes'], fact: 'No livro original de L. Frank Baum, os sapatos eram prateados.' },
+  { q: 'Qual filme deu ao Brasil seu primeiro Oscar de Melhor Filme Internacional, em 2025?', a: 'Ainda Estou Aqui', w: ['Central do Brasil', 'Cidade de Deus', 'O Pagador de Promessas'], fact: 'Dirigido por Walter Salles, conta a história de Eunice Paiva.' },
+  { q: 'Qual atriz foi indicada ao Oscar de Melhor Atriz por "Central do Brasil"?', a: 'Fernanda Montenegro', w: ['Fernanda Torres', 'Sônia Braga', 'Glória Pires'], fact: 'Sua filha, Fernanda Torres, foi indicada na mesma categoria em 2025.' },
+  { q: 'Quem dirigiu "Pulp Fiction: Tempo de Violência"?', a: 'Quentin Tarantino', w: ['Martin Scorsese', 'Guy Ritchie', 'Francis Ford Coppola'], fact: 'O filme venceu a Palma de Ouro no Festival de Cannes de 1994.' },
+  { q: 'A frase "Eu vejo gente morta" é de qual filme?', a: 'O Sexto Sentido', w: ['Os Outros', 'O Exorcista', 'Atividade Paranormal'], fact: 'O menino Haley Joel Osment foi indicado ao Oscar pelo papel.' },
+  { q: 'Em "De Volta para o Futuro", qual carro vira máquina do tempo?', a: 'DeLorean', w: ['Ferrari', 'Mustang', 'Fusca'], fact: 'O carro precisa atingir 88 milhas por hora para viajar no tempo.' },
+  { q: 'Quem interpretou o Coringa em "Batman: O Cavaleiro das Trevas" (2008)?', a: 'Heath Ledger', w: ['Joaquin Phoenix', 'Jared Leto', 'Jack Nicholson'], fact: 'Ele ganhou o Oscar de Ator Coadjuvante após sua morte.' },
+  { q: 'Qual foi o primeiro filme em língua não inglesa a vencer o Oscar de Melhor Filme?', a: 'Parasita', w: ['Roma', 'O Tigre e o Dragão', 'A Vida é Bela'], fact: 'O sul-coreano foi dirigido por Bong Joon-ho e premiado em 2020.' },
+  { q: 'Qual ator interpretou Forrest Gump?', a: 'Tom Hanks', w: ['Robin Williams', 'Kevin Costner', 'Jim Carrey'], fact: 'Hanks venceu o Oscar de Melhor Ator dois anos seguidos: Filadélfia e Forrest Gump.' },
+  { q: 'A frase "Hasta la vista, baby" ficou famosa em qual filme?', a: 'O Exterminador do Futuro 2', w: ['RoboCop', 'Predador', 'O Vingador do Futuro'], fact: 'Já o bordão "Eu voltarei" vem do primeiro filme, de 1984.' },
+  { q: 'Em qual casa de Hogwarts Harry Potter é selecionado?', a: 'Grifinória', w: ['Sonserina', 'Corvinal', 'Lufa-Lufa'], fact: 'O Chapéu Seletor chegou a considerar mandá-lo para a Sonserina.' },
+  { q: 'Quantos Oscars ganhou "O Senhor dos Anéis: O Retorno do Rei"?', a: '11', w: ['7', '9', '13'], fact: 'Venceu todas as 11 categorias em que foi indicado.' },
+  { q: 'Qual diretor fez "A Origem", "Interestelar" e "Oppenheimer"?', a: 'Christopher Nolan', w: ['Denis Villeneuve', 'Ridley Scott', 'David Fincher'], fact: 'Nolan ganhou seu primeiro Oscar de Direção por "Oppenheimer".' },
+  { q: 'Qual é o único ator a ganhar três Oscars de Melhor Ator?', a: 'Daniel Day-Lewis', w: ['Jack Nicholson', 'Marlon Brando', 'Anthony Hopkins'], fact: 'Venceu por "Meu Pé Esquerdo", "Sangue Negro" e "Lincoln".' },
+  { q: 'Quem interpretou Vito Corleone no primeiro "O Poderoso Chefão"?', a: 'Marlon Brando', w: ['Al Pacino', 'Robert De Niro', 'Robert Duvall'], fact: 'De Niro viveu o jovem Vito na Parte II e também levou um Oscar.' },
+  { q: 'Em qual cidade americana Rocky Balboa sobe a famosa escadaria?', a: 'Filadélfia', w: ['Nova York', 'Boston', 'Chicago'], fact: 'Os degraus do Museu de Arte da Filadélfia viraram ponto turístico.' },
+  { q: 'Quem dirigiu "Cidade de Deus" (2002)?', a: 'Fernando Meirelles', w: ['Walter Salles', 'José Padilha', 'Kleber Mendonça Filho'], fact: 'O filme recebeu 4 indicações ao Oscar, incluindo Melhor Direção.' },
+  { q: 'Qual ator interpretou o Capitão Nascimento em "Tropa de Elite"?', a: 'Wagner Moura', w: ['Selton Mello', 'Lázaro Ramos', 'Rodrigo Santoro'], fact: 'O filme ganhou o Urso de Ouro no Festival de Berlim em 2008.' },
+  { q: 'Qual monstro gigante japonês estreou no cinema em 1954?', a: 'Godzilla', w: ['King Kong', 'Mothra', 'Gamera'], fact: '"Godzilla Minus One" ganhou o Oscar de Efeitos Visuais em 2024.' },
+  { q: 'Em qual filme de 1939 a protagonista se chama Scarlett O\'Hara?', a: 'E o Vento Levou', w: ['Casablanca', 'Cidadão Kane', 'O Morro dos Ventos Uivantes'], fact: 'Hattie McDaniel foi a primeira pessoa negra a ganhar um Oscar, por esse filme.' },
+  { q: 'Qual ator interpretou o Homem de Ferro nos filmes da Marvel?', a: 'Robert Downey Jr.', w: ['Chris Evans', 'Chris Hemsworth', 'Mark Ruffalo'], fact: 'Ele ganhou o Oscar de Ator Coadjuvante por "Oppenheimer".' },
+  { q: 'Qual é o nome do psiquiatra canibal de "O Silêncio dos Inocentes"?', a: 'Hannibal Lecter', w: ['Norman Bates', 'Jack Torrance', 'Freddy Krueger'], fact: 'É um dos três filmes a vencer os cinco principais Oscars.' },
+  { q: 'Quem dirigiu o clássico do suspense "Psicose" (1960)?', a: 'Alfred Hitchcock', w: ['Stanley Kubrick', 'Orson Welles', 'Billy Wilder'], fact: 'Hitchcock nunca venceu um Oscar competitivo de Melhor Direção.' },
+  { q: 'Qual ator grita "Aqui está o Johnny!" em "O Iluminado"?', a: 'Jack Nicholson', w: ['Christopher Walken', 'Al Pacino', 'Dustin Hoffman'], fact: 'O filme de Stanley Kubrick é baseado num livro de Stephen King.' },
+  { q: 'Quem dirigiu o filme "Barbie" (2023)?', a: 'Greta Gerwig', w: ['Sofia Coppola', 'Kathryn Bigelow', 'Chloé Zhao'], fact: 'Foi a maior bilheteria mundial de 2023.' },
+];
+
+export default questions;

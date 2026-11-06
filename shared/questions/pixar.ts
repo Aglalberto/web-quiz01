@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual foi o primeiro longa-metragem da Pixar, lançado em 1995?', a: 'Toy Story', w: ['Vida de Inseto', 'Monstros S.A.', 'Procurando Nemo'], fact: 'Foi o primeiro longa-metragem feito totalmente por computador.' },
+  { q: 'Como se chama o caubói de brinquedo de "Toy Story"?', a: 'Woody', w: ['Buzz', 'Slinky', 'Rex'], fact: 'Na versão original, Woody tem a voz de Tom Hanks.' },
+  { q: 'Qual é o bordão de Buzz Lightyear?', a: 'Ao infinito e além!', w: ['Rumo às estrelas!', 'Missão cumprida!', 'Avante, patrulheiros!'], fact: 'Buzz ganhou um filme próprio, "Lightyear", em 2022.' },
+  { q: 'Qual é o nome do menino dono dos brinquedos em "Toy Story"?', a: 'Andy', w: ['Sid', 'Bonnie', 'Al'], fact: 'Woody tem o nome "Andy" escrito na sola da bota.' },
+  { q: 'Qual urso de pelúcia com cheiro de morango é o vilão de "Toy Story 3"?', a: 'Lotso', w: ['Zurg', 'Ken', 'Porquinho'], fact: '"Toy Story 3" foi indicado ao Oscar de Melhor Filme.' },
+  { q: 'Em "Procurando Nemo", que tipo de peixe é a Dory?', a: 'Cirurgião-patela', w: ['Peixe-palhaço', 'Peixe-anjo', 'Baiacu'], fact: 'Nemo e seu pai, Marlin, são peixes-palhaço.' },
+  { q: 'Em "Procurando Nemo", para qual cidade australiana Nemo é levado?', a: 'Sydney', w: ['Melbourne', 'Perth', 'Brisbane'], fact: 'Ele vai parar no aquário do consultório de um dentista.' },
+  { q: 'Em "Up – Altas Aventuras", o que faz a casa de Carl voar?', a: 'Balões', w: ['Um foguete', 'Hélices', 'Um dirigível'], fact: 'O escoteiro que embarca junto, sem querer, se chama Russell.' },
+  { q: 'Em "Up – Altas Aventuras", como se chama o cachorro que fala por uma coleira?', a: 'Dug', w: ['Kevin', 'Dante', 'Bolt'], fact: 'Kevin, a ave gigante do filme, na verdade é uma fêmea.' },
+  { q: 'Qual é o nome do rato cozinheiro de "Ratatouille"?', a: 'Remy', w: ['Linguini', 'Emile', 'Gusteau'], fact: 'A história se passa em Paris.' },
+  { q: 'Qual é o número do Relâmpago McQueen em "Carros"?', a: '95', w: ['43', '86', '33'], fact: 'É uma referência a 1995, ano de lançamento de "Toy Story".' },
+  { q: 'Em "Carros", qual é o nome do guincho enferrujado amigo de McQueen?', a: 'Mate', w: ['Doc Hudson', 'Luigi', 'Sargento'], fact: 'Mate ganhou ainda mais destaque como protagonista de "Carros 2".' },
+  { q: 'Qual monstro verde de um olho só é parceiro de Sulley em "Monstros S.A."?', a: 'Mike Wazowski', w: ['Randall', 'Waternoose', 'Fungus'], fact: 'A energia de Monstrópolis vem dos gritos das crianças.' },
+  { q: 'Em "Os Incríveis", qual é o nome do bebê que revela vários superpoderes?', a: 'Zezé', w: ['Flecha', 'Violeta', 'Beto'], fact: 'No Brasil, a família de super-heróis tem o sobrenome Pêra.' },
+  { q: 'Qual estilista de "Os Incríveis" é totalmente contra capas em uniformes?', a: 'Edna Moda', w: ['Helena Pêra', 'Mirage', 'Evelyn'], fact: 'Na versão original, Edna é dublada pelo próprio diretor, Brad Bird.' },
+  { q: 'Por qual robô WALL-E se apaixona?', a: 'EVA', w: ['AUTO', 'M-O', 'Rosie'], fact: '"WALL-E" ganhou o Oscar de Melhor Animação em 2009.' },
+  { q: 'Em "Divertida Mente", as emoções vivem na cabeça de qual garota?', a: 'Riley', w: ['Mei', 'Boo', 'Lila'], fact: 'Na sequência de 2024, surge a emoção Ansiedade.' },
+  { q: 'Em "Divertida Mente", qual emoção é azul?', a: 'Tristeza', w: ['Medo', 'Nojinho', 'Raiva'], fact: 'Nojinho é verde, Raiva é vermelha e Medo é roxo.' },
+  { q: 'Em qual país se passa "Viva – A Vida é uma Festa"?', a: 'México', w: ['Espanha', 'Colômbia', 'Peru'], fact: 'A história gira em torno do Dia dos Mortos.' },
+  { q: 'Em "Viva – A Vida é uma Festa", qual instrumento Miguel sonha em tocar?', a: 'Violão', w: ['Trompete', 'Piano', 'Bateria'], fact: 'Seu cachorro, Dante, é da raça xoloitzcuintle.' },
+  { q: 'Como se chama a luminária que pula na vinheta de abertura da Pixar?', a: 'Luxo Jr.', w: ['Pixie', 'Lumi', 'Lampy'], fact: 'Ela pula sobre a letra "I" do logotipo e o amassa.' },
+  { q: 'Qual veículo amarelo aparece escondido em quase todos os filmes da Pixar?', a: 'Caminhonete da Pizza Planet', w: ['Ônibus escolar', 'Táxi nova-iorquino', 'Carrinho de sorvete'], fact: 'Ela estreou em "Toy Story", dando carona a Woody e Buzz.' },
+  { q: 'Qual código, nome de uma sala da escola CalArts, aparece em vários filmes da Pixar?', a: 'A113', w: ['B42', 'A51', 'K19'], fact: 'Era a sala de animação onde estudaram vários artistas da Pixar.' },
+  { q: 'Qual empresário comprou da Lucasfilm, em 1986, a divisão que virou a Pixar?', a: 'Steve Jobs', w: ['Bill Gates', 'Michael Eisner', 'Jeff Bezos'], fact: 'A Disney comprou a Pixar em 2006 por cerca de US$ 7,4 bilhões.' },
+  { q: 'Quem dirigiu o primeiro "Toy Story"?', a: 'John Lasseter', w: ['Pete Docter', 'Andrew Stanton', 'Brad Bird'], fact: 'Ele recebeu um Oscar especial pelo primeiro longa feito em computação.' },
+  { q: 'Qual é o nome da formiga protagonista de "Vida de Inseto"?', a: 'Flik', w: ['Z', 'Hopper', 'Atta'], fact: 'Foi o segundo longa da Pixar, lançado em 1998.' },
+  { q: 'Em "Valente", em que animal a mãe de Merida é transformada?', a: 'Urso', w: ['Lobo', 'Cavalo', 'Raposa'], fact: 'O filme se passa na Escócia e ganhou o Oscar de Melhor Animação.' },
+  { q: 'Em qual país se passa a animação "Luca"?', a: 'Itália', w: ['Grécia', 'Espanha', 'Portugal'], fact: 'Os monstros marinhos ganham forma humana quando ficam secos.' },
+  { q: 'Em "Soul", o professor Joe Gardner sonha em tocar qual estilo musical?', a: 'Jazz', w: ['Rock', 'Blues', 'Country'], fact: '"Soul" ganhou o Oscar de Melhor Animação em 2021.' },
+  { q: 'Em "Elementos" (2023), de que elemento é feita a protagonista?', a: 'Fogo', w: ['Água', 'Terra', 'Ar'], fact: 'Ela se apaixona por um rapaz feito de água.' },
+];
+
+export default questions;

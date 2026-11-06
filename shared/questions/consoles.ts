@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual empresa fabrica o PlayStation?', a: 'Sony', w: ['Microsoft', 'Nintendo', 'Sega'], fact: 'O PlayStation nasceu de uma parceria frustrada entre Sony e Nintendo.' },
+  { q: 'Qual empresa fabrica o Xbox?', a: 'Microsoft', w: ['Sony', 'Nintendo', 'Sega'], fact: 'O nome vem de "DirectX Box", referência à tecnologia gráfica DirectX.' },
+  { q: 'Quais símbolos aparecem nos botões do controle do PlayStation?', a: 'Triângulo, círculo, X e quadrado', w: ['A, B, X e Y', 'Estrela, lua, sol e nuvem', 'Seta, ponto, X e losango'], fact: 'O triângulo representa ponto de vista e o quadrado, um menu ou folha de papel.' },
+  { q: 'Qual console da Nintendo, de 2017, funciona na TV e também como portátil?', a: 'Nintendo Switch', w: ['Wii U', 'Nintendo 3DS', 'Wii'], fact: 'Seus controles destacáveis se chamam Joy-Con.' },
+  { q: 'Qual console da Nintendo popularizou o controle com sensor de movimento?', a: 'Wii', w: ['GameCube', 'Nintendo 64', 'Super Nintendo'], fact: 'O Wii vendeu mais de 100 milhões de unidades no mundo.' },
+  { q: 'Qual console portátil da Nintendo tinha duas telas?', a: 'Nintendo DS', w: ['Game Boy Advance', 'PSP', 'Game Boy Color'], fact: 'A tela de baixo era sensível ao toque e usada com uma canetinha (stylus).' },
+  { q: 'Qual empresa lançou o portátil Game Boy, em 1989?', a: 'Nintendo', w: ['Sega', 'Sony', 'Atari'], fact: 'Nos EUA e na Europa, o Game Boy vinha com Tetris na caixa.' },
+  { q: 'Qual console da Sony foi lançado em novembro de 2020?', a: 'PlayStation 5', w: ['PlayStation 4 Pro', 'PlayStation 4', 'PS Vita'], fact: 'Foi lançado em plena pandemia e ficou difícil de achar nas lojas.' },
+  { q: 'Qual console de 1977 marcou época com jogos como Pitfall! e River Raid?', a: 'Atari 2600', w: ['Odyssey', 'Intellivision', 'ColecoVision'], fact: 'Seu controle clássico tinha um manche e um único botão.' },
+  { q: 'O famoso Polystation imitava o visual de qual console?', a: 'PlayStation', w: ['Nintendo 64', 'Xbox', 'Mega Drive'], fact: 'Por dentro, era um clone do Nintendinho, com jogos de 8 bits.' },
+  { q: 'Qual apelido o NES, da Nintendo, ganhou no Brasil?', a: 'Nintendinho', w: ['Nintendão', 'Ninjinha', 'Famicão'], fact: 'No Japão, o console se chamava Famicom (Family Computer).' },
+  { q: 'Qual console da Nintendo tinha um controle com três pontas de empunhadura?', a: 'Nintendo 64', w: ['GameCube', 'Super Nintendo', 'Wii U'], fact: 'Foi o primeiro controle da Nintendo com direcional analógico.' },
+  { q: 'Como o Mega Drive se chamava nos Estados Unidos?', a: 'Genesis', w: ['Saturn', 'Pegasus', 'Dreamcast'], fact: 'O Mega Drive foi lançado no Japão em 1988.' },
+  { q: 'Qual empresa lançou oficialmente o Master System e o Mega Drive no Brasil?', a: 'Tectoy', w: ['Gradiente', 'Estrela', 'Polyvox'], fact: 'Por aqui, o Master System seguiu à venda por décadas, bem depois do resto do mundo.' },
+  { q: 'Qual mascote da Sega era o rosto do Master System antes do Sonic?', a: 'Alex Kidd', w: ['Wonder Boy', 'Ristar', 'Opa-Opa'], fact: 'Muitos Master System vendidos no Brasil vinham com Alex Kidd na memória.' },
+  { q: 'Além dos jogos, qual recurso fez o PlayStation 2 virar sucesso nas salas?', a: 'Tocar filmes em DVD', w: ['Gravar programas de TV', 'Tocar fitas VHS', 'Acessar TV a cabo'], fact: 'Para muita gente, o PS2 foi o primeiro aparelho de DVD da casa.' },
+  { q: 'Qual portátil da Sony, lançado em 2004, usava discos chamados UMD?', a: 'PSP', w: ['PS Vita', 'Game Gear', 'Nintendo DS'], fact: 'O sucessor do PSP foi o PS Vita, lançado em 2011.' },
+  { q: 'Qual console da Microsoft foi lançado em 2005?', a: 'Xbox 360', w: ['Xbox One', 'Xbox Series X', 'Xbox One S'], fact: 'Ficou marcado pelo defeito das luzes vermelhas, o "Red Ring of Death".' },
+  { q: 'Qual acessório de 2010 permitia jogar Xbox 360 só com o corpo, sem controle?', a: 'Kinect', w: ['EyeToy', 'PlayStation Move', 'Wii Balance Board'], fact: 'Usava uma câmera e um sensor de profundidade para ler os movimentos.' },
+  { q: 'Quais novidades o controle DualShock trouxe ao primeiro PlayStation?', a: 'Analógicos e vibração', w: ['Touchpad e luz', 'Microfone e alto-falante', 'Tela e sensor de movimento'], fact: 'O nome "Dual Shock" vem dos dois motores de vibração do controle.' },
+  { q: 'Antes dos videogames, a Nintendo era famosa por fabricar o quê?', a: 'Cartas de baralho', w: ['Rádios', 'Bicicletas', 'Relógios'], fact: 'A Nintendo foi fundada em 1889, em Kyoto, no Japão.' },
+  { q: 'O Super Nintendo e o Mega Drive eram consoles de quantos bits?', a: '16 bits', w: ['8 bits', '32 bits', '64 bits'], fact: 'A rivalidade entre os dois ficou conhecida como a "guerra dos consoles".' },
+  { q: 'Qual foi o primeiro console de videogame doméstico da história, de 1972?', a: 'Magnavox Odyssey', w: ['Atari 2600', 'Intellivision', 'Telejogo'], fact: 'Foi criado por Ralph Baer, chamado de "pai dos videogames".' },
+  { q: 'Quem é conhecido como o "pai do PlayStation"?', a: 'Ken Kutaragi', w: ['Satoru Iwata', 'Masaya Nakamura', 'Shigeru Miyamoto'], fact: 'Kutaragi era engenheiro da Sony e liderou o projeto do console.' },
+  { q: 'Qual engenheiro da Nintendo criou o Game Boy?', a: 'Gunpei Yokoi', w: ['Satoru Iwata', 'Ken Kutaragi', 'Shigeru Miyamoto'], fact: 'Yokoi também criou os portáteis da linha Game & Watch.' },
+  { q: 'Em que ano o primeiro PlayStation foi lançado no Japão?', a: '1994', w: ['1992', '1996', '1998'], fact: 'Nos EUA e na Europa, ele chegou só em 1995.' },
+  { q: 'Qual foi o último console de mesa lançado pela Sega?', a: 'Dreamcast', w: ['Saturn', 'Mega Drive', 'Master System'], fact: 'Depois do Dreamcast, a Sega passou a fazer jogos para consoles de outras marcas.' },
+  { q: 'Que tipo de disco o Nintendo GameCube usava?', a: 'Mini DVD de 8 cm', w: ['Cartucho', 'CD comum', 'Blu-ray'], fact: 'O GameCube tinha uma alça na parte de trás para facilitar o transporte.' },
+  { q: 'Qual empresa brasileira lançou o Phantom System, clone do NES?', a: 'Gradiente', w: ['Tectoy', 'Dynacom', 'CCE'], fact: 'Outro clone famoso por aqui era o Dynavision, da Dynacom.' },
+  { q: 'Que jogo do Atari 2600 teve cartuchos enterrados num deserto dos EUA?', a: 'E.T.', w: ['Enduro', 'Pitfall!', 'Boxing'], fact: 'Os cartuchos foram desenterrados em 2014 em Alamogordo, no Novo México.' },
+];
+
+export default questions;

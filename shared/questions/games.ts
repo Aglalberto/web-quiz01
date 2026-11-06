@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual é a profissão do Mario, mascote da Nintendo?', a: 'Encanador', w: ['Mecânico', 'Eletricista', 'Pedreiro'], fact: 'O nome homenageia Mario Segale, dono de um galpão alugado pela Nintendo nos EUA.' },
+  { q: 'Em The Legend of Zelda, qual é o nome do herói controlado pelo jogador?', a: 'Link', w: ['Zelda', 'Ganon', 'Navi'], fact: 'Muita gente acha que Zelda é o herói, mas ela é a princesa do reino de Hyrule.' },
+  { q: 'Qual é a cor do Sonic, o ouriço da Sega?', a: 'Azul', w: ['Vermelho', 'Verde', 'Amarelo'], fact: 'O azul foi escolhido para combinar com o logotipo da Sega.' },
+  { q: 'Qual Pokémon elétrico e amarelo é o mascote da franquia?', a: 'Pikachu', w: ['Raichu', 'Pichu', 'Jolteon'], fact: 'O nome mistura "pika" (faísca) e "chu" (som de ratinho) em japonês.' },
+  { q: 'Em Minecraft, qual criatura verde explode ao chegar perto do jogador?', a: 'Creeper', w: ['Enderman', 'Zumbi', 'Slime'], fact: 'O Creeper surgiu de um erro ao modelar o porco do jogo.' },
+  { q: 'Qual empresa criou o Fortnite?', a: 'Epic Games', w: ['Riot Games', 'Valve', 'Activision'], fact: 'Fortnite saiu em 2017, e o modo Battle Royale virou febre mundial.' },
+  { q: 'Como se chama o irmão do Mario, que usa roupa verde?', a: 'Luigi', w: ['Wario', 'Waluigi', 'Toad'], fact: 'Luigi estreou no jogo Mario Bros., de 1983.' },
+  { q: 'O que significa a sigla GTA, da série da Rockstar?', a: 'Grand Theft Auto', w: ['Grand Total Action', 'Great Turbo Arena', 'Grand Tactical Assault'], fact: 'Nos EUA, "grand theft auto" é o termo jurídico para roubo de veículo.' },
+  { q: 'Em Super Mario Bros., qual item faz o Mario ficar grande?', a: 'Super Cogumelo', w: ['Flor de Fogo', 'Super Estrela', 'Moeda'], fact: 'Já a Flor de Fogo dá ao Mario o poder de lançar bolas de fogo.' },
+  { q: 'Qual personagem da Nintendo é uma bolinha rosa que engole inimigos e copia poderes?', a: 'Kirby', w: ['Jigglypuff', 'Yoshi', 'Toad'], fact: 'Kirby foi criado por Masahiro Sakurai, também criador de Super Smash Bros.' },
+  { q: 'Qual é o nome da raposa de duas caudas, melhor amiga do Sonic?', a: 'Tails', w: ['Knuckles', 'Amy Rose', 'Shadow'], fact: 'O nome completo dele é Miles Prower, trocadilho com "miles per hour".' },
+  { q: 'Em Street Fighter, qual golpe do Ryu lança uma bola de energia?', a: 'Hadouken', w: ['Shoryuken', 'Tatsumaki', 'Sonic Boom'], fact: 'O Shoryuken é o famoso soco giratório para cima de Ryu e Ken.' },
+  { q: 'Qual lutador de Street Fighter II é brasileiro e tem a pele verde?', a: 'Blanka', w: ['Dhalsim', 'Zangief', 'E. Honda'], fact: 'Blanka solta descargas elétricas e cresceu na selva brasileira.' },
+  { q: 'Qual ninja de Mortal Kombat usa um arpão e grita "Get over here!"?', a: 'Scorpion', w: ['Sub-Zero', 'Reptile', 'Smoke'], fact: 'Scorpion e Sub-Zero são rivais desde o primeiro Mortal Kombat, de 1992.' },
+  { q: 'Quem é o criador de Super Mario e The Legend of Zelda?', a: 'Shigeru Miyamoto', w: ['Satoru Iwata', 'Yuji Naka', 'Hironobu Sakaguchi'], fact: 'Miyamoto também criou Donkey Kong, de 1981.' },
+  { q: 'Em Pokémon Red e Blue, qual dos Pokémon iniciais é do tipo Fogo?', a: 'Charmander', w: ['Squirtle', 'Bulbasaur', 'Pikachu'], fact: 'Charmander evolui para Charmeleon e depois para Charizard.' },
+  { q: 'Em qual cidade fictícia se passa GTA V?', a: 'Los Santos', w: ['Vice City', 'Liberty City', 'San Fierro'], fact: 'Los Santos é inspirada em Los Angeles.' },
+  { q: 'GTA Vice City foi inspirado em qual cidade real dos EUA?', a: 'Miami', w: ['Nova York', 'Los Angeles', 'Las Vegas'], fact: 'O jogo se passa em 1986 e tem trilha sonora cheia de hits dos anos 80.' },
+  { q: 'A série de futebol da EA virou EA Sports FC em 2023. Qual era o nome antigo?', a: 'FIFA', w: ['PES', 'Winning Eleven', 'Football Manager'], fact: 'A troca veio com o fim do acordo de licença com a entidade FIFA.' },
+  { q: 'Qual é o nome do cientista vilão que vive enfrentando o Sonic?', a: 'Dr. Eggman', w: ['Dr. Wily', 'Dr. Neo Cortex', 'Dr. Mario'], fact: 'No Ocidente, ele ficou conhecido por anos como Dr. Robotnik.' },
+  { q: 'Em qual jogo de 1980 os fantasmas se chamam Blinky, Pinky, Inky e Clyde?', a: 'Pac-Man', w: ['Space Invaders', 'Galaga', 'Frogger'], fact: 'Pac-Man foi criado por Toru Iwatani, da Namco.' },
+  { q: 'Em Mortal Kombat, como se chama o golpe final dado após o "Finish Him!"?', a: 'Fatality', w: ['Ultra Combo', 'Super Arte', 'Combo Breaker'], fact: 'Polêmicas com jogos como Mortal Kombat levaram à criação da ESRB, em 1994.' },
+  { q: 'Qual série da Rockstar Games se passa no Velho Oeste americano?', a: 'Red Dead Redemption', w: ['Max Payne', 'Bully', 'Midnight Club'], fact: 'Red Dead Redemption 2 (2018) acompanha o fora da lei Arthur Morgan.' },
+  { q: 'Em qual franquia de tiro o protagonista é o soldado Master Chief?', a: 'Halo', w: ['Gears of War', 'Destiny', 'Call of Duty'], fact: 'Halo: Combat Evolved estreou junto com o primeiro Xbox, em 2001.' },
+  { q: 'Em Donkey Kong (1981), por qual nome o Mario era chamado?', a: 'Jumpman', w: ['Hammerman', 'Mr. Barrel', 'Kong Kid'], fact: 'Nesse jogo ele era carpinteiro, e não encanador.' },
+  { q: 'Em qual país foi criado o Tetris, em 1984?', a: 'União Soviética', w: ['Japão', 'Estados Unidos', 'Alemanha Oriental'], fact: 'O criador é o engenheiro Alexey Pajitnov, que o desenvolveu em Moscou.' },
+  { q: 'Qual é o nome da fada que acompanha Link em Ocarina of Time?', a: 'Navi', w: ['Tatl', 'Midna', 'Fi'], fact: 'Navi ficou famosa pelo bordão "Hey! Listen!".' },
+  { q: 'Qual designer japonês é o criador da série Metal Gear?', a: 'Hideo Kojima', w: ['Shigeru Miyamoto', 'Hironobu Sakaguchi', 'Shinji Mikami'], fact: 'Kojima também criou Death Stranding, lançado em 2019.' },
+  { q: 'Quem é o criador da série The Sims?', a: 'Will Wright', w: ['Sid Meier', 'Peter Molyneux', 'John Romero'], fact: 'Will Wright também criou SimCity, lançado em 1989.' },
+  { q: 'Qual programador sueco criou o Minecraft?', a: 'Markus "Notch" Persson', w: ['Gabe Newell', 'John Carmack', 'Toby Fox'], fact: 'A Microsoft comprou a Mojang, dona do Minecraft, em 2014 por US$ 2,5 bilhões.' },
+];
+
+export default questions;

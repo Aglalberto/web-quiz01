@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Em "O Rei Leão", qual é o nome do filho de Mufasa?', a: 'Simba', w: ['Kovu', 'Rafiki', 'Timão'], fact: '"Simba" significa "leão" em suaíli.' },
+  { q: 'Qual foi o primeiro longa-metragem de animação da Disney?', a: 'Branca de Neve e os Sete Anões', w: ['Pinóquio', 'Fantasia', 'Cinderela'], fact: 'Estreou em 1937 e rendeu um Oscar honorário: uma estatueta e sete miniaturas.' },
+  { q: 'Como se chama o boneco de neve falante de "Frozen"?', a: 'Olaf', w: ['Sven', 'Kristoff', 'Hans'], fact: 'A música "Livre Estou" ganhou o Oscar de Melhor Canção Original.' },
+  { q: 'Qual princesa perde um sapatinho de cristal à meia-noite?', a: 'Cinderela', w: ['Aurora', 'Branca de Neve', 'Bela'], fact: 'O castelo da Cinderela é o símbolo do Magic Kingdom, na Flórida.' },
+  { q: 'Em "A Pequena Sereia", qual é o nome do caranguejo conselheiro do Rei Tritão?', a: 'Sebastião', w: ['Linguado', 'Úrsula', 'Max'], fact: 'Ele canta "Under the Sea", vencedora do Oscar de Melhor Canção.' },
+  { q: 'Em "Aladdin", quantos desejos o Gênio da lâmpada concede?', a: 'Três', w: ['Dois', 'Cinco', 'Sete'], fact: 'Na versão original de 1992, o Gênio tem a voz de Robin Williams.' },
+  { q: 'Em "A Bela e a Fera", que objeto é o Lumière?', a: 'Um candelabro', w: ['Um relógio', 'Um bule', 'Uma xícara'], fact: 'Foi a primeira animação indicada ao Oscar de Melhor Filme, em 1992.' },
+  { q: 'Qual heroína da Disney se disfarça de soldado para lutar no lugar do pai?', a: 'Mulan', w: ['Pocahontas', 'Raya', 'Tiana'], fact: 'Seu companheiro de aventura é o pequeno dragão Mushu.' },
+  { q: 'Qual semideus acompanha Moana em sua jornada pelo oceano?', a: 'Maui', w: ['Hércules', 'Tamatoa', 'Kronk'], fact: 'Na versão original, Maui é dublado por Dwayne "The Rock" Johnson.' },
+  { q: 'Em "Enrolados", como se chama o camaleão de estimação de Rapunzel?', a: 'Pascal', w: ['Maximus', 'Abu', 'Meeko'], fact: 'Maximus é o cavalo da guarda real que vira aliado de Flynn.' },
+  { q: 'Qual curta de 1928 marcou a estreia oficial do Mickey Mouse?', a: 'Steamboat Willie', w: ['The Skeleton Dance', 'Flowers and Trees', 'Os Três Porquinhos'], fact: 'Em 2024, essa versão do Mickey entrou em domínio público nos EUA.' },
+  { q: 'Em qual estado americano fica a Disneyland original, inaugurada em 1955?', a: 'Califórnia', w: ['Flórida', 'Texas', 'Nevada'], fact: 'O Walt Disney World, na Flórida, só abriu em 1971, após a morte de Walt.' },
+  { q: 'Em qual país foi aberto o primeiro parque da Disney fora dos EUA?', a: 'Japão', w: ['França', 'China', 'Canadá'], fact: 'A Tokyo Disneyland foi inaugurada em 1983.' },
+  { q: 'Qual fadinha acompanha Peter Pan?', a: 'Sininho', w: ['Fauna', 'Fada Azul', 'Fada Madrinha'], fact: 'Ela virou um símbolo da Disney e ganhou sua própria série de filmes.' },
+  { q: 'Em "Zootopia", que animal é a policial Judy Hopps?', a: 'Coelha', w: ['Raposa', 'Ovelha', 'Esquilo'], fact: 'Zootopia ganhou o Oscar de Melhor Animação em 2017.' },
+  { q: 'Qual é o sobrenome da família mágica de "Encanto"?', a: 'Madrigal', w: ['Rivera', 'Herrera', 'Morales'], fact: 'A história se passa nas montanhas da Colômbia.' },
+  { q: 'Em "Bambi", como se chama o coelho amigo do protagonista?', a: 'Tambor', w: ['Flor', 'Pernalonga', 'Faísca'], fact: 'Flor é o nome do gambá tímido do filme.' },
+  { q: 'Cruella de Vil é a vilã de qual animação da Disney?', a: '101 Dálmatas', w: ['A Dama e o Vagabundo', 'O Cão e a Raposa', 'Oliver e Sua Turma'], fact: 'Ganhou um filme próprio em 2021, estrelado por Emma Stone.' },
+  { q: 'Em "A Bela Adormecida", em que Malévola se transforma na batalha final?', a: 'Dragão', w: ['Corvo', 'Serpente', 'Lobo'], fact: 'Em 2014, a vilã ganhou um live-action vivido por Angelina Jolie.' },
+  { q: 'Quem dirigiu o filme "O Rei Leão" de 2019?', a: 'Jon Favreau', w: ['Guy Ritchie', 'Tim Burton', 'Bill Condon'], fact: 'Ele também dirigiu "Mogli – O Menino Lobo" (2016).' },
+  { q: 'Qual atriz viveu Bela no live-action "A Bela e a Fera" (2017)?', a: 'Emma Watson', w: ['Lily James', 'Emma Stone', 'Keira Knightley'], fact: 'Antes, ela ficou famosa como Hermione em "Harry Potter".' },
+  { q: 'Quem interpretou Ariel no live-action "A Pequena Sereia" (2023)?', a: 'Halle Bailey', w: ['Zendaya', 'Chloe Bailey', 'Naomi Scott'], fact: 'Ela faz dupla musical com a irmã no grupo Chloe x Halle.' },
+  { q: 'Em "Lilo & Stitch", qual é o número de experimento do Stitch?', a: '626', w: ['625', '262', '601'], fact: 'A história se passa na ilha de Kauai, no Havaí.' },
+  { q: 'Em "Mogli – O Menino Lobo", qual é o nome do urso amigo de Mogli?', a: 'Balu', w: ['Baguera', 'Shere Khan', 'Kaa'], fact: 'A história é baseada no livro do escritor Rudyard Kipling.' },
+  { q: 'Qual personagem é a "consciência" de Pinóquio?', a: 'Grilo Falante', w: ['Gepeto', 'Fígaro', 'João Honesto'], fact: 'Ele canta "When You Wish Upon a Star", que virou um hino da Disney.' },
+  { q: 'Em "Fantasia" (1940), qual papel o Mickey interpreta?', a: 'Aprendiz de feiticeiro', w: ['Maestro', 'Pirata', 'Bombeiro'], fact: 'Nesse trecho, ele enfeitiça vassouras para carregar baldes de água.' },
+  { q: 'Qual princesa da Disney tem um tigre de estimação chamado Rajah?', a: 'Jasmine', w: ['Pocahontas', 'Moana', 'Aurora'], fact: 'Jasmine é a princesa da cidade fictícia de Agrabah.' },
+  { q: 'Como se chama o robô enfermeiro inflável de "Operação Big Hero"?', a: 'Baymax', w: ['WALL-E', 'Ultron', 'Bender'], fact: 'O filme ganhou o Oscar de Melhor Animação em 2015.' },
+  { q: 'Qual é o nome da namorada do Mickey Mouse?', a: 'Minnie', w: ['Margarida', 'Clarabela', 'Vovó Donalda'], fact: 'Margarida é a namorada do Pato Donald.' },
+  { q: 'Qual papagaio brasileiro da Disney estreou em "Alô, Amigos" (1942)?', a: 'Zé Carioca', w: ['Panchito', 'Iago', 'Blu'], fact: 'Ele foi criado após a visita de Walt Disney ao Brasil em 1941.' },
+];
+
+export default questions;

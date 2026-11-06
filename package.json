@@ -1,0 +1,34 @@
+{
+  "name": "quiz-party",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Quiz Party — quiz multiplayer para até 8 jogadores na rede local (TV + celulares via QR Code)",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "vite build && node scripts/build-server.mjs",
+    "start": "node release/server.cjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/fredoka": "^5.1.0",
+    "@preact/preset-vite": "^2.9.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/canvas-confetti": "^1.6.4",
+    "@types/node": "^22.0.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/ws": "^8.5.12",
+    "canvas-confetti": "^1.9.3",
+    "esbuild": "^0.24.0",
+    "preact": "^10.24.0",
+    "qrcode": "^1.5.4",
+    "tailwindcss": "^4.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0",
+    "vitest": "^2.1.0",
+    "ws": "^8.18.0"
+  }
+}

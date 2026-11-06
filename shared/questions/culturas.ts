@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Como se chama a tradição japonesa de contemplar a florada das cerejeiras?', a: 'Hanami', w: ['Obon', 'Tanabata', 'Setsubun'], fact: 'Hanami significa, literalmente, “ver as flores”.' },
+  { q: 'Em 2009, a UNESCO reconheceu o tango como patrimônio de quais países?', a: 'Argentina e Uruguai', w: ['Argentina e Chile', 'Uruguai e Paraguai', 'Espanha e Argentina'], fact: 'O tango nasceu na região do Rio da Prata, no fim do século XIX.' },
+  { q: 'Qual prato típico espanhol leva arroz, açafrão e, muitas vezes, frutos do mar?', a: 'Paella', w: ['Risoto', 'Tagine', 'Jambalaya'], fact: 'A paella tem origem na região de Valência.' },
+  { q: 'O Día de los Muertos, com altares coloridos e caveiras decoradas, é tradição de qual país?', a: 'México', w: ['Peru', 'Espanha', 'Colômbia'], fact: 'Os altares são enfeitados com flores laranja de cempasúchil.' },
+  { q: 'Qual é o idioma com mais falantes nativos no mundo?', a: 'Mandarim', w: ['Inglês', 'Espanhol', 'Hindi'], fact: 'O mandarim tem cerca de 900 milhões de falantes nativos.' },
+  { q: 'O Diwali, conhecido como “festival das luzes”, é uma grande celebração de qual religião?', a: 'Hinduísmo', w: ['Xintoísmo', 'Islamismo', 'Judaísmo'], fact: 'Durante o Diwali, casas são iluminadas com pequenas lamparinas chamadas diyas.' },
+  { q: 'Qual instrumento musical é um dos maiores símbolos da Escócia?', a: 'Gaita de foles', w: ['Harpa', 'Violino', 'Flauta de Pã'], fact: 'Os tocadores costumam se apresentar usando o tradicional kilt xadrez.' },
+  { q: 'Qual é o nome da dança cerimonial tradicional do povo maori, da Nova Zelândia?', a: 'Haka', w: ['Hula', 'Tamuré', 'Siva'], fact: 'A seleção de rúgbi All Blacks apresenta o haka antes das partidas.' },
+  { q: 'O que é o wasabi, condimento verde servido com sushi?', a: 'Uma raiz-forte japonesa', w: ['Uma pasta de soja', 'Uma alga marinha', 'Um gengibre em conserva'], fact: 'Fora do Japão, muito “wasabi” é feito com raiz-forte comum e corante.' },
+  { q: 'Em qual país nasceu a Oktoberfest, famosa festa da cerveja?', a: 'Alemanha', w: ['Áustria', 'Bélgica', 'Holanda'], fact: 'Começou em Munique, em 1810; Blumenau (SC) tem uma das versões mais famosas do Brasil.' },
+  { q: 'Quantos animais compõem o zodíaco chinês?', a: '12', w: ['10', '8', '14'], fact: 'O ciclo começa pelo Rato e termina no Porco.' },
+  { q: 'Qual cor simboliza sorte e alegria nas festas tradicionais chinesas?', a: 'Vermelho', w: ['Branco', 'Verde', 'Preto'], fact: 'No Ano-Novo Chinês, é costume dar dinheiro em envelopes vermelhos.' },
+  { q: 'Qual bebida quente de erva-mate é símbolo cultural do sul do Brasil, Argentina e Uruguai?', a: 'Chimarrão', w: ['Tereré', 'Quentão', 'Chá de boldo'], fact: 'É tomado numa cuia, com uma bomba de metal, e costuma ser compartilhado na roda.' },
+  { q: 'O persa, também chamado de farsi, é a língua oficial de qual país?', a: 'Irã', w: ['Iraque', 'Turquia', 'Egito'], fact: 'O persa é escrito com uma variação do alfabeto árabe.' },
+  { q: 'O Festival de Parintins, no Amazonas, é uma disputa entre quais bois?', a: 'Garantido e Caprichoso', w: ['Estrela e Malhadinho', 'Brilhante e Mimoso', 'Tinoco e Pintadinho'], fact: 'O Garantido é vermelho e o Caprichoso é azul.' },
+  { q: 'A pizza Margherita, com tomate, muçarela e manjericão, lembra a bandeira de qual país?', a: 'Itália', w: ['França', 'Brasil', 'Espanha'], fact: 'Segundo a tradição, homenageia a rainha Margherita, em Nápoles, em 1889.' },
+  { q: 'Em qual destes países africanos o português é língua oficial?', a: 'Moçambique', w: ['Marrocos', 'Senegal', 'Quênia'], fact: 'Nove países fazem parte da Comunidade dos Países de Língua Portuguesa.' },
+  { q: 'Qual bebida é o centro da tradicional cerimônia japonesa chamada chanoyu?', a: 'Chá verde matcha', w: ['Saquê', 'Chá preto', 'Chá de jasmim'], fact: 'O matcha é um chá verde em pó, batido com um batedor de bambu.' },
+  { q: 'Qual festa brasileira tem quadrilha, fogueira e comidas de milho?', a: 'Festa Junina', w: ['Carnaval', 'Círio de Nazaré', 'Folia de Reis'], fact: 'Ela homenageia Santo Antônio, São João e São Pedro.' },
+  { q: 'O que significa “Namastê”, saudação comum na Índia e no Nepal?', a: 'Eu me curvo a você', w: ['Bom apetite', 'Até amanhã', 'Boa viagem'], fact: 'A saudação costuma ser feita com as palmas das mãos unidas.' },
+  { q: 'Qual ave é o prato principal tradicional do Dia de Ação de Graças nos EUA?', a: 'Peru', w: ['Frango', 'Pato', 'Ganso'], fact: 'Nos EUA, o feriado é celebrado na quarta quinta-feira de novembro.' },
+  { q: 'O flamenco, com seu canto, violão e sapateado, é tradição de qual país?', a: 'Espanha', w: ['Portugal', 'México', 'Itália'], fact: 'Nasceu na Andaluzia e é Patrimônio Imaterial da UNESCO desde 2010.' },
+  { q: 'Qual é o nome do pão achatado indiano assado no forno tandoor?', a: 'Naan', w: ['Pita', 'Tortilla', 'Focaccia'], fact: 'O naan costuma acompanhar curries e pode levar alho ou manteiga.' },
+  { q: 'No Holi, festival hindu da primavera, o que as pessoas jogam umas nas outras?', a: 'Pó colorido', w: ['Arroz cru', 'Farinha de trigo', 'Confete de papel'], fact: 'O Holi celebra a chegada da primavera e a vitória do bem sobre o mal.' },
+  { q: 'Qual povo do Ártico ficou conhecido por construir iglus?', a: 'Inuítes', w: ['Maoris', 'Tuaregues', 'Quéchuas'], fact: 'O iglu era usado principalmente como abrigo temporário em viagens de caça.' },
+  { q: 'O Círio de Nazaré, uma das maiores procissões católicas do mundo, acontece em qual cidade?', a: 'Belém', w: ['Salvador', 'Aparecida', 'Recife'], fact: 'A procissão acontece no segundo domingo de outubro.' },
+  { q: 'Em qual destes países o suaíli é amplamente falado?', a: 'Quênia', w: ['Nigéria', 'Egito', 'Marrocos'], fact: '“Hakuna matata”, de \'O Rei Leão\', é uma expressão em suaíli.' },
+  { q: 'Qual é o nome da veste tradicional feminina da Índia, um longo tecido enrolado no corpo?', a: 'Sári', w: ['Quimono', 'Hanbok', 'Qipao'], fact: 'O sári é feito de uma única peça de tecido, com vários metros de comprimento.' },
+  { q: 'O Ramadã é o mês sagrado de jejum de qual religião?', a: 'Islamismo', w: ['Judaísmo', 'Hinduísmo', 'Budismo'], fact: 'Durante o Ramadã, o jejum vai da alvorada ao pôr do sol.' },
+  { q: 'Qual é o nome do alfabeto usado para escrever a língua coreana?', a: 'Hangul', w: ['Kanji', 'Hiragana', 'Devanágari'], fact: 'O hangul foi criado no século XV, durante o reinado do rei Sejong.' },
+];
+
+export default questions;

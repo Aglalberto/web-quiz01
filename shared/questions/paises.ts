@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual país tem uma folha de bordo vermelha no centro da bandeira?', a: 'Canadá', w: ['Suíça', 'Áustria', 'Peru'], fact: 'A bandeira com a folha de bordo foi adotada oficialmente em 1965.' },
+  { q: 'Qual país tem bandeira branca com um círculo vermelho no centro?', a: 'Japão', w: ['China', 'Coreia do Sul', 'Vietnã'], fact: 'A bandeira japonesa é chamada de Hinomaru, o "círculo do sol".' },
+  { q: 'Qual país tem o território em formato de bota?', a: 'Itália', w: ['Grécia', 'Portugal', 'Croácia'], fact: 'A Apúlia forma o "salto" da bota e a Calábria, a "ponta".' },
+  { q: 'Em que país fica o Coliseu?', a: 'Itália', w: ['Grécia', 'Espanha', 'Turquia'], fact: 'Inaugurado em 80 d.C., recebia dezenas de milhares de espectadores.' },
+  { q: 'Qual é a moeda oficial do Japão?', a: 'Iene', w: ['Yuan', 'Won', 'Baht'], fact: 'O símbolo do iene é ¥, o mesmo usado para o yuan chinês.' },
+  { q: 'Qual é o maior país do mundo em área?', a: 'Rússia', w: ['Canadá', 'China', 'Estados Unidos'], fact: 'A Rússia é tão extensa que tem 11 fusos horários.' },
+  { q: 'Qual é o menor país do mundo?', a: 'Vaticano', w: ['Mônaco', 'San Marino', 'Liechtenstein'], fact: 'O Vaticano tem cerca de 0,44 km² e fica dentro da cidade de Roma.' },
+  { q: 'Quantas estrelas há na bandeira dos Estados Unidos?', a: '50', w: ['48', '13', '51'], fact: 'Cada estrela é um estado; as 13 listras lembram as 13 colônias originais.' },
+  { q: 'Em que país fica Machu Picchu?', a: 'Peru', w: ['Bolívia', 'Equador', 'Chile'], fact: 'A cidadela inca foi construída no século XV, no alto da Cordilheira dos Andes.' },
+  { q: 'Em que país fica o Taj Mahal?', a: 'Índia', w: ['Paquistão', 'Irã', 'Bangladesh'], fact: 'Foi erguido pelo imperador Shah Jahan em memória da esposa Mumtaz Mahal.' },
+  { q: 'Qual país deu de presente a Estátua da Liberdade aos Estados Unidos?', a: 'França', w: ['Reino Unido', 'Itália', 'Espanha'], fact: 'Inaugurada em 1886, sua estrutura interna foi projetada por Gustave Eiffel.' },
+  { q: 'Qual é a moeda oficial do Reino Unido?', a: 'Libra esterlina', w: ['Euro', 'Dólar', 'Franco'], fact: 'Desde 1971, uma libra é dividida em 100 pence.' },
+  { q: 'Qual é a capital da Austrália?', a: 'Canberra', w: ['Sydney', 'Melbourne', 'Perth'], fact: 'Canberra foi planejada para encerrar a disputa entre Sydney e Melbourne.' },
+  { q: 'Qual é a capital do Canadá?', a: 'Ottawa', w: ['Toronto', 'Montreal', 'Vancouver'], fact: 'Toronto é a maior cidade do Canadá, mas a capital é Ottawa, em Ontário.' },
+  { q: 'Qual é a capital da Turquia?', a: 'Ancara', w: ['Istambul', 'Esmirna', 'Antália'], fact: 'Ancara virou capital em 1923; Istambul segue sendo a maior cidade turca.' },
+  { q: 'Qual é a capital da Nova Zelândia?', a: 'Wellington', w: ['Auckland', 'Christchurch', 'Queenstown'], fact: 'Wellington é considerada a capital nacional mais ao sul do mundo.' },
+  { q: 'Qual é a capital da Suíça?', a: 'Berna', w: ['Zurique', 'Genebra', 'Basileia'], fact: 'A Suíça tem quatro idiomas nacionais: alemão, francês, italiano e romanche.' },
+  { q: 'Qual é o idioma oficial de Angola?', a: 'Português', w: ['Francês', 'Inglês', 'Espanhol'], fact: 'Angola tornou-se independente de Portugal em 1975.' },
+  { q: 'Qual é o idioma oficial da Áustria?', a: 'Alemão', w: ['Francês', 'Húngaro', 'Holandês'], fact: 'Mozart nasceu em Salzburgo, na Áustria, em 1756.' },
+  { q: 'Qual é a moeda oficial da Índia?', a: 'Rupia', w: ['Taka', 'Baht', 'Ringgit'], fact: 'As notas de rupia indiana trazem o retrato de Mahatma Gandhi.' },
+  { q: 'Em que país fica a cidade histórica de Petra, esculpida na rocha?', a: 'Jordânia', w: ['Egito', 'Israel', 'Síria'], fact: 'Petra foi eleita uma das Novas 7 Maravilhas do Mundo em 2007.' },
+  { q: 'Em que cidade fica a basílica da Sagrada Família, de Gaudí?', a: 'Barcelona', w: ['Madri', 'Sevilha', 'Valência'], fact: 'Projetada por Antoni Gaudí, a basílica está em construção desde 1882.' },
+  { q: 'Qual país tem um cedro verde no centro da bandeira?', a: 'Líbano', w: ['Síria', 'Jordânia', 'Chipre'], fact: 'O cedro fica entre duas faixas vermelhas horizontais.' },
+  { q: 'Qual país tem bandeira vermelha com uma única estrela amarela no centro?', a: 'Vietnã', w: ['China', 'Coreia do Norte', 'Laos'], fact: 'A bandeira atual passou a valer para todo o Vietnã unificado em 1976.' },
+  { q: 'Qual é a capital do Marrocos?', a: 'Rabat', w: ['Casablanca', 'Marrakech', 'Fez'], fact: 'Casablanca é a maior cidade do Marrocos, mas a capital é Rabat.' },
+  { q: 'Qual é o idioma oficial do Irã?', a: 'Persa', w: ['Árabe', 'Turco', 'Urdu'], fact: 'O persa também é conhecido como farsi.' },
+  { q: 'Qual país tem um dragão branco na bandeira?', a: 'Butão', w: ['Nepal', 'China', 'Mongólia'], fact: 'No idioma local, o Butão é chamado de Druk Yul, "Terra do Dragão do Trovão".' },
+  { q: 'Qual país tem a única bandeira nacional que não é retangular?', a: 'Nepal', w: ['Butão', 'Sri Lanka', 'Mongólia'], fact: 'A bandeira do Nepal é formada por dois triângulos sobrepostos.' },
+  { q: 'Qual é a capital da Islândia?', a: 'Reykjavík', w: ['Oslo', 'Helsinque', 'Nuuk'], fact: 'Reykjavík é a capital de país soberano mais ao norte do mundo.' },
+  { q: 'Em que país fica o templo de Angkor Wat?', a: 'Camboja', w: ['Tailândia', 'Vietnã', 'Laos'], fact: 'É o maior monumento religioso do mundo e aparece na bandeira do Camboja.' },
+];
+
+export default questions;

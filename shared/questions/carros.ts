@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Qual montadora fabrica o Gol?', a: 'Volkswagen', w: ['Fiat', 'Chevrolet', 'Ford'], fact: 'O Gol foi o carro mais vendido do Brasil por 27 anos seguidos.' },
+  { q: 'De qual montadora era o clássico Opala?', a: 'Chevrolet', w: ['Ford', 'Volkswagen', 'Dodge'], fact: 'O Opala foi o primeiro carro de passeio da Chevrolet no Brasil, lançado em 1968.' },
+  { q: 'Qual montadora tem um cavalo preto empinado no logotipo?', a: 'Ferrari', w: ['Lamborghini', 'Maserati', 'Alfa Romeo'], fact: 'O cavalo vinha do avião de Francesco Baracca, piloto italiano da 1ª Guerra.' },
+  { q: 'Quantos títulos mundiais de Fórmula 1 Ayrton Senna conquistou?', a: '3', w: ['2', '4', '5'], fact: 'Os títulos vieram em 1988, 1990 e 1991, todos pela McLaren.' },
+  { q: 'Qual montadora fabrica o Uno?', a: 'Fiat', w: ['Ford', 'Renault', 'Volkswagen'], fact: 'O Uno Mille, de 1990, foi o primeiro carro popular com motor 1.0 do Brasil.' },
+  { q: 'De qual país é a montadora Toyota?', a: 'Japão', w: ['Coreia do Sul', 'China', 'Alemanha'], fact: 'O Toyota Corolla é considerado o carro mais vendido da história.' },
+  { q: 'Qual montadora fabrica o Civic?', a: 'Honda', w: ['Toyota', 'Nissan', 'Hyundai'], fact: 'O Civic foi lançado em 1972 e é um dos modelos mais vendidos da Honda.' },
+  { q: 'Qual é o nome do carro de corrida protagonista de "Carros", da Pixar?', a: 'Relâmpago McQueen', w: ['Mate', 'Doc Hudson', 'Francesco Bernoulli'], fact: 'O número 95 dele homenageia 1995, ano de lançamento de Toy Story.' },
+  { q: 'Qual carro o Mr. Bean dirige na famosa série de TV?', a: 'Mini', w: ['Fusca', 'Fiat 500', 'Citroën 2CV'], fact: 'O Mini mais famoso dele é verde-limão com capô preto.' },
+  { q: 'Qual marca tem como logotipo uma estrela de três pontas?', a: 'Mercedes-Benz', w: ['BMW', 'Audi', 'Porsche'], fact: 'As três pontas simbolizam motores para terra, mar e ar.' },
+  { q: 'Quantas argolas aparecem no logotipo da Audi?', a: '4', w: ['3', '5', '6'], fact: 'Representam Audi, DKW, Horch e Wanderer, que se uniram em 1932.' },
+  { q: 'O que significa "Volkswagen" em português?', a: 'Carro do povo', w: ['Carro veloz', 'Carro alemão', 'Carro forte'], fact: 'A Volkswagen foi fundada em 1937, na Alemanha.' },
+  { q: 'Na Alemanha, o Fusca era chamado de Käfer. O que significa essa palavra?', a: 'Besouro', w: ['Tartaruga', 'Joaninha', 'Sapo'], fact: 'Nos EUA e em vários países, ele ficou conhecido como Beetle.' },
+  { q: 'Qual brasileiro foi o primeiro campeão mundial de Fórmula 1?', a: 'Emerson Fittipaldi', w: ['Nelson Piquet', 'Ayrton Senna', 'Rubens Barrichello'], fact: 'Ele foi campeão em 1972, pela Lotus, e em 1974, pela McLaren.' },
+  { q: 'Além de Senna, qual brasileiro é tricampeão mundial de Fórmula 1?', a: 'Nelson Piquet', w: ['Emerson Fittipaldi', 'Rubens Barrichello', 'Felipe Massa'], fact: 'Piquet foi campeão em 1981, 1983 e 1987.' },
+  { q: 'Quantos losangos vermelhos formam o logotipo da Mitsubishi?', a: '3', w: ['2', '4', '5'], fact: 'O nome junta "mitsu" (três) e "hishi" (losango) em japonês.' },
+  { q: 'Qual montadora popularizou a linha de montagem com o famoso Modelo T?', a: 'Ford', w: ['General Motors', 'Chrysler', 'Cadillac'], fact: 'O Modelo T foi lançado em 1908 e vendeu mais de 15 milhões de unidades.' },
+  { q: 'De qual país é a montadora Volvo?', a: 'Suécia', w: ['Noruega', 'Dinamarca', 'Finlândia'], fact: 'A Volvo criou o cinto de segurança de três pontos em 1959 e liberou a patente.' },
+  { q: 'Qual piloto igualou, em 2020, o recorde de 7 títulos de Michael Schumacher na F1?', a: 'Lewis Hamilton', w: ['Sebastian Vettel', 'Max Verstappen', 'Fernando Alonso'], fact: 'Seis desses títulos vieram pela equipe Mercedes.' },
+  { q: 'Em qual autódromo é disputado o Grande Prêmio de F1 em São Paulo?', a: 'Interlagos', w: ['Jacarepaguá', 'Autódromo de Goiânia', 'Velo Città'], fact: 'Seu nome oficial homenageia o piloto José Carlos Pace.' },
+  { q: 'Qual carro da Volkswagen, lançado em 1973, leva o nome da capital do Brasil?', a: 'Brasília', w: ['Variant', 'Santana', 'Passat'], fact: 'Ficou eternizado em "Pelados em Santos", dos Mamonas Assassinas.' },
+  { q: 'De qual montadora era o Corcel, sucesso dos anos 70?', a: 'Ford', w: ['Chevrolet', 'Volkswagen', 'Fiat'], fact: 'O Corcel nasceu de um projeto da Renault herdado da Willys.' },
+  { q: 'Qual montadora francesa tem um leão no logotipo?', a: 'Peugeot', w: ['Renault', 'Citroën', 'Bugatti'], fact: 'Antes dos carros, a Peugeot fabricava ferramentas e moedores de pimenta.' },
+  { q: 'Qual esportivo da Ford tem um cavalo galopando no logotipo?', a: 'Mustang', w: ['GT40', 'Maverick', 'Thunderbird'], fact: 'O Ford Mustang foi lançado em 1964.' },
+  { q: 'Qual foi o primeiro carro de série movido a álcool lançado no Brasil?', a: 'Fiat 147', w: ['Fusca', 'Chevette', 'Passat'], fact: 'A versão a álcool chegou às lojas em 1979, na época do Proálcool.' },
+  { q: 'O "B" da BMW vem de Bayerische. A que região alemã isso se refere?', a: 'Baviera', w: ['Saxônia', 'Prússia', 'Renânia'], fact: 'A BMW tem sede em Munique, capital da Baviera.' },
+  { q: 'Qual brasileiro perdeu o título da F1 de 2008 por apenas um ponto?', a: 'Felipe Massa', w: ['Rubens Barrichello', 'Nelson Piquet Jr.', 'Bruno Senna'], fact: 'Massa venceu a última corrida, em casa, mas Hamilton chegou em 5º e levou o título.' },
+  { q: 'Em que ano a Kombi deixou de ser fabricada no Brasil?', a: '2013', w: ['2003', '2008', '2018'], fact: 'O Brasil foi o último país do mundo a produzir a Kombi.' },
+  { q: 'Qual montadora brasileira fabricou o compacto BR-800?', a: 'Gurgel', w: ['Puma', 'Troller', 'Miura'], fact: 'O nome da marca vem do fundador, o engenheiro João Augusto Gurgel.' },
+  { q: 'Qual marca britânica de luxo tem no capô a estatueta "Spirit of Ecstasy"?', a: 'Rolls-Royce', w: ['Bentley', 'Jaguar', 'Aston Martin'], fact: 'Desde 2003, os carros da Rolls-Royce são produzidos sob o comando da BMW.' },
+];
+
+export default questions;

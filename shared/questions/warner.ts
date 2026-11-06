@@ -1,0 +1,36 @@
+import type { RawQuestion } from './_types';
+
+const questions: RawQuestion[] = [
+  { q: 'Quantos irmãos Warner fundaram o estúdio Warner Bros.?', a: 'Quatro', w: ['Dois', 'Três', 'Cinco'], fact: 'Harry, Albert, Sam e Jack Warner fundaram o estúdio em 1923.' },
+  { q: 'Qual filme da Warner, de 1927, ficou famoso como o primeiro longa falado?', a: 'O Cantor de Jazz', w: ['Casablanca', 'E o Vento Levou', 'Cantando na Chuva'], fact: 'Estrelado por Al Jolson, marcou o início do cinema falado.' },
+  { q: 'Qual cachorro foi um dos primeiros grandes astros da Warner, nos anos 1920?', a: 'Rin Tin Tin', w: ['Lassie', 'Benji', 'Beethoven'], fact: 'Seus filmes de sucesso ajudaram a salvar o estúdio da falência.' },
+  { q: 'Em qual cidade da Califórnia ficam os estúdios da Warner Bros.?', a: 'Burbank', w: ['Santa Monica', 'Pasadena', 'San Diego'], fact: 'A caixa-d\'água do estúdio virou um dos símbolos da Warner.' },
+  { q: 'Qual ator protagoniza o clássico Casablanca (1942)?', a: 'Humphrey Bogart', w: ['Cary Grant', 'Clark Gable', 'James Stewart'], fact: 'Casablanca venceu o Oscar de Melhor Filme.' },
+  { q: 'Qual filme de terror da Warner, de 1973, mostra uma menina possuída?', a: 'O Exorcista', w: ['O Iluminado', 'A Profecia', 'Poltergeist'], fact: 'Foi o primeiro filme de terror indicado ao Oscar de Melhor Filme.' },
+  { q: 'Em Gremlins, depois de que horário não se deve alimentar o mogwai?', a: 'Meia-noite', w: ['Meio-dia', '18h', '22h'], fact: 'As outras regras: evitar luz forte e nunca molhá-lo.' },
+  { q: 'Qual é o bordão do Pernalonga?', a: 'O que é que há, velhinho?', w: ['Eu acho que vi um gatinho!', 'Yabba Dabba Doo!', 'Bip bip!'], fact: 'Ele sempre aparece mastigando uma cenoura ao dizer a frase.' },
+  { q: 'Qual personagem encerra os Looney Tunes dizendo "Isso é tudo, pessoal!"?', a: 'Gaguinho', w: ['Patolino', 'Hortelino', 'Frajola'], fact: 'No original em inglês, a frase é "That\'s all, folks!".' },
+  { q: 'Qual caçador vive tentando pegar o Pernalonga?', a: 'Hortelino Troca-Letras', w: ['Gaguinho', 'Patolino', 'Frangolino'], fact: 'No original, ele se chama Elmer Fudd.' },
+  { q: 'Como se chama o marciano dos Looney Tunes que quer explodir a Terra?', a: 'Marvin', w: ['Zorak', 'Gazoo', 'Kang'], fact: 'Ele diz que a Terra atrapalha sua vista de Vênus.' },
+  { q: 'Quem dublava Pernalonga, Patolino e Gaguinho na versão original?', a: 'Mel Blanc', w: ['Walt Disney', 'Chuck Jones', 'Tex Avery'], fact: 'Era conhecido como "o homem das mil vozes".' },
+  { q: 'Em Space Jam (1996), qual astro do basquete joga com os Looney Tunes?', a: 'Michael Jordan', w: ['LeBron James', 'Shaquille O\'Neal', 'Magic Johnson'], fact: 'Em 2021, LeBron James estrelou a continuação.' },
+  { q: 'Em Animaniacs, onde vivem Yakko, Wakko e Dot?', a: 'Na caixa-d\'água da Warner', w: ['No porão da Warner', 'Num trailer', 'Num farol'], fact: 'Os Animaniacs estrearam na TV em 1993.' },
+  { q: 'Qual é o nome da coruja de Harry Potter?', a: 'Edwiges', w: ['Errol', 'Píchi', 'Hermes'], fact: 'Ela foi presente de Hagrid no aniversário de 11 anos de Harry.' },
+  { q: 'Qual é o nome do gato de Hermione em Harry Potter?', a: 'Bichento', w: ['Perebas', 'Madame Nor-r-ra', 'Trevo'], fact: 'Bichento é meio amasso, uma criatura mágica parecida com um gato.' },
+  { q: 'Quem interpreta Harry Potter nos cinemas?', a: 'Daniel Radcliffe', w: ['Rupert Grint', 'Tom Felton', 'Elijah Wood'], fact: 'Ele tinha 11 anos quando começou a filmar o primeiro filme.' },
+  { q: 'Em qual posição Harry joga no time de Quadribol?', a: 'Apanhador', w: ['Goleiro', 'Artilheiro', 'Batedor'], fact: 'Ele foi o jogador mais jovem de uma casa em um século.' },
+  { q: 'Qual é o nome verdadeiro de Lord Voldemort?', a: 'Tom Riddle', w: ['Gerardo Grindelwald', 'Bartô Crouch', 'Pedro Pettigrew'], fact: '"Tom Servolo Riddle" é um anagrama de "Eis Lord Voldemort".' },
+  { q: 'Qual elfo doméstico ajuda Harry Potter e é libertado com uma meia?', a: 'Dobby', w: ['Monstro', 'Winky', 'Grampo'], fact: 'Harry engana Lúcio Malfoy para que ele entregue a meia a Dobby.' },
+  { q: 'Qual ator que viveu Cedrico Diggory em Harry Potter depois virou Batman?', a: 'Robert Pattinson', w: ['Ben Affleck', 'Christian Bale', 'Tom Felton'], fact: 'Ele estrelou Batman (2022), dirigido por Matt Reeves.' },
+  { q: 'Qual ator viveu o Coringa em O Cavaleiro das Trevas (2008)?', a: 'Heath Ledger', w: ['Joaquin Phoenix', 'Jared Leto', 'Jack Nicholson'], fact: 'Ele ganhou o Oscar póstumo de Melhor Ator Coadjuvante.' },
+  { q: 'Qual diretor fez a trilogia O Cavaleiro das Trevas?', a: 'Christopher Nolan', w: ['Zack Snyder', 'Tim Burton', 'Matt Reeves'], fact: 'A trilogia vai de Batman Begins (2005) a O Cavaleiro das Trevas Ressurge (2012).' },
+  { q: 'Qual é a identidade secreta do Batman?', a: 'Bruce Wayne', w: ['Clark Kent', 'Barry Allen', 'Oliver Queen'], fact: 'Ele mora na Mansão Wayne, em Gotham City.' },
+  { q: 'Quem interpretou a Mulher-Maravilha nos filmes de 2017 e 2020?', a: 'Gal Gadot', w: ['Margot Robbie', 'Amber Heard', 'Brie Larson'], fact: 'A atriz israelense foi Miss Israel em 2004.' },
+  { q: 'Quem interpreta Morpheus em Matrix?', a: 'Laurence Fishburne', w: ['Samuel L. Jackson', 'Morgan Freeman', 'Denzel Washington'], fact: 'É Morpheus quem oferece a Neo a escolha entre a pílula vermelha e a azul.' },
+  { q: 'Quem interpreta Neo em Matrix?', a: 'Keanu Reeves', w: ['Laurence Fishburne', 'Hugo Weaving', 'Tom Cruise'], fact: 'Matrix estreou em 1999 e ganhou 4 Oscars.' },
+  { q: 'Quem dirigiu Matrix (1999)?', a: 'As irmãs Wachowski', w: ['Os irmãos Coen', 'Os irmãos Russo', 'Christopher Nolan'], fact: 'Na época do lançamento, elas assinavam como "irmãos Wachowski".' },
+  { q: 'Matrix popularizou qual efeito de câmera lenta que "congela" a ação?', a: 'Bullet time', w: ['Dolly zoom', 'Stop motion', 'Time-lapse'], fact: 'O efeito ficou famoso na cena em que Neo desvia das balas.' },
+  { q: 'Quem dirigiu o filme Barbie (2023), da Warner?', a: 'Greta Gerwig', w: ['Sofia Coppola', 'Olivia Wilde', 'Margot Robbie'], fact: 'Foi a maior bilheteria mundial de 2023.' },
+];
+
+export default questions;
