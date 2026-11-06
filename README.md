@@ -15,29 +15,27 @@ A TV é só tela: não há nada para clicar nela.
 
 ## 📱 Rodar com um celular Android como servidor (Termux)
 
-O servidor já vem pronto na pasta `release/`. Não é preciso compilar nem rodar `npm install`.
+**Instalação (só uma vez):**
 
-1. Instale o **Termux** pelo [F-Droid](https://f-droid.org/packages/com.termux/). A versão da Play Store é antiga.
-2. No Termux, rode:
+1. Instale o **Termux** pelo [F-Droid](https://f-droid.org/packages/com.termux/). A versão da Play Store é antiga e não funciona.
+2. Abra o Termux e digite esta linha (tudo junto):
    ```sh
-   pkg update && pkg install nodejs git
-   git clone https://github.com/aglalberto/web-quiz01.git
-   cd web-quiz01
-   termux-wake-lock          # opcional: impede o Android de pausar o servidor
-   node release/server.cjs
+   curl -L https://raw.githubusercontent.com/Aglalberto/web-quiz01/HEAD/termux.sh | bash
    ```
-3. O terminal mostra o endereço, por exemplo:
-   ```
-   📺  Abra na TV:   http://192.168.0.12:3000
-   ```
-4. Abra esse endereço no **navegador da TV** (ou de um notebook ligado na TV). O QR Code aparece na tela.
-5. Os jogadores leem o QR com o celular, digitam o nome e entram.
+   O comando instala o Node.js, baixa o jogo e cria o comando `quiz`. Demora alguns minutos.
 
-> **Importante:** o celular servidor, a TV e os jogadores precisam estar na **mesma rede Wi-Fi**. Outra opção é ligar o **roteador de internet (hotspot)** no celular servidor e conectar todos nele.
->
-> Se o terminal não mostrar o IP, veja em *Configurações › Wi-Fi › (sua rede) › Endereço IP* e abra `http://SEU-IP:3000` na TV.
+**Para jogar (sempre):**
 
-Para atualizar o jogo depois: `cd web-quiz01 && git pull`.
+1. Conecte o celular servidor, a TV e os celulares dos jogadores **no mesmo Wi-Fi**. Outra opção é ligar o **roteador de internet (hotspot)** no celular servidor e conectar todos nele.
+2. No Termux, digite `quiz`.
+3. O terminal mostra o endereço, por exemplo `📺 Abra na TV: http://192.168.0.12:3000`.
+4. Abra esse endereço no **navegador da TV**. O QR Code aparece e os jogadores entram.
+5. Para desligar: toque em **CTRL** (na barra de teclas extras do Termux) e depois em **C**.
+
+Dicas:
+- Deixe o Termux aberto, ou em segundo plano, durante o jogo. O comando `quiz` já pede ao Android para não pausar o servidor (*wake lock*). Se o jogo cair quando a tela apaga, tire o Termux da economia de bateria: *Configurações › Apps › Termux › Bateria › Sem restrições*.
+- Se o terminal não mostrar o IP, veja em *Configurações › Wi-Fi › (sua rede) › Endereço IP* e abra `http://SEU-IP:3000` na TV.
+- O `quiz` baixa as atualizações do jogo sozinho quando há internet.
 
 ## 💻 Rodar num PC/notebook
 
