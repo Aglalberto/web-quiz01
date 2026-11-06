@@ -110,7 +110,7 @@ export class Game {
     let seat = 0;
     while (taken.has(seat)) seat++;
     const player: Player = {
-      id: this.newId(),
+      id: playerId && /^[a-z0-9]{6,32}$/i.test(playerId) ? playerId : this.newId(),
       name: this.uniqueName(name),
       seat,
       score: 0,
@@ -427,6 +427,33 @@ export class Game {
     this.phase = 'gameover';
     this.suddenDeath = false;
     this.setDeadline(null, 0);
+  }
+
+  // ───────────────────────── salvar / restaurar ─────────────────────────
+
+  /** Estado completo serializável (a TV salva no navegador para sobreviver a um recarregamento). */
+  snapshot() {
+    return {
+      phase: this.phase,
+      players: this.players,
+      hostId: this.hostId,
+      themeOptions: this.themeOptions,
+      themeId: this.themeId,
+      roundQuestion: this.roundQuestion,
+      round: this.round,
+      question: this.question,
+      deadline: this.deadline,
+      duration: this.duration,
+      suddenDeath: this.suddenDeath,
+      contenders: this.contenders,
+      winnerId: this.winnerId,
+      used: [...this.used],
+      recentThemes: this.recentThemes,
+    };
+  }
+
+  restore(snap: ReturnType<Game['snapshot']>) {
+    Object.assign(this, { ...snap, used: new Set(snap.used) });
   }
 
   // ───────────────────────── visão pública ─────────────────────────

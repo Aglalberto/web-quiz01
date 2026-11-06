@@ -2,6 +2,8 @@
 
 Quiz multiplayer para festas, com até **8 jogadores**. A **TV** mostra o jogo e cada **celular** é o controle: os jogadores leem o QR Code, digitam o nome e jogam.
 
+Roda direto pelo **GitHub Pages**. Não precisa instalar nada nem manter servidor: basta abrir o link no navegador da TV.
+
 - O primeiro a entrar vira o **host** 👑. Ele começa a partida, pode pular uma etapa, remover jogadores e iniciar outra partida, tudo pelo celular. O host também joga.
 - A cada rodada, **3 temas** são sorteados e todos votam no celular. O tema vencedor rende **3 perguntas**.
 - Todos respondem ao mesmo tempo, com 15 segundos por pergunta. Cada acerto vale +1.
@@ -13,48 +15,37 @@ A TV é só tela: não há nada para clicar nela.
 
 ---
 
-## 📱 Rodar com um celular Android como servidor (Termux)
+## 📺 Como jogar
 
-**Instalação (só uma vez):**
+1. No **navegador da Smart TV**, abra: **https://aglalberto.github.io/web-quiz01/**
+2. Aparece o QR Code com o código da sala.
+3. Cada jogador aponta a câmera do celular para o QR, digita o nome e entra.
+4. O host toca em **COMEÇAR!** no celular.
 
-1. Instale o **Termux** pelo [F-Droid](https://f-droid.org/packages/com.termux/). A versão da Play Store é antiga e não funciona.
-2. Abra o Termux e digite esta linha (tudo junto):
-   ```sh
-   curl -L https://raw.githubusercontent.com/Aglalberto/web-quiz01/HEAD/termux.sh | bash
-   ```
-   O comando instala o Node.js, baixa o jogo e cria o comando `quiz`. Demora alguns minutos.
+Todos os aparelhos precisam de **internet**, mas não precisam estar na mesma rede: dá para jogar até com o 4G do celular.
 
-**Para jogar (sempre):**
+**Se a TV recarregar a página**, a partida continua de onde parou: a mesma sala, os mesmos jogadores e o mesmo placar. Para começar uma sala nova do zero, abra o endereço com `?nova` no final (`.../web-quiz01/?nova`).
 
-1. Conecte o celular servidor, a TV e os celulares dos jogadores **no mesmo Wi-Fi**. Outra opção é ligar o **roteador de internet (hotspot)** no celular servidor e conectar todos nele.
-2. No Termux, digite `quiz`.
-3. O terminal mostra o endereço, por exemplo `📺 Abra na TV: http://192.168.0.12:3000`.
-4. Abra esse endereço no **navegador da TV**. O QR Code aparece e os jogadores entram.
-5. Para desligar: toque em **CTRL** (na barra de teclas extras do Termux) e depois em **C**.
+### Como funciona por dentro
 
-Dicas:
-- Deixe o Termux aberto, ou em segundo plano, durante o jogo. O comando `quiz` já pede ao Android para não pausar o servidor (*wake lock*). Se o jogo cair quando a tela apaga, tire o Termux da economia de bateria: *Configurações › Apps › Termux › Bateria › Sem restrições*.
-- Se o terminal não mostrar o IP, veja em *Configurações › Wi-Fi › (sua rede) › Endereço IP* e abra `http://SEU-IP:3000` na TV.
-- O `quiz` baixa as atualizações do jogo sozinho quando há internet.
+A própria TV é o “servidor”: as regras do jogo rodam no navegador dela. TV e celulares trocam mensagens por um **servidor MQTT público e gratuito**, que funciona como um carteiro (EMQX, HiveMQ, Eclipse ou Mosquitto). A TV usa o primeiro que responder e informa qual é no QR Code.
 
-## 💻 Rodar num PC/notebook
+---
 
-Funciona da mesma forma, com Node.js 18 ou mais novo:
+## 🚀 Publicação (GitHub Pages)
 
-```sh
-node release/server.cjs
-```
+A cada `push`, o GitHub Actions roda os testes, gera o site e publica (`.github/workflows/pages.yml`).
 
-## ⚙️ Opções (variáveis de ambiente)
+**Configuração única:** no GitHub, abra *Settings › Pages* e, em **Source**, escolha **GitHub Actions**.
 
-| Variável | Padrão | Para quê |
+## ⚙️ Opções na URL da TV
+
+| Parâmetro | Exemplo | Para quê |
 |---|---|---|
-| `PORT` | `3000` | Porta do servidor |
-| `WIN_SCORE` | `15` | Acertos para vencer |
-| `PUBLIC_HOST` | automático | Força o IP ou nome usado no QR Code |
-| `FAST` | – | `FAST=1` deixa os tempos curtos (para testes) |
-
-Exemplo: `WIN_SCORE=10 node release/server.cjs`
+| `vitoria` | `?vitoria=10` | Acertos para vencer (padrão 15) |
+| `nova` | `?nova` | Ignora a partida salva e cria outra sala |
+| `fast` | `?fast=1` | Tempos curtos (para testes) |
+| `broker` | `?broker=ws://localhost:8883` | Usa outro servidor MQTT (para testes) |
 
 ---
 
@@ -62,23 +53,23 @@ Exemplo: `WIN_SCORE=10 node release/server.cjs`
 
 ```sh
 npm install
-npm run dev        # servidor + Vite com hot reload (abra http://localhost:5173)
+npm run broker     # servidor MQTT local (ws://localhost:8883)
+npm run dev        # abra http://localhost:5173/?broker=ws://localhost:8883
 npm test           # testes da lógica do jogo e do banco de perguntas
-npm run build      # gera release/ (site + server.cjs)
+npm run build      # gera dist/ (o site)
 npm run e2e        # partida completa automatizada no navegador (gera ./screenshots)
 ```
 
 Estrutura:
 
-- `shared/game.ts`: regras do jogo (máquina de estados pura, testável e independente do servidor)
+- `shared/game.ts`: regras do jogo (máquina de estados pura e testável)
 - `shared/questions/*.ts`: perguntas, um arquivo por tema (`{ q, a: correta, w: [3 erradas], fact }`)
 - `shared/themes.ts`: lista de temas (nome, emoji, cor)
-- `server/`: servidor Node (HTTP + WebSocket)
+- `src/net/host.ts`: a “sala” que roda na TV (regras + comunicação + salvamento)
+- `src/net/client.ts`: conexão do celular
 - `src/tv/`: tela da TV
 - `src/phone/`: tela do celular (controle)
 
-Para adicionar perguntas, edite o arquivo do tema em `shared/questions/` e rode `npm test && npm run build`.
+Para adicionar perguntas, edite o arquivo do tema em `shared/questions/` e rode `npm test`. A publicação acontece sozinha no próximo `push`.
 
-## ☁️ Próximo passo: Cloudflare
-
-A lógica do jogo (`shared/game.ts`) não depende do servidor Node. Para publicar na internet com Cloudflare Workers + Durable Objects, basta escrever um adaptador equivalente a `server/hub.ts`. Isso fica para quando houver acesso à conta.
+O visual foi feito para funcionar em navegadores de Smart TV mais antigos (Chromium 69+): Tailwind v3, código compilado para ES2017 e sem `gap` em layouts flex na tela da TV.

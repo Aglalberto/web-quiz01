@@ -1,15 +1,15 @@
 import { defineConfig } from 'vite';
 import preact from '@preact/preset-vite';
-import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [preact(), tailwindcss()],
-  build: { outDir: 'release/public', emptyOutDir: true },
-  server: {
-    host: true,
-    proxy: {
-      '/ws': { target: 'ws://localhost:3000', ws: true },
-      '/api': 'http://localhost:3000',
-    },
+  // caminhos relativos: funciona em https://<usuario>.github.io/<repo>/
+  base: './',
+  plugins: [preact()],
+  build: {
+    outDir: 'dist',
+    // compatível com navegadores de Smart TV mais antigos (Chromium ~69+)
+    target: ['es2017', 'chrome69', 'safari12'],
+    cssTarget: ['chrome69', 'safari12'],
+    chunkSizeWarningLimit: 1200,
   },
 });

@@ -1,20 +1,25 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import type { PublicPlayer, PublicState, ServerMsg } from '../../shared/types';
+import type { PublicPlayer, PublicState } from '../../shared/types';
 import { themeById } from '../../shared/themes';
 import { sfx, unlockAudio } from '../lib/sound';
-import { storage, useConnection, useCountdown } from '../lib/socket';
+import { savedName, useCountdown, usePlayerConnection } from '../net/client';
 import { Avatar, Logo, OPTION_STYLES, burst, colorOf, themeLabel } from '../lib/ui';
 
 export function Phone() {
-  const conn = useConnection('player', (msg: ServerMsg) => {
-    if (msg.type === 'joined') sfx.join();
-  });
+  const conn = usePlayerConnection();
   const { state, meId } = conn;
   const me = state?.players.find((p) => p.id === meId);
 
   useSoundEffects(state, me);
 
-  // tenta manter a tela ligada (só funciona em HTTPS; em HTTP é ignorado)
+  // som de "entrou!" quando o próprio card aparece
+  const wasIn = useRef(false);
+  useEffect(() => {
+    if (me && !wasIn.current) sfx.join();
+    wasIn.current = !!me;
+  }, [!!me]);
+
+  // tenta manter a tela ligada durante a partida
   useEffect(() => {
     if (!me) return;
     let lock: { release: () => Promise<void> } | null = null;
@@ -23,13 +28,20 @@ export function Phone() {
     return () => void lock?.release().catch(() => {});
   }, [!!me]);
 
-  if (conn.kicked) return <Kicked onBack={() => location.reload()} />;
-  if (!state || !conn.online) return <Splash text={conn.online ? 'Carregando…' : 'Conectando…'} />;
+  if (!conn.room) return <Splash text="Leia o QR Code que aparece na TV 📺" />;
+  if (conn.kicked) return <Kicked onBack={conn.rejoin} />;
+  if (!conn.online) return <Splash text="Conectando…" />;
+  if (!state) return <Splash text="Procurando a TV… 📺" />;
   if (!me) return <Join conn={conn} state={state} />;
 
   return (
     <div class="party-bg flex min-h-full flex-col">
       <Header me={me} state={state} />
+      {!conn.tvOnline && (
+        <div class="mx-4 mb-3 rounded-2xl bg-red-500 px-4 py-2 text-center font-bold text-white chunky">
+          📺 Sem sinal da TV… a página do jogo está aberta nela?
+        </div>
+      )}
       <main class="flex flex-1 flex-col px-4 pb-6">
         <Screen state={state} me={me} conn={conn} />
       </main>
@@ -38,7 +50,7 @@ export function Phone() {
   );
 }
 
-type Conn = ReturnType<typeof useConnection>;
+type Conn = ReturnType<typeof usePlayerConnection>;
 
 function useSoundEffects(state: PublicState | null, me: PublicPlayer | undefined) {
   const prev = useRef<string>('');
@@ -90,15 +102,24 @@ function Kicked({ onBack }: { onBack: () => void }) {
 }
 
 function Join({ conn, state }: { conn: Conn; state: PublicState }) {
-  const [name, setName] = useState(storage.name);
+  const [name, setName] = useState(savedName.get());
   const full = state.players.length >= 8;
+  const [sentAt, setSentAt] = useState(0);
+  const [, tick] = useState(0);
+  const waiting = sentAt > 0 && !conn.error && Date.now() - sentAt < 8000;
+  useEffect(() => {
+    if (!sentAt) return;
+    const id = setTimeout(() => tick((n) => n + 1), 8100);
+    return () => clearTimeout(id);
+  }, [sentAt]);
   const submit = (e: Event) => {
     e.preventDefault();
     unlockAudio();
     const n = name.trim();
     if (!n) return;
-    storage.name = n;
-    conn.send({ type: 'join', name: n });
+    savedName.set(n);
+    setSentAt(Date.now());
+    conn.join(n);
   };
   return (
     <div class="party-bg flex min-h-full flex-col items-center justify-center p-6 text-center">
@@ -122,13 +143,16 @@ function Join({ conn, state }: { conn: Conn; state: PublicState }) {
           }}
         />
         {conn.error && <p class="mt-3 font-semibold text-red-500">{conn.error}</p>}
+        {!conn.tvOnline && !conn.error && (
+          <p class="mt-3 font-semibold text-red-500">Sem sinal da TV. Confira se o jogo está aberto nela.</p>
+        )}
         {full && !conn.error && <p class="mt-3 font-semibold text-red-500">A sala está cheia (8 jogadores)!</p>}
         <button
           type="submit"
-          disabled={!name.trim() || full}
+          disabled={!name.trim() || full || waiting}
           class="press mt-5 w-full rounded-2xl bg-grape py-4 text-2xl font-bold text-white chunky disabled:opacity-40"
         >
-          ENTRAR! 🎉
+          {waiting ? 'Entrando…' : 'ENTRAR! 🎉'}
         </button>
       </form>
       <p class="mt-6 font-medium text-white/80">{state.players.length}/8 jogadores na sala</p>
@@ -172,7 +196,14 @@ function Screen({ state, me, conn }: { state: PublicState; me: PublicPlayer; con
     case 'chosen':
       return <ChosenScreen state={state} me={me} />;
     case 'question':
-      return <AnswerScreen state={state} me={me} conn={conn} />;
+      return (
+        <AnswerScreen
+          key={`${state.round}:${state.roundQuestion}:${state.question?.text}`}
+          state={state}
+          me={me}
+          conn={conn}
+        />
+      );
     case 'reveal':
       return <RevealScreen state={state} me={me} />;
     case 'gameover':
@@ -310,7 +341,9 @@ function ChosenScreen({ state, me }: { state: PublicState; me: PublicPlayer }) {
 function AnswerScreen({ state, me, conn }: { state: PublicState; me: PublicPlayer; conn: Conn }) {
   const q = state.question!;
   const spectator = state.suddenDeath && !me.contender;
-  const chosen = conn.myChoice;
+  const [picked, setPicked] = useState<number | null>(null);
+  // após recarregar a página, sabemos que respondeu mas não qual
+  const chosen = picked ?? (me.answered ? -1 : null);
   if (spectator) {
     return (
       <div class="flex flex-1 flex-col items-center justify-center gap-4 text-center text-white">
@@ -330,23 +363,24 @@ function AnswerScreen({ state, me, conn }: { state: PublicState; me: PublicPlaye
       <div class="grid flex-1 grid-cols-1 gap-3">
         {q.options.map((opt, i) => {
           const s = OPTION_STYLES[i];
-          const picked = chosen === i;
+          const isMine = chosen === i;
           return (
             <button
               key={i}
               disabled={chosen !== null}
               onClick={() => {
                 sfx.tap();
+                setPicked(i);
                 conn.send({ type: 'answer', index: i });
               }}
               class={`press flex min-h-[4.5rem] items-center gap-3 rounded-[1.6rem] px-4 py-3 text-left text-white chunky-lg ${
-                chosen !== null && !picked ? 'opacity-30' : ''
-              } ${picked ? 'ring-[6px] ring-white' : ''}`}
+                chosen !== null && !isMine ? 'opacity-30' : ''
+              } ${isMine ? 'ring-[6px] ring-white' : ''}`}
               style={{ background: s.bg }}
             >
               <span class="text-3xl">{s.shape}</span>
               <span class="flex-1 text-xl leading-tight font-bold drop-shadow">{opt}</span>
-              {picked && <span class="text-2xl">🤞</span>}
+              {isMine && <span class="text-2xl">🤞</span>}
             </button>
           );
         })}

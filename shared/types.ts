@@ -68,11 +68,10 @@ export interface PublicState {
   serverNow: number;
 }
 
-/** Mensagens cliente → servidor */
+/** Mensagens celular → TV */
 export type ClientMsg =
-  | { type: 'hello'; role: 'tv' }
-  | { type: 'join'; name: string; playerId?: string }
-  | { type: 'resume'; playerId: string }
+  | { type: 'join'; name: string }
+  | { type: 'ping' }
   | { type: 'vote'; themeId: string }
   | { type: 'answer'; index: number }
   | { type: 'start' }
@@ -81,9 +80,13 @@ export type ClientMsg =
   | { type: 'playAgain' }
   | { type: 'endGame' };
 
-/** Mensagens servidor → cliente */
-export type ServerMsg =
-  | { type: 'state'; state: PublicState; meId?: string; myChoice?: number | null }
-  | { type: 'joined'; playerId: string }
-  | { type: 'error'; code: 'full' | 'unknown' | 'name'; message: string }
+/** Envelope publicado pelos celulares no tópico "up" da sala */
+export interface UpEnvelope {
+  from: string;
+  msg: ClientMsg;
+}
+
+/** Mensagens diretas TV → um celular */
+export type DirectMsg =
+  | { type: 'error'; code: 'full' | 'name'; message: string }
   | { type: 'kicked' };

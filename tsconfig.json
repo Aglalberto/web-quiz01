@@ -13,5 +13,5 @@
     "allowImportingTsExtensions": false,
     "types": ["node", "vite/client"]
   },
-  "include": ["src", "shared", "server", "tests"]
+  "include": ["src", "shared", "tests"]
 }

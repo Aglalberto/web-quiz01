@@ -1,34 +1,16 @@
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import QRCode from 'qrcode';
 import type { PublicState } from '../../shared/types';
 import { MAX_PLAYERS } from '../../shared/types';
 import { themeById } from '../../shared/themes';
-import { useConnection, useCountdown } from '../lib/socket';
+import { useCountdown } from '../net/client';
+import { useHostRoom } from '../net/host';
 import { Avatar, Logo, OPTION_STYLES, burst, colorOf, themeLabel } from '../lib/ui';
 import { EmptySeat, PlayerCard, SEAT_AREAS } from './PlayerCard';
 
-/** URL que vai no QR: o endereço que a própria TV abriu (ou o IP do servidor, se a TV abriu via localhost). */
-function useJoinUrl(state: PublicState | null) {
-  return useMemo(() => {
-    const local = ['localhost', '127.0.0.1', '::1', '[::1]'].includes(location.hostname);
-    if (!local) return `${location.origin}/play`;
-    if (state?.joinUrl) {
-      try {
-        const u = new URL(state.joinUrl);
-        if (location.port) u.port = location.port;
-        return u.toString();
-      } catch {
-        /* usa o padrão */
-      }
-    }
-    return `${location.origin}/play`;
-  }, [state?.joinUrl]);
-}
-
 export function TV() {
-  const conn = useConnection('tv');
-  const { state, online } = conn;
-  const joinUrl = useJoinUrl(state);
+  const room = useHostRoom();
+  const { state, online, joinUrl } = room;
   const phase = state?.phase;
 
   // confete na TV quando há vencedor
@@ -45,7 +27,7 @@ export function TV() {
 
   return (
     <div class="party-bg relative h-full w-full cursor-none overflow-hidden select-none">
-      <div class="dots pointer-events-none absolute inset-0" />
+      <div class="dots pointer-events-none absolute left-0 top-0 h-full w-full" />
       <div class="relative grid h-full grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto] gap-[1.6rem] p-[1.8rem]">
         {Array.from({ length: MAX_PLAYERS }, (_, seat) => {
           const area = SEAT_AREAS[seat];
@@ -63,16 +45,18 @@ export function TV() {
           {!state ? (
             <div class="text-center text-white">
               <Logo size="text-[6rem]" />
-              <p class="mt-4 text-[2rem] font-semibold">{online ? 'Carregando…' : 'Conectando ao servidor…'}</p>
+              <p class="mt-4 text-[2rem] font-semibold">
+                {room.error ? `Erro: ${room.error}` : 'Conectando à internet…'}
+              </p>
             </div>
           ) : (
-            <Stage state={state} joinUrl={joinUrl} offset={conn.offset} />
+            <Stage state={state} joinUrl={joinUrl} offset={0} />
           )}
         </div>
       </div>
       {!online && state && (
         <div class="absolute top-4 left-1/2 -translate-x-1/2 rounded-full bg-red-500 px-6 py-2 text-[1.4rem] font-bold text-white chunky">
-          Sem conexão com o servidor… tentando de novo
+          Sem internet… tentando reconectar
         </div>
       )}
     </div>
@@ -112,14 +96,16 @@ function Lobby({ state, joinUrl }: { state: PublicState; joinUrl: string }) {
   const host = state.players.find((p) => p.isHost);
   const count = state.players.length;
   return (
-    <div class="flex flex-col items-center gap-[1.4rem] text-center">
+    <div class="flex flex-col items-center space-y-[1.4rem] text-center">
       <Logo size="text-[5.4rem]" />
-      <Panel class="flex items-center gap-[2.2rem] animate-pop">
+      <Panel class="flex items-center space-x-[2.2rem] animate-pop">
         <canvas ref={canvas} class="rounded-2xl" />
         <div class="max-w-[24rem] text-left">
           <div class="text-[2.6rem] leading-tight font-bold">Aponte a câmera do celular! 📱</div>
           <p class="mt-3 text-[1.5rem] text-ink/70">Leia o QR Code, digite seu nome e pronto.</p>
-          <p class="mt-3 rounded-xl bg-ink/5 px-3 py-2 font-mono text-[1.15rem] break-all text-ink/70">{joinUrl}</p>
+          <div class="mt-4 inline-block rounded-2xl bg-grape px-5 py-2 text-[1.6rem] font-bold text-white chunky">
+            Sala {new URL(joinUrl).searchParams.get('sala')}
+          </div>
           <div class="mt-4 text-[1.8rem] font-bold text-grape">
             {count}/{MAX_PLAYERS} jogadores
           </div>
@@ -148,7 +134,7 @@ function TimerBar({ state, offset }: { state: PublicState; offset: number }) {
   const pct = Math.max(0, Math.min(1, msLeft / total));
   const urgent = secLeft <= 5;
   return (
-    <div class="flex w-full items-center gap-4">
+    <div class="flex w-full items-center space-x-4">
       <div class="h-[1.4rem] flex-1 overflow-hidden rounded-full bg-ink/10">
         <div
           class="h-full rounded-full transition-[width] duration-100 ease-linear"
@@ -168,7 +154,7 @@ function TimerBar({ state, offset }: { state: PublicState; offset: number }) {
 
 function Voting({ state, offset }: { state: PublicState; offset: number }) {
   return (
-    <div class="flex w-full max-w-[64rem] flex-col items-center gap-[1.6rem]">
+    <div class="flex w-full max-w-[64rem] flex-col items-center space-y-[1.6rem]">
       <div class="text-center text-white">
         <div class="text-[1.6rem] font-semibold opacity-80">Rodada {state.round}</div>
         <h2 class="text-outline animate-bounce-in text-[4.4rem] leading-none font-bold text-yellow-300">
@@ -190,9 +176,9 @@ function Voting({ state, offset }: { state: PublicState; offset: number }) {
                 {t.emoji}
               </div>
               <div class="mt-3 text-center text-[2.2rem] leading-tight font-bold drop-shadow">{t.name}</div>
-              <div class="mt-4 flex min-h-[3.2rem] flex-wrap justify-center gap-2">
+              <div class="-m-1 mt-3 flex min-h-[3.2rem] flex-wrap justify-center">
                 {voters.map((p) => (
-                  <div key={p.id} class="animate-pop">
+                  <div key={p.id} class="m-1 animate-pop">
                     <Avatar name={p.name} seat={p.seat} size="3rem" ring />
                   </div>
                 ))}
@@ -213,13 +199,13 @@ function Chosen({ state }: { state: PublicState }) {
   if (!t) return null;
   const contenders = state.players.filter((p) => p.contender);
   return (
-    <div class="flex flex-col items-center gap-[1.6rem] text-center text-white">
+    <div class="flex flex-col items-center space-y-[1.6rem] text-center text-white">
       {state.suddenDeath ? (
         <>
           <h2 class="text-outline animate-bounce-in text-[5.4rem] font-bold text-red-400">☠️ MORTE SÚBITA! ☠️</h2>
-          <div class="flex items-center gap-4 text-[2rem] font-semibold">
+          <div class="flex items-center space-x-4 text-[2rem] font-semibold">
             {contenders.map((p, i) => (
-              <span key={p.id} class="flex items-center gap-2">
+              <span key={p.id} class="flex items-center space-x-2">
                 {i > 0 && <span class="mx-2 text-yellow-300">vs</span>}
                 <Avatar name={p.name} seat={p.seat} size="3.4rem" ring /> {p.name}
               </span>
@@ -247,7 +233,7 @@ function QuestionView({ state, offset }: { state: PublicState; offset: number })
   const t = q ? themeById(q.themeId) : undefined;
   if (!q || !t) return null;
   return (
-    <div class="flex w-full max-w-[72rem] flex-col gap-[1.3rem]">
+    <div class="flex w-full max-w-[72rem] flex-col space-y-[1.3rem]">
       <div class="flex items-center justify-between text-white">
         <span class="rounded-full px-5 py-1.5 text-[1.5rem] font-bold chunky" style={{ background: t.color }}>
           {t.emoji} {themeLabel(q.themeId, q.sub)}
@@ -275,7 +261,7 @@ function QuestionView({ state, offset }: { state: PublicState; offset: number })
           return (
             <div
               key={i}
-              class={`relative flex min-h-[6.2rem] items-center gap-4 rounded-[1.8rem] px-[1.4rem] py-[1rem] text-white chunky-lg transition-all duration-500 ${
+              class={`relative flex min-h-[6.2rem] items-center space-x-4 rounded-[1.8rem] px-[1.4rem] py-[1rem] text-white chunky-lg transition-all duration-500 ${
                 faded ? 'scale-95 opacity-35' : ''
               } ${isRight ? 'animate-pulse-big ring-[0.4rem] ring-white' : ''}`}
               style={{ background: s.bg }}
@@ -297,7 +283,7 @@ function QuestionView({ state, offset }: { state: PublicState; offset: number })
         })}
       </div>
       {revealing && q.fact && (
-        <div class="animate-bounce-in mt-2 flex items-start gap-3 rounded-[1.6rem] bg-yellow-300 px-6 py-3 text-[1.5rem] font-medium chunky">
+        <div class="animate-bounce-in mt-2 flex items-start space-x-3 rounded-[1.6rem] bg-yellow-300 px-6 py-3 text-[1.5rem] font-medium chunky">
           <span class="text-[2rem] leading-none">💡</span>
           <span>
             <b>Você sabia?</b> {q.fact}
@@ -325,11 +311,11 @@ function Podium({ state }: { state: PublicState }) {
   const heights = ['h-[10rem]', 'h-[15rem]', 'h-[7rem]'];
   const medals = ['🥈', '🏆', '🥉'];
   return (
-    <div class="flex flex-col items-center gap-[1.2rem] text-center text-white">
+    <div class="flex flex-col items-center space-y-[1.2rem] text-center text-white">
       <h2 class="text-outline animate-bounce-in text-[5rem] leading-none font-bold text-yellow-300">
         {winner.name} venceu!
       </h2>
-      <div class="flex items-end gap-[1.4rem]">
+      <div class="flex items-end space-x-[1.4rem]">
         {order.map((p, i) =>
           p ? (
             <div key={p.id} class="flex w-[16rem] flex-col items-center">
