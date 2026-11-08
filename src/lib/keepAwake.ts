@@ -26,14 +26,17 @@ export function keepScreenAwake() {
   video.setAttribute('muted', '');
   video.setAttribute('playsinline', '');
   video.setAttribute('aria-hidden', 'true');
+  // tela cheia, atrás de tudo e praticamente transparente: algumas TVs ignoram vídeos minúsculos
   Object.assign(video.style, {
     position: 'fixed',
-    width: '1px',
-    height: '1px',
-    opacity: '0.01',
-    pointerEvents: 'none',
     left: '0',
     top: '0',
+    width: '100vw',
+    height: '100vh',
+    objectFit: 'cover',
+    opacity: '0.01',
+    zIndex: '-1',
+    pointerEvents: 'none',
   });
   const webm = document.createElement('source');
   webm.src = media.webm;
