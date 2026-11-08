@@ -132,6 +132,83 @@ const questions: RawQuestion[] = [
   { sub: 'anos2000', q: 'Quem canta "Rehab" (2006)?', a: 'Amy Winehouse', w: ['Adele', 'Duffy', 'Lily Allen'], fact: 'A música está no álbum "Back to Black" e ganhou três Grammys.' },
   { sub: 'anos2000', q: '"Crazy" (2006) foi o grande hit de qual dupla?', a: 'Gnarls Barkley', w: ['The White Stripes', 'MGMT', 'Daft Punk'], fact: 'A dupla é formada por CeeLo Green e o produtor Danger Mouse.' },
   { sub: 'anos2000', q: 'Qual cantor gravou "Festa no Apê" (2004)?', a: 'Latino', w: ['Felipe Dylon', 'MC Créu', 'Rodriguinho'], fact: 'É uma versão de "Dragostea Din Tei", do grupo moldavo O-Zone.' },
+
+  // ===== ROCK (extra) =====
+  { sub: 'rock', q: 'Quem é o baixista dos Paralamas do Sucesso?', a: 'Bi Ribeiro', w: ['João Barone', 'Charles Gavin', 'Dado Villa-Lobos'], fact: 'Herbert Vianna, Bi Ribeiro e João Barone formam o trio desde 1982.' },
+  { sub: 'rock', q: 'Qual baterista foi substituído por Ringo Starr nos Beatles, em 1962?', a: 'Pete Best', w: ['Stuart Sutcliffe', 'Brian Epstein', 'George Martin'], fact: 'Quem comunicou a demissão foi o empresário da banda, Brian Epstein.' },
+  { sub: 'rock', q: 'Qual guitarrista compôs "Stairway to Heaven" (1971) com Robert Plant?', a: 'Jimmy Page', w: ['Jeff Beck', 'Eric Clapton', 'John Paul Jones'], fact: 'A música está no 4º álbum do Led Zeppelin, que não tem título oficial.' },
+  { sub: 'rock', q: 'Rita Lee começou a carreira em qual banda dos anos 60?', a: 'Os Mutantes', w: ['Secos & Molhados', 'Novos Baianos', 'Made in Brazil'], fact: 'Chamada de "Rainha do Rock brasileiro", Rita Lee morreu em 2023, aos 75 anos.' },
+  { sub: 'rock', q: 'Qual é o nome verdadeiro de Bono, vocalista do U2?', a: 'Paul Hewson', w: ['David Evans', 'Adam Clayton', 'Larry Mullen'], fact: 'O guitarrista The Edge, por sua vez, se chama David Evans.' },
+
+  // ===== POP (extra) =====
+  { sub: 'pop', q: 'Qual é o nome do irmão e produtor de Billie Eilish?', a: 'Finneas', w: ['Jack Antonoff', 'Benny Blanco', 'Max Martin'], fact: 'Os dois já ganharam dois Oscars de Canção Original, por 007 e por "Barbie".' },
+  { sub: 'pop', q: 'O que os nomes dos álbuns de Adele (19, 21, 25, 30) indicam?', a: 'A idade dela na época', w: ['O ano de lançamento', 'O número de faixas', 'O dia do aniversário'], fact: '"21" foi o álbum mais vendido do mundo em 2011 e também em 2012.' },
+  { sub: 'pop', q: 'Em qual álbum de The Weeknd está "Blinding Lights" (2019)?', a: 'After Hours', w: ['Starboy', 'Dawn FM', 'Beauty Behind the Madness'], fact: 'Em 2021, a Billboard a elegeu a maior música da história da Hot 100.' },
+  { sub: 'pop', q: 'Ariana Grande ficou famosa na TV em qual série da Nickelodeon?', a: 'Brilhante Victória', w: ['iCarly', 'Drake & Josh', 'Zoey 101'], fact: 'Na série, ela interpretava a ruivinha Cat Valentine.' },
+  { sub: 'pop', q: 'Qual sucesso de Whitney Houston é a regravação de uma música de Dolly Parton?', a: 'I Will Always Love You', w: ['I Wanna Dance with Somebody', 'Greatest Love of All', 'How Will I Know'], fact: 'A versão de Whitney é da trilha do filme "O Guarda-Costas" (1992).' },
+
+  // ===== K-POP (extra) =====
+  { sub: 'kpop', q: 'Qual integrante do BTS foi o primeiro a se alistar no serviço militar, em 2022?', a: 'Jin', w: ['Suga', 'J-Hope', 'Jungkook'], fact: 'Jin é o mais velho do grupo. Os sete concluíram o serviço até 2025.' },
+  { sub: 'kpop', q: 'Qual grupo fictício canta "Golden" na animação "Guerreiras do K-Pop" (2025)?', a: 'HUNTR/X', w: ['Saja Boys', 'BLACKPINK', 'TWICE'], fact: '"Golden" chegou ao 1º lugar da Billboard Hot 100. Os Saja Boys são os rivais do filme.' },
+  { sub: 'kpop', q: 'Qual grupo feminino lançou os hits "TT" e "Fancy"?', a: 'TWICE', w: ['Red Velvet', 'ITZY', 'MAMAMOO'], fact: 'O TWICE nasceu do reality show "Sixteen", da JYP, em 2015.' },
+  { sub: 'kpop', q: 'Qual hit do BIGBANG, de 2012, virou um dos maiores hinos do K-pop?', a: 'Fantastic Baby', w: ['Growl', 'Lucifer', 'Sherlock'], fact: 'O líder G-Dragon é também o principal compositor do grupo.' },
+  { sub: 'kpop', q: 'Qual grupo de K-pop tem 13 integrantes divididos em três unidades?', a: 'SEVENTEEN', w: ['NCT 127', 'Stray Kids', 'TREASURE'], fact: 'O nome vem da conta: 13 membros + 3 unidades + 1 grupo = 17.' },
+
+  // ===== METAL (extra) =====
+  { sub: 'metal', q: 'Quem é o vocalista do Slipknot, que também canta no Stone Sour?', a: 'Corey Taylor', w: ['Chester Bennington', 'Serj Tankian', 'Jonathan Davis'], fact: 'Os integrantes mascarados do Slipknot já foram numerados de 0 a 8.' },
+  { sub: 'metal', q: 'Ronnie James Dio substituiu Ozzy Osbourne em qual banda, em 1979?', a: 'Black Sabbath', w: ['Rainbow', 'Deep Purple', 'Judas Priest'], fact: 'Dio ajudou a popularizar no metal o gesto dos "chifrinhos" com a mão.' },
+  { sub: 'metal', q: 'Qual banda finlandesa de monstros venceu o Eurovision em 2006?', a: 'Lordi', w: ['Nightwish', 'HIM', 'Children of Bodom'], fact: 'A música vencedora foi "Hard Rock Hallelujah".' },
+  { sub: 'metal', q: 'Qual álbum do System of a Down, de 2001, traz "Chop Suey!"?', a: 'Toxicity', w: ['Mezmerize', 'Hypnotize', 'Steal This Album!'], fact: 'Todos os integrantes da banda são descendentes de armênios.' },
+  { sub: 'metal', q: 'O guitarrista Dimebag Darrell ficou famoso em qual banda?', a: 'Pantera', w: ['Slayer', 'Testament', 'Machine Head'], fact: 'Dimebag foi morto a tiros em cima do palco, durante um show, em 2004.' },
+
+  // ===== MPB (extra) =====
+  { sub: 'mpb', q: 'Quem foi a musa que inspirou "Garota de Ipanema"?', a: 'Helô Pinheiro', w: ['Nara Leão', 'Leila Diniz', 'Danuza Leão'], fact: 'Tom e Vinicius a viam passar do bar Veloso, hoje chamado Garota de Ipanema.' },
+  { sub: 'mpb', q: 'Qual cantor gravou os discos "Racional" na fase em que entrou para uma seita?', a: 'Tim Maia', w: ['Cassiano', 'Hyldon', 'Wilson Simonal'], fact: 'Depois de romper com a seita, Tim Maia renegou esses discos.' },
+  { sub: 'mpb', q: 'Quem compôs "Como Nossos Pais", eternizada na voz de Elis Regina?', a: 'Belchior', w: ['Fagner', 'Ednardo', 'Raul Seixas'], fact: 'O cearense Belchior também gravou a canção no disco "Alucinação" (1976).' },
+  { sub: 'mpb', q: 'Qual cantora fez sucesso com "Festa do Interior" (1981)?', a: 'Gal Costa', w: ['Maria Bethânia', 'Simone', 'Elba Ramalho'], fact: 'Gal Costa morreu em 2022, aos 77 anos.' },
+  { sub: 'mpb', q: 'Quem compôs "Mas Que Nada", que estourou no mundo com Sérgio Mendes?', a: 'Jorge Ben Jor', w: ['Wilson Simonal', 'Carlos Lyra', 'João Donato'], fact: 'Jorge Ben lançou a música no seu 1º disco, "Samba Esquema Novo" (1963).' },
+
+  // ===== SERTANEJO (extra) =====
+  { sub: 'sertanejo', q: 'Qual era o nome do projeto de Marília Mendonça com Maiara & Maraisa?', a: 'Patroas', w: ['Poderosas', 'Rainhas', 'Sofredoras'], fact: 'As gêmeas Maiara e Maraisa eram grandes amigas e parceiras de Marília.' },
+  { sub: 'sertanejo', q: 'Quem compôs "Tocando em Frente" em parceria com Renato Teixeira?', a: 'Almir Sater', w: ['Sérgio Reis', 'Rolando Boldrin', 'Tião Carreiro'], fact: 'O violeiro Almir Sater também atuou na novela "Pantanal" (1990).' },
+  { sub: 'sertanejo', q: 'Qual dupla de irmãos fez sucesso com "Borboletas" (2008)?', a: 'Victor & Leo', w: ['Jorge & Mateus', 'César Menotti & Fabiano', 'João Neto & Frederico'], fact: 'A dupla também emplacou "Fada" e "Amigo Apaixonado".' },
+  { sub: 'sertanejo', q: 'Qual cantora é chamada de "Boiadeira" e estourou com "Pipoco" (2022)?', a: 'Ana Castela', w: ['Lauana Prado', 'Yasmin Santos', 'Naiara Azevedo'], fact: '"Pipoco" foi gravada com Melody e DJ Chris no Beat.' },
+  { sub: 'sertanejo', q: 'Qual dupla ficou conhecida como "As Gargantas de Ouro do Brasil"?', a: 'Milionário & José Rico', w: ['Tião Carreiro & Pardinho', 'Pena Branca & Xavantinho', 'Zilo & Zalo'], fact: 'Seu maior sucesso, "Estrada da Vida", virou filme no começo dos anos 80.' },
+
+  // ===== BREGA (extra) =====
+  { sub: 'brega', q: 'Qual música de Sidney Magal dá nome à cinebiografia dele, de 2023?', a: 'Meu Sangue Ferve por Você', w: ['Sandra Rosa Madalena', 'Me Chama Que Eu Vou', 'Amante Latino'], fact: 'O filme conta o romance de Magal com Magali, sua mulher por décadas.' },
+  { sub: 'brega', q: 'Quem gravou o sucesso "Fuscão Preto"?', a: 'Almir Rogério', w: ['Bartô Galeno', 'Fernando Mendes', 'Sidney Magal'], fact: 'A música virou filme em 1983, estrelado por Xuxa.' },
+  { sub: 'brega', q: 'Qual cantor gravou o clássico "Eu Não Sou Cachorro, Não"?', a: 'Waldick Soriano', w: ['Agnaldo Timóteo', 'Nelson Ned', 'Paulo Sérgio'], fact: 'Baiano, Waldick se apresentava sempre de chapéu e óculos escuros.' },
+  { sub: 'brega', q: 'Qual cantor brega gravou "O Fruto do Nosso Amor" e "Princesa"?', a: 'Amado Batista', w: ['Odair José', 'Bartô Galeno', 'Fernando Mendes'], fact: 'Goiano, Amado Batista é um dos maiores vendedores de discos do Brasil.' },
+  { sub: 'brega', q: 'Qual cantor, apelidado de "O Ídolo Negro", gravou "Sorria, Sorria"?', a: 'Evaldo Braga', w: ['Agnaldo Timóteo', 'Waldick Soriano', 'Nelson Ned'], fact: 'Evaldo Braga morreu em um acidente de carro em 1973, aos 25 anos.' },
+
+  // ===== DANCE (extra) =====
+  { sub: 'dance', q: 'Qual dupla de produtores fez o remix de "Macarena" que estourou no mundo?', a: 'Bayside Boys', w: ['Black Box', 'C+C Music Factory', 'The KLF'], fact: 'A música original é da dupla espanhola Los del Río.' },
+  { sub: 'dance', q: 'Qual grupo alemão gravou "Coco Jambo" (1996)?', a: 'Mr. President', w: ['Fun Factory', 'Masterboy', 'E-Rotic'], fact: 'O trio virou presença certa nas festas e programas de TV dos anos 90.' },
+  { sub: 'dance', q: 'Qual cantor transformou a própria gagueira no hit "Scatman" (1994)?', a: 'Scatman John', w: ['Dr. Alban', 'Haddaway', 'Ice MC'], fact: 'Ele usava o "scat", improviso vocal do jazz, para driblar a gagueira.' },
+  { sub: 'dance', q: 'Qual cantora italiana gravou "Freed from Desire" (1996)?', a: 'Gala', w: ['Alexia', 'Whigfield', 'Ann Lee'], fact: 'Em 2016, a música virou canto de torcida no futebol europeu.' },
+  { sub: 'dance', q: 'Qual DJ gravou o clássico instrumental "Children" (1995)?', a: 'Robert Miles', w: ['Gigi D\'Agostino', 'Benny Benassi', 'Paul van Dyk'], fact: 'A faixa calma foi feita para acalmar quem voltava dirigindo das raves.' },
+
+  // ===== DISCO (extra) =====
+  { sub: 'disco', q: 'Quais integrantes do ABBA compunham as músicas do grupo?', a: 'Benny e Björn', w: ['Agnetha e Frida', 'Benny e Agnetha', 'Björn e Frida'], fact: 'O nome ABBA vem das iniciais dos quatro integrantes.' },
+  { sub: 'disco', q: 'Qual grupo gravou "September" (1978)?', a: 'Earth, Wind & Fire', w: ['Kool & the Gang', 'The Jacksons', 'Commodores'], fact: 'O dia 21 de setembro, citado na letra, virou data comemorada pelos fãs.' },
+  { sub: 'disco', q: 'Qual grupo de irmãs gravou "We Are Family" (1979)?', a: 'Sister Sledge', w: ['The Pointer Sisters', 'The Emotions', 'The Supremes'], fact: 'A música foi composta e produzida por Nile Rodgers e Bernard Edwards, do Chic.' },
+  { sub: 'disco', q: 'Qual banda gravou "That\'s the Way (I Like It)" (1975)?', a: 'KC and the Sunshine Band', w: ['Commodores', 'Village People', 'The Ritchie Family'], fact: 'A banda é de Miami, e "KC" é o vocalista Harry Wayne Casey.' },
+  { sub: 'disco', q: 'Qual grupo gravou "Disco Inferno", da trilha de "Os Embalos de Sábado à Noite"?', a: 'The Trammps', w: ['Heatwave', 'The Hues Corporation', 'Tavares'], fact: 'O grupo era da Filadélfia, berço do som "Philly Soul".' },
+
+  // ===== ANOS 80 (extra) =====
+  { sub: 'anos80', q: 'Quem fazia dupla com George Michael no Wham!?', a: 'Andrew Ridgeley', w: ['Simon Le Bon', 'Tony Hadley', 'Boy George'], fact: '"Wake Me Up Before You Go-Go" (1984) foi o 1º nº 1 da dupla nos EUA.' },
+  { sub: 'anos80', q: 'Qual álbum dos Titãs, de 1986, tem "Polícia" e "Homem Primata"?', a: 'Cabeça Dinossauro', w: ['Televisão', 'Õ Blésq Blom', 'Acústico MTV'], fact: 'É apontado como um dos melhores discos da história do rock brasileiro.' },
+  { sub: 'anos80', q: 'Qual banda gravou "Você Não Soube Me Amar" (1982)?', a: 'Blitz', w: ['Rádio Táxi', 'Magazine', 'João Penca e Seus Miquinhos'], fact: 'O vocalista Evandro Mesquita depois virou ator de novelas e séries.' },
+  { sub: 'anos80', q: 'Qual banda gravou "Don\'t You (Forget About Me)" (1985)?', a: 'Simple Minds', w: ['Tears for Fears', 'Duran Duran', 'The Cure'], fact: 'A música é o tema do filme "Clube dos Cinco" (1985).' },
+  { sub: 'anos80', q: 'Qual álbum de Prince, lançado em 1984, também virou filme?', a: 'Purple Rain', w: ['1999', 'Controversy', 'Lovesexy'], fact: 'Prince ganhou o Oscar de Melhor Trilha Sonora Original pelo filme.' },
+
+  // ===== ANOS 2000 (extra) =====
+  { sub: 'anos2000', q: 'Qual álbum de 2003 marcou a estreia solo de Beyoncé?', a: 'Dangerously in Love', w: ['B\'Day', 'I Am... Sasha Fierce', 'Lemonade'], fact: 'O disco traz "Crazy in Love", gravada com Jay-Z.' },
+  { sub: 'anos2000', q: 'Qual integrante do RBD interpretava Mia Colucci na novela "Rebelde"?', a: 'Anahí', w: ['Dulce María', 'Maite Perroni', 'Belinda'], fact: 'A novela "Rebelde" passou no SBT a partir de 2005.' },
+  { sub: 'anos2000', q: 'Qual banda gravou "Mr. Brightside" (2004)?', a: 'The Killers', w: ['The Strokes', 'Franz Ferdinand', 'Kings of Leon'], fact: 'Apesar do som britânico, a banda é de Las Vegas, nos EUA.' },
+  { sub: 'anos2000', q: 'Qual cantor gravou "Yeah!" (2004) com Lil Jon e Ludacris?', a: 'Usher', w: ['Ne-Yo', 'Chris Brown', 'Nelly'], fact: 'Foi a música nº 1 da parada anual da Billboard em 2004.' },
+  { sub: 'anos2000', q: 'Qual banda gravou "Um Minuto para o Fim do Mundo" (2005)?', a: 'CPM 22', w: ['Fresno', 'Charlie Brown Jr.', 'Detonautas'], fact: 'A música está no álbum "Felicidade Instantânea", de 2005.' },
 ];
 
 export default questions;
