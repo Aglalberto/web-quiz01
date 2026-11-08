@@ -26,6 +26,10 @@ Todos os aparelhos precisam de **internet**, mas não precisam estar na mesma re
 
 **Para começar do zero, basta recarregar a página da TV:** cada carregamento cria uma sala nova, com outro código, e os jogadores leem o QR Code de novo. Para jogar outra partida com as mesmas pessoas, o host toca em **JOGAR DE NOVO** no fim do jogo.
 
+### A TV não entra em modo de descanso
+
+O fundo animado da TV é um vídeo leve (320×180, 8 s em loop, ~40 KB) tocando sem som. Smart TVs não entram em proteção de tela enquanto há vídeo tocando. Se o navegador pausar o vídeo, o jogo dá play de novo na hora. Quando o navegador suporta, o jogo também pede para manter a tela ligada (Wake Lock). Para conferir o que a sua TV suporta, abra o endereço com `?diag`.
+
 ### Como funciona por dentro
 
 A própria TV é o “servidor”: as regras do jogo rodam no navegador dela. TV e celulares trocam mensagens por um **servidor MQTT público e gratuito**, que funciona como um carteiro (EMQX, HiveMQ, Eclipse ou Mosquitto). A TV usa o primeiro que responder e informa qual é no QR Code.
@@ -43,6 +47,7 @@ A cada `push`, o GitHub Actions roda os testes, gera o site e publica (`.github/
 | Parâmetro | Exemplo | Para quê |
 |---|---|---|
 | `vitoria` | `?vitoria=10` | Acertos para vencer (padrão 15) |
+| `diag` | `?diag` | Mostra na TV um quadrinho de diagnóstico da tela (vídeo de fundo, wake lock, navegador) |
 | `fast` | `?fast=1` | Tempos curtos (para testes) |
 | `broker` | `?broker=ws://localhost:8883` | Usa outro servidor MQTT (para testes) |
 

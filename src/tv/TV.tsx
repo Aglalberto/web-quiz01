@@ -5,7 +5,7 @@ import { MAX_PLAYERS } from '../../shared/types';
 import { themeById } from '../../shared/themes';
 import { useCountdown } from '../net/client';
 import { useHostRoom } from '../net/host';
-import { keepScreenAwake } from '../lib/keepAwake';
+import { keepScreenAwake, type AwakeStatus } from '../lib/keepAwake';
 import { Avatar, Logo, OPTION_STYLES, colorOf, themeLabel } from '../lib/ui';
 import { EmptySeat, PlayerCard, SEAT_AREAS } from './PlayerCard';
 
@@ -14,14 +14,30 @@ export function TV() {
   const { state, online, joinUrl } = room;
   const phase = state?.phase;
 
-  // impede a TV de entrar em modo de descanso / proteção de tela
-  useEffect(() => keepScreenAwake(), []);
+  // impede a TV de entrar em modo de descanso: o fundo animado é um vídeo tocando
+  const bgVideo = useRef<HTMLVideoElement>(null);
+  const diag = new URLSearchParams(location.search).has('diag');
+  const [awake, setAwake] = useState<AwakeStatus | null>(null);
+  useEffect(() => (bgVideo.current ? keepScreenAwake(bgVideo.current, diag ? setAwake : undefined) : undefined), []);
 
   const bySeat = new Map(state?.players.map((p) => [p.seat, p]) ?? []);
   const inGame = phase && phase !== 'lobby';
 
   return (
     <div class="party-bg relative h-full w-full cursor-none overflow-hidden select-none">
+      <video
+        ref={bgVideo}
+        class="pointer-events-none absolute left-0 top-0 h-full w-full object-cover opacity-60"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="fundo.mp4" type="video/mp4" />
+        <source src="fundo.webm" type="video/webm" />
+      </video>
       <div class="dots pointer-events-none absolute left-0 top-0 h-full w-full" />
       <div class="relative grid h-full grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto] gap-[1.6rem] p-[1.8rem]">
         {Array.from({ length: MAX_PLAYERS }, (_, seat) => {
@@ -57,6 +73,16 @@ export function TV() {
             <div class="mt-3 text-[3.8rem] font-bold">Jogo pausado</div>
             <div class="mt-1 text-[1.7rem] text-ink/70">O host pode continuar pelo celular 👑</div>
           </div>
+        </div>
+      )}
+      {diag && awake && (
+        <div class="absolute bottom-3 left-3 rounded-xl bg-black/80 px-4 py-2 font-mono text-[1.1rem] leading-snug text-white">
+          <div>📺 diagnóstico da tela</div>
+          <div>vídeo: {awake.video}</div>
+          <div>wake lock: {awake.wakeLock}</div>
+          <div>retomadas do vídeo: {awake.restarts}</div>
+          <div>navegador: {awake.browser}</div>
+          <div>aberto há: {Math.round((Date.now() - awake.since) / 60000)} min</div>
         </div>
       )}
       {!online && state && (

@@ -1,74 +1,111 @@
-// Mantém a tela da TV ligada durante o jogo (sem ninguém tocar no controle).
-// 1) Screen Wake Lock API, quando o navegador suporta (precisa de HTTPS — o GitHub Pages é).
-// 2) Reserva: um vídeo minúsculo, mudo e invisível tocando em loop. A maioria das Smart TVs
-//    não entra em proteção de tela enquanto há vídeo tocando.
-import media from 'nosleep.js/src/media.js';
+// Mantém a tela da TV ligada durante o jogo, sem ninguém tocar no controle.
+//
+// Smart TVs (LG webOS, Samsung Tizen…) não entram em proteção de tela enquanto há um VÍDEO
+// TOCANDO E VISÍVEL. Por isso o fundo animado da TV é um vídeo de verdade (public/fundo.mp4,
+// 320×180, 8 s em loop, ~40 KB) — leve para decodificar e ainda assim “vídeo em reprodução”.
+//
+// Camadas de proteção:
+//  1) vídeo de fundo visível, mudo e em loop, com retomada automática se o navegador pausar;
+//  2) Screen Wake Lock API, quando o navegador suporta (precisa de HTTPS — o GitHub Pages é);
+//  3) se alguém apertar OK no controle, aproveita o gesto para tela cheia + reforçar 1 e 2.
 
 type Sentinel = { release: () => Promise<void>; addEventListener?: (t: string, f: () => void) => void };
 
-export function keepScreenAwake() {
-  let sentinel: Sentinel | null = null;
+export interface AwakeStatus {
+  wakeLock: string;
+  video: string;
+  restarts: number;
+  browser: string;
+  since: number;
+}
+
+export function keepScreenAwake(video: HTMLVideoElement, onStatus?: (s: AwakeStatus) => void) {
   const nav = navigator as Navigator & { wakeLock?: { request: (t: 'screen') => Promise<Sentinel> } };
+  let sentinel: Sentinel | null = null;
+  const status: AwakeStatus = {
+    wakeLock: nav.wakeLock ? 'pedindo…' : 'não suportado',
+    video: 'carregando…',
+    restarts: 0,
+    browser: (navigator.userAgent.match(/(Chrome|Chromium|Safari|Firefox)\/[\d.]+/) ?? ['?'])[0],
+    since: Date.now(),
+  };
+  const report = () => onStatus?.({ ...status });
 
   const requestLock = async () => {
-    if (!nav.wakeLock || document.visibilityState !== 'visible') return;
+    if (!nav.wakeLock || sentinel || document.visibilityState !== 'visible') return;
     try {
       sentinel = await nav.wakeLock.request('screen');
-      sentinel.addEventListener?.('release', () => (sentinel = null));
-    } catch {
-      /* sem permissão ou sem suporte: o vídeo cobre */
+      status.wakeLock = 'ativo ✅';
+      sentinel.addEventListener?.('release', () => {
+        sentinel = null;
+        status.wakeLock = 'liberado (pedindo de novo)';
+        report();
+      });
+    } catch (e) {
+      status.wakeLock = `negado (${(e as Error)?.name ?? 'erro'})`;
     }
+    report();
   };
 
-  const video = document.createElement('video');
-  video.muted = true;
-  video.loop = true;
-  video.setAttribute('muted', '');
-  video.setAttribute('playsinline', '');
-  video.setAttribute('aria-hidden', 'true');
-  // tela cheia, atrás de tudo e praticamente transparente: algumas TVs ignoram vídeos minúsculos
-  Object.assign(video.style, {
-    position: 'fixed',
-    left: '0',
-    top: '0',
-    width: '100vw',
-    height: '100vh',
-    objectFit: 'cover',
-    opacity: '0.01',
-    zIndex: '-1',
-    pointerEvents: 'none',
-  });
-  const webm = document.createElement('source');
-  webm.src = media.webm;
-  webm.type = 'video/webm';
-  const mp4 = document.createElement('source');
-  mp4.src = media.mp4;
-  mp4.type = 'video/mp4';
-  video.append(webm, mp4);
-  document.body.appendChild(video);
-
-  const playVideo = () => {
+  const play = () => {
+    video.muted = true;
     const p = video.play();
     if (p && typeof p.catch === 'function') p.catch(() => {});
   };
 
-  const onVisible = () => {
+  let lastTime = -1;
+  const check = () => {
     if (document.visibilityState !== 'visible') return;
-    if (!sentinel) void requestLock();
-    playVideo();
+    if (video.error) status.video = `erro ${video.error.code}`;
+    else if (video.paused || video.ended) {
+      status.video = 'pausado → dando play';
+      status.restarts++;
+      play();
+    } else if (video.currentTime === lastTime) {
+      status.video = 'travado → reiniciando';
+      status.restarts++;
+      video.currentTime = 0;
+      play();
+    } else status.video = `tocando ✅ (${video.currentTime.toFixed(1)} s)`;
+    lastTime = video.currentTime;
+    void requestLock();
+    report();
   };
 
+  // qualquer pausa inesperada → play imediato
+  const onPause = () => setTimeout(play, 300);
+  video.addEventListener('pause', onPause);
+  video.addEventListener('ended', play);
+  video.addEventListener('stalled', play);
+
+  // se alguém apertar um botão do controle, usa o gesto para tela cheia e reforço
+  const onGesture = () => {
+    const el = document.documentElement as HTMLElement & { webkitRequestFullscreen?: () => void };
+    try {
+      if (!document.fullscreenElement) (el.requestFullscreen?.() ?? el.webkitRequestFullscreen?.())?.catch?.(() => {});
+    } catch {
+      /* ignora */
+    }
+    play();
+    void requestLock();
+  };
+  window.addEventListener('keydown', onGesture);
+  window.addEventListener('pointerdown', onGesture);
+  document.addEventListener('visibilitychange', check);
+
+  play();
   void requestLock();
-  playVideo();
-  document.addEventListener('visibilitychange', onVisible);
-  // alguns navegadores pausam o vídeo ou soltam a trava sozinhos: reforça de tempos em tempos
-  const timer = setInterval(onVisible, 30_000);
+  const timer = setInterval(check, 10_000);
+  setTimeout(check, 1500);
 
   return () => {
     clearInterval(timer);
-    document.removeEventListener('visibilitychange', onVisible);
+    video.removeEventListener('pause', onPause);
+    video.removeEventListener('ended', play);
+    video.removeEventListener('stalled', play);
+    window.removeEventListener('keydown', onGesture);
+    window.removeEventListener('pointerdown', onGesture);
+    document.removeEventListener('visibilitychange', check);
     void sentinel?.release().catch(() => {});
-    video.pause();
-    video.remove();
   };
 }
