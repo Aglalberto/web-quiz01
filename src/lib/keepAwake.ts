@@ -32,8 +32,17 @@ export function keepScreenAwake(video: HTMLVideoElement, onStatus?: (s: AwakeSta
   };
   const report = () => onStatus?.({ ...status });
 
+  let pending = false;
   const requestLock = async () => {
-    if (!nav.wakeLock || sentinel || document.visibilityState !== 'visible') return;
+    if (!nav.wakeLock || sentinel || pending || document.visibilityState !== 'visible') return;
+    pending = true;
+    // algumas TVs (ex.: LG webOS 22) recebem o pedido e nunca respondem
+    const noAnswer = setTimeout(() => {
+      if (!sentinel) {
+        status.wakeLock = 'sem resposta da TV (ignorado)';
+        report();
+      }
+    }, 5000);
     try {
       sentinel = await nav.wakeLock.request('screen');
       status.wakeLock = 'ativo ✅';
@@ -44,6 +53,9 @@ export function keepScreenAwake(video: HTMLVideoElement, onStatus?: (s: AwakeSta
       });
     } catch (e) {
       status.wakeLock = `negado (${(e as Error)?.name ?? 'erro'})`;
+    } finally {
+      pending = false;
+      clearTimeout(noAnswer);
     }
     report();
   };
