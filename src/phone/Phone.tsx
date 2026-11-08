@@ -3,7 +3,8 @@ import type { PublicPlayer, PublicState } from '../../shared/types';
 import { themeById } from '../../shared/themes';
 import { sfx, unlockAudio } from '../lib/sound';
 import { savedName, useCountdown, usePlayerConnection } from '../net/client';
-import { Avatar, Logo, OPTION_STYLES, burst, colorOf, themeLabel } from '../lib/ui';
+import { Avatar, Logo, OPTION_STYLES, colorOf, themeLabel } from '../lib/ui';
+import { burst } from '../lib/confetti';
 
 export function Phone() {
   const conn = usePlayerConnection();

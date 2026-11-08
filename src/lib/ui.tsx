@@ -1,4 +1,3 @@
-import confetti from 'canvas-confetti';
 import { PLAYER_COLORS } from '../../shared/types';
 import { MUSIC_SUBS, themeById } from '../../shared/themes';
 
@@ -16,15 +15,6 @@ export function themeLabel(themeId: string | null | undefined, sub?: string) {
   const t = themeId ? themeById(themeId) : undefined;
   if (!t) return '';
   return sub && MUSIC_SUBS[sub] ? `${t.name} · ${MUSIC_SUBS[sub]}` : t.name;
-}
-
-export function burst(big = false) {
-  const colors = PLAYER_COLORS.map((c) => c.hex);
-  confetti({ particleCount: big ? 220 : 90, spread: big ? 120 : 75, origin: { y: 0.6 }, colors, scalar: big ? 1.3 : 1 });
-  if (big) {
-    setTimeout(() => confetti({ particleCount: 120, angle: 60, spread: 70, origin: { x: 0 }, colors }), 250);
-    setTimeout(() => confetti({ particleCount: 120, angle: 120, spread: 70, origin: { x: 1 }, colors }), 400);
-  }
 }
 
 export function Avatar({ name, seat, size = '3rem', ring = false }: { name: string; seat: number; size?: string; ring?: boolean }) {

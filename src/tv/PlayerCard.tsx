@@ -46,13 +46,13 @@ export function PlayerCard({ player, state }: { player: PublicPlayer; state: Pub
 
   return (
     <div
-      class={`relative w-[22rem] rounded-[1.6rem] border-[0.35rem] bg-white p-3 chunky-lg transition-all duration-500 ${
-        player.connected ? '' : 'opacity-45 grayscale'
-      } ${sitOut ? 'scale-90 opacity-50' : ''} ${player.contender ? 'animate-pulse-big' : ''}`}
+      class={`relative w-[22rem] rounded-[1.6rem] border-[0.35rem] bg-white p-3 chunky-lg transition-[opacity,transform] duration-500 ${
+        player.connected ? '' : 'opacity-45'
+      } ${sitOut ? 'scale-90 opacity-50' : ''} ${player.contender ? 'ring-[0.4rem] ring-yellow-300' : ''}`}
       style={{ borderColor: c.hex }}
     >
       {player.isHost && (
-        <span class="absolute -top-[1.6rem] left-3 text-[2.2rem] animate-wiggle" title="Host">
+        <span class="absolute -top-[1.6rem] left-3 text-[2.2rem]" title="Host">
           👑
         </span>
       )}
@@ -79,8 +79,12 @@ export function PlayerCard({ player, state }: { player: PublicPlayer; state: Pub
       </div>
       <div class="mt-2 h-[0.9rem] overflow-hidden rounded-full bg-ink/10">
         <div
-          class="h-full rounded-full transition-all duration-700"
-          style={{ width: `${pct * 100}%`, background: `linear-gradient(90deg, ${c.hex}, ${c.dark})` }}
+          class="h-full w-full origin-left rounded-full"
+          style={{
+            transform: `scaleX(${pct})`,
+            transition: 'transform 0.7s ease-out',
+            background: `linear-gradient(90deg, ${c.hex}, ${c.dark})`,
+          }}
         />
       </div>
       {badge && <div class="absolute -bottom-[1.1rem] right-3">{badge}</div>}

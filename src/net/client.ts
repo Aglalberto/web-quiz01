@@ -168,15 +168,15 @@ export function usePlayerConnection(): Connection {
   };
 }
 
-/** Segundos restantes da fase atual (atualiza ~10x por segundo). */
-export function useCountdown(deadline: number | null, offset: number) {
+/** Segundos restantes da fase atual (atualiza a cada `every` ms; padrão 10x por segundo). */
+export function useCountdown(deadline: number | null, offset: number, every = 100) {
   const [now, setNow] = useState(() => Date.now() + offset);
   useEffect(() => {
     if (deadline === null) return;
-    const id = setInterval(() => setNow(Date.now() + offset), 100);
+    const id = setInterval(() => setNow(Date.now() + offset), every);
     setNow(Date.now() + offset);
     return () => clearInterval(id);
-  }, [deadline, offset]);
+  }, [deadline, offset, every]);
   if (deadline === null) return { msLeft: 0, secLeft: 0 };
   const msLeft = Math.max(0, deadline - now);
   return { msLeft, secLeft: Math.ceil(msLeft / 1000) };

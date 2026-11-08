@@ -84,11 +84,16 @@ class HostRoom {
     this.intervals.push(
       setInterval(() => {
         const now = Date.now();
+        let dropped = false;
         for (const p of this.game.players) {
           const seen = this.lastSeen.get(p.id) ?? 0;
-          if (p.connected && now - seen > PLAYER_TIMEOUT) this.game.disconnect(p.id, now);
+          if (p.connected && now - seen > PLAYER_TIMEOUT) {
+            this.game.disconnect(p.id, now);
+            dropped = true;
+          }
         }
-        this.changed();
+        if (dropped) this.changed();
+        else this.publish(false);
       }, HEARTBEAT),
     );
     this.changed();
@@ -119,10 +124,13 @@ class HostRoom {
     const now = Date.now();
     this.lastSeen.set(from, now);
     const known = g.getPlayer(from);
-    if (known && !known.connected) g.resume(from);
+    const revived = !!known && !known.connected;
+    if (revived) g.resume(from);
 
     switch (msg.type) {
       case 'ping':
+        // sinal de vida de quem já estava conectado não muda nada na tela
+        if (!revived) return;
         break;
       case 'join': {
         const res = g.join(msg.name, from);
@@ -162,16 +170,17 @@ class HostRoom {
     this.changed();
   }
 
-  view(): PublicState {
-    return this.game.view(this.joinUrl, Date.now());
-  }
+  /** Último estado calculado (a tela da TV usa este, sem recalcular a cada desenho) */
+  current: PublicState | null = null;
 
-  private publish() {
+  private publish(recompute = true) {
+    if (recompute || !this.current) this.current = this.game.view(this.joinUrl, Date.now());
+    else this.current = { ...this.current, serverNow: Date.now() };
     if (!this.client?.connected) return;
-    this.client.publish(topics(this.code).state, JSON.stringify(this.view()), { qos: 0, retain: true });
+    this.client.publish(topics(this.code).state, JSON.stringify(this.current), { qos: 0, retain: true });
   }
 
-  /** Publica o estado e reprograma o timer da fase. */
+  /** Recalcula e publica o estado, reprograma o timer da fase e redesenha a TV. */
   changed() {
     this.publish();
     if (this.timer) clearTimeout(this.timer);
@@ -200,7 +209,7 @@ export function useHostRoom() {
     };
   }, [room]);
   return {
-    state: room.client ? room.view() : null,
+    state: room.client ? room.current : null,
     online: room.online,
     joinUrl: room.joinUrl,
     code: room.code,

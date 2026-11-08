@@ -106,7 +106,7 @@ function Lobby({ state, joinUrl }: { state: PublicState; joinUrl: string }) {
           </div>
         </div>
       </Panel>
-      <div class="rounded-full bg-white/15 px-8 py-3 text-[1.7rem] font-semibold text-white backdrop-blur">
+      <div class="rounded-full bg-white/15 px-8 py-3 text-[1.7rem] font-semibold text-white">
         {host ? (
           count < 2 ? (
             <>Esperando mais um jogador entrar… 👀</>
@@ -124,21 +124,33 @@ function Lobby({ state, joinUrl }: { state: PublicState; joinUrl: string }) {
 }
 
 function TimerBar({ state, offset }: { state: PublicState; offset: number }) {
-  const { msLeft, secLeft } = useCountdown(state.deadline, offset);
-  const total = state.duration ?? 1;
-  const pct = Math.max(0, Math.min(1, msLeft / total));
+  // o número atualiza poucas vezes por segundo; a barra anda sozinha via CSS (sem JS por quadro)
+  const { secLeft } = useCountdown(state.deadline, offset, 250);
+  const bar = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = bar.current;
+    if (!el || state.deadline === null) return;
+    const total = state.duration ?? 1;
+    const left = Math.max(0, state.deadline - (Date.now() + offset));
+    el.style.transition = 'none';
+    el.style.transform = `scaleX(${Math.min(1, left / total)})`;
+    void el.offsetWidth; // aplica o ponto de partida antes de animar
+    el.style.transition = `transform ${left}ms linear`;
+    el.style.transform = 'scaleX(0)';
+  }, [state.deadline, state.duration, offset]);
   const urgent = secLeft <= 5;
   return (
     <div class="flex w-full items-center space-x-4">
       <div class="h-[1.4rem] flex-1 overflow-hidden rounded-full bg-ink/10">
         <div
-          class="h-full rounded-full transition-[width] duration-100 ease-linear"
-          style={{ width: `${pct * 100}%`, background: urgent ? '#ff4d6d' : '#5b2bd6' }}
+          ref={bar}
+          class="h-full w-full origin-left rounded-full"
+          style={{ background: urgent ? '#ff4d6d' : '#5b2bd6', willChange: 'transform' }}
         />
       </div>
       <div
         class={`grid h-[4.4rem] w-[4.4rem] place-items-center rounded-full text-[2.2rem] font-bold text-white chunky ${
-          urgent ? 'bg-red-500 animate-pulse-big' : 'bg-grape'
+          urgent ? 'bg-red-500' : 'bg-grape'
         }`}
       >
         {secLeft}
@@ -167,10 +179,10 @@ function Voting({ state, offset }: { state: PublicState; offset: number }) {
               class="animate-zoom flex flex-col items-center rounded-[2.2rem] p-[1.6rem] text-white chunky-lg"
               style={{ background: t.color, animationDelay: `${i * 0.12}s` }}
             >
-              <div class="text-[6rem] leading-none animate-wiggle" style={{ animationDelay: `${i * 0.3}s` }}>
+              <div class="text-[6rem] leading-none">
                 {t.emoji}
               </div>
-              <div class="mt-3 text-center text-[2.2rem] leading-tight font-bold drop-shadow">{t.name}</div>
+              <div class="mt-3 text-center text-[2.2rem] leading-tight font-bold tshadow">{t.name}</div>
               <div class="-m-1 mt-3 flex min-h-[3.2rem] flex-wrap justify-center">
                 {voters.map((p) => (
                   <div key={p.id} class="m-1 animate-pop">
@@ -215,7 +227,7 @@ function Chosen({ state }: { state: PublicState }) {
         class="animate-zoom flex flex-col items-center rounded-[3rem] px-[4rem] py-[2.4rem] chunky-lg"
         style={{ background: t.color }}
       >
-        <div class="text-[9rem] leading-none animate-wiggle">{t.emoji}</div>
+        <div class="text-[9rem] leading-none">{t.emoji}</div>
         <div class="text-outline mt-4 text-[4.4rem] font-bold">{t.name}</div>
       </div>
     </div>
@@ -292,7 +304,7 @@ function CorrectAnswer({ state }: { state: PublicState }) {
         <span class="text-[3rem] leading-none">{s.shape}</span>
         <div class="flex-1">
           <div class="text-[1.3rem] font-semibold uppercase tracking-wider opacity-90">Resposta certa</div>
-          <div class="text-[2.5rem] leading-tight font-bold drop-shadow">{q.options[idx]}</div>
+          <div class="text-[2.5rem] leading-tight font-bold tshadow">{q.options[idx]}</div>
         </div>
         <span class="text-[3.4rem]">✅</span>
       </div>
@@ -351,15 +363,17 @@ function Podium({ state }: { state: PublicState }) {
         {order.map((p, i) =>
           p ? (
             <div key={p.id} class="flex w-[16rem] flex-col items-center">
-              <div class={`text-[4rem] ${i === 1 ? 'animate-wiggle' : ''}`}>{medals[i]}</div>
+              <div class="text-[4rem]">{medals[i]}</div>
               <Avatar name={p.name} seat={p.seat} size={i === 1 ? '6rem' : '4.4rem'} ring />
               <div class="mt-2 max-w-full truncate text-[2rem] font-bold">{p.name}</div>
               <div class="text-[1.4rem] opacity-90">{p.score} acertos</div>
               <div
-                class={`mt-2 w-full rounded-t-[1.6rem] ${heights[i]} transition-all duration-1000 chunky-lg ${
-                  show ? '' : '!h-0'
-                }`}
-                style={{ background: colorOf(p.seat).hex }}
+                class={`mt-2 w-full origin-bottom rounded-t-[1.6rem] ${heights[i]} chunky-lg`}
+                style={{
+                  background: colorOf(p.seat).hex,
+                  transform: show ? 'scaleY(1)' : 'scaleY(0)',
+                  transition: 'transform 1s ease-out',
+                }}
               />
             </div>
           ) : (
@@ -367,7 +381,7 @@ function Podium({ state }: { state: PublicState }) {
           ),
         )}
       </div>
-      <div class="rounded-full bg-white/15 px-8 py-3 text-[1.6rem] font-semibold backdrop-blur">
+      <div class="rounded-full bg-white/15 px-8 py-3 text-[1.6rem] font-semibold">
         👑 O host pode começar outra partida pelo celular
       </div>
     </div>
