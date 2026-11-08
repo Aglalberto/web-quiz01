@@ -203,7 +203,36 @@ function Voting({ state, offset }: { state: PublicState; offset: number }) {
 
 function Chosen({ state }: { state: PublicState }) {
   const t = state.themeId ? themeById(state.themeId) : undefined;
+  const tied = !state.suddenDeath && state.tiedThemes.length > 1;
+  // enquanto os celulares sorteiam, a TV não entrega o resultado (e não anima nada)
+  const [drawing, setDrawing] = useState(() => tied && state.deadline !== null && state.duration !== null
+    ? Date.now() < state.deadline - state.duration + state.drawMs
+    : false);
+  useEffect(() => {
+    if (!drawing || state.deadline === null || state.duration === null) return;
+    const id = setTimeout(() => setDrawing(false), state.deadline - state.duration + state.drawMs - Date.now());
+    return () => clearTimeout(id);
+  }, [drawing, state.deadline, state.duration, state.drawMs]);
   if (!t) return null;
+  if (drawing) {
+    return (
+      <div class="flex flex-col items-center space-y-[1.6rem] text-center text-white">
+        <h2 class="text-outline animate-bounce-in text-[5rem] font-bold text-yellow-300">Empate! 🎲</h2>
+        <p class="text-[2rem] font-semibold">Sorteando o tema no celular…</p>
+        <div class="flex space-x-[1.4rem]">
+          {state.tiedThemes.map((id) => {
+            const th = themeById(id)!;
+            return (
+              <div key={id} class="flex w-[16rem] flex-col items-center rounded-[2rem] p-[1.4rem] chunky-lg" style={{ background: th.color }}>
+                <div class="text-[4.4rem] leading-none">{th.emoji}</div>
+                <div class="mt-2 text-[1.8rem] font-bold tshadow">{th.name}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
   const contenders = state.players.filter((p) => p.contender);
   return (
     <div class="flex flex-col items-center space-y-[1.6rem] text-center text-white">
@@ -221,7 +250,7 @@ function Chosen({ state }: { state: PublicState }) {
           <p class="text-[1.6rem] opacity-90">Quem acertar sozinho leva a coroa 👑</p>
         </>
       ) : (
-        <div class="text-[2rem] font-semibold opacity-90">O tema escolhido foi…</div>
+        <div class="text-[2rem] font-semibold opacity-90">{tied ? 'O sorteio escolheu…' : 'O tema escolhido foi…'}</div>
       )}
       <div
         class="animate-zoom flex flex-col items-center rounded-[3rem] px-[4rem] py-[2.4rem] chunky-lg"

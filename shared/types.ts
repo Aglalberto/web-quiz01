@@ -63,6 +63,12 @@ export interface PublicState {
   /** duração total da fase atual (ms), p/ desenhar o timer */
   duration: number | null;
   suddenDeath: boolean;
+  /** temas empatados na votação: o celular mostra a roleta do sorteio */
+  tiedThemes: string[];
+  /** o sorteio aconteceu porque ninguém votou */
+  drawNoVotes: boolean;
+  /** duração da roleta (ms), contada do início da fase 'chosen' */
+  drawMs: number;
   winnerId: string | null;
   joinUrl: string;
   serverNow: number;

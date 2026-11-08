@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { PublicPlayer, PublicState } from '../../shared/types';
 import { themeById } from '../../shared/themes';
 import { sfx, unlockAudio } from '../lib/sound';
 import { savedName, useCountdown, usePlayerConnection } from '../net/client';
 import { Avatar, Logo, OPTION_STYLES, colorOf, themeLabel } from '../lib/ui';
 import { burst } from '../lib/confetti';
+import { drawSteps, usePhaseElapsed } from '../lib/draw';
 
 export function Phone() {
   const conn = usePlayerConnection();
@@ -193,7 +194,7 @@ function Screen({ state, me, conn }: { state: PublicState; me: PublicPlayer; con
     case 'voting':
       return <VoteScreen state={state} me={me} conn={conn} />;
     case 'chosen':
-      return <ChosenScreen state={state} me={me} />;
+      return <ChosenScreen state={state} me={me} offset={conn.offset} />;
     case 'question':
       return (
         <AnswerScreen
@@ -316,8 +317,11 @@ function VoteScreen({ state, me, conn }: { state: PublicState; me: PublicPlayer;
   );
 }
 
-function ChosenScreen({ state, me }: { state: PublicState; me: PublicPlayer }) {
+function ChosenScreen({ state, me, offset }: { state: PublicState; me: PublicPlayer; offset: number }) {
   const t = state.themeId ? themeById(state.themeId) : undefined;
+  const tied = !state.suddenDeath && state.tiedThemes.length > 1;
+  const elapsed = usePhaseElapsed(state, offset, 40, tied);
+  if (tied && elapsed < state.drawMs) return <ThemeDraw state={state} elapsed={elapsed} />;
   return (
     <div class="flex flex-1 flex-col items-center justify-center gap-4 text-center text-white">
       {state.suddenDeath && (
@@ -326,6 +330,7 @@ function ChosenScreen({ state, me }: { state: PublicState; me: PublicPlayer }) {
       {state.suddenDeath && !me.contender && (
         <p class="text-xl font-semibold">Só quem empatou responde agora. Torça! 📣</p>
       )}
+      {tied && <h2 class="text-outline animate-bounce-in text-4xl font-bold text-yellow-300">Sorteado! 🎉</h2>}
       {t && (
         <div class="animate-zoom rounded-[2.4rem] px-10 py-8 chunky-lg" style={{ background: t.color }}>
           <div class="text-8xl animate-wiggle">{t.emoji}</div>
@@ -333,6 +338,50 @@ function ChosenScreen({ state, me }: { state: PublicState; me: PublicPlayer }) {
         </div>
       )}
       <p class="text-xl font-semibold opacity-90">Prepare-se… 👀</p>
+    </div>
+  );
+}
+
+/** Roleta do sorteio quando a votação empata */
+function ThemeDraw({ state, elapsed }: { state: PublicState; elapsed: number }) {
+  const themes = state.tiedThemes.map((id) => themeById(id)!).filter(Boolean);
+  const finalIdx = Math.max(0, state.tiedThemes.indexOf(state.themeId ?? ''));
+  const steps = useMemo(
+    () => drawSteps(themes.length, finalIdx, state.drawMs),
+    [state.tiedThemes.join(), finalIdx, state.drawMs],
+  );
+  let current = 0;
+  for (let k = 0; k < steps.length; k++) if (steps[k].at <= elapsed) current = k;
+  const lit = steps[current]?.idx ?? 0;
+  // “tic” a cada troca de destaque
+  const last = useRef(-1);
+  useEffect(() => {
+    if (current !== last.current) {
+      last.current = current;
+      sfx.tick();
+    }
+  }, [current]);
+  return (
+    <div class="flex flex-1 flex-col items-center justify-center gap-5 text-center text-white">
+      <div>
+        <h2 class="text-outline text-4xl font-bold text-yellow-300">Empate! 🎲</h2>
+        <p class="mt-1 text-xl font-semibold">{state.drawNoVotes ? 'Ninguém votou… sorteando!' : 'Sorteando entre os empatados…'}</p>
+      </div>
+      <div class="flex w-full flex-col gap-3">
+        {themes.map((t, i) => (
+          <div
+            key={t.id}
+            class={`flex items-center gap-4 rounded-[1.8rem] px-5 py-4 text-left chunky-lg transition-transform duration-75 ${
+              i === lit ? 'scale-105 ring-[6px] ring-white' : 'scale-95 opacity-45'
+            }`}
+            style={{ background: t.color }}
+          >
+            <span class="text-5xl">{t.emoji}</span>
+            <span class="flex-1 text-2xl font-bold tshadow">{t.name}</span>
+            {i === lit && <span class="text-3xl">👈</span>}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

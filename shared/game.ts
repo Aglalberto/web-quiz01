@@ -6,6 +6,8 @@ export type Bank = Record<string, RawQuestion[]>;
 export interface Durations {
   voting: number;
   chosen: number;
+  /** tempo extra da “roleta” no celular quando a votação empata */
+  draw: number;
   question: number;
   reveal: number;
 }
@@ -13,6 +15,7 @@ export interface Durations {
 export const DEFAULT_DURATIONS: Durations = {
   voting: 15_000,
   chosen: 3_500,
+  draw: 2_600,
   question: 20_000,
   reveal: 8_000,
 };
@@ -60,6 +63,10 @@ export class Game {
   hostId: string | null = null;
   themeOptions: string[] = [];
   themeId: string | null = null;
+  /** temas empatados na votação (sorteio) — vazio se não houve empate */
+  tiedThemes: string[] = [];
+  /** o sorteio aconteceu porque ninguém votou */
+  drawNoVotes = false;
   roundQuestion = 0;
   round = 0;
   question: CurrentQuestion | null = null;
@@ -258,6 +265,7 @@ export class Game {
     this.question = null;
     this.themeId = null;
     this.themeOptions = [];
+    this.tiedThemes = [];
   }
 
   private setDeadline(now: number | null, ms: number) {
@@ -326,8 +334,10 @@ export class Game {
     if (best.length === 0) best = [...this.themeOptions];
     this.themeId = best[Math.floor(this.rng() * best.length)];
     this.recentThemes = [this.themeId, ...this.recentThemes].slice(0, 6);
+    this.tiedThemes = best.length > 1 ? [...best] : [];
+    this.drawNoVotes = max === 0;
     this.phase = 'chosen';
-    this.setDeadline(now, this.durations.chosen);
+    this.setDeadline(now, this.durations.chosen + (this.tiedThemes.length ? this.durations.draw : 0));
   }
 
   private pickQuestion(themeId: string): CurrentQuestion {
@@ -411,6 +421,7 @@ export class Game {
     const themes = this.availableThemes();
     this.themeId = themes[Math.floor(this.rng() * themes.length)];
     this.themeOptions = [];
+    this.tiedThemes = [];
     this.roundQuestion = 0;
     // passa por 'chosen' para a TV anunciar a morte súbita + tema
     this.phase = 'chosen';
@@ -445,6 +456,9 @@ export class Game {
       questionsPerRound: this.questionsPerRound,
       themeOptions: this.themeOptions,
       themeId: this.themeId,
+      tiedThemes: this.phase === 'chosen' ? this.tiedThemes : [],
+      drawNoVotes: this.phase === 'chosen' && this.drawNoVotes,
+      drawMs: this.durations.draw,
       roundQuestion: this.roundQuestion,
       round: this.round,
       deadline: this.deadline,

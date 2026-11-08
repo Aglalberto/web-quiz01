@@ -94,17 +94,31 @@ describe('votação', () => {
     g.start(ids[0], 0);
     const opts = [...g.themeOptions];
     g.tick(g.durations.voting);
+    expect(g.view('', 0).drawNoVotes).toBe(true);
     expect(g.phase).toBe('chosen');
     expect(opts).toContain(g.themeId);
   });
 
-  it('empate é decidido entre os empatados', () => {
+  it('empate é decidido entre os empatados, com tempo extra para a roleta', () => {
     const { g, ids } = setup(2);
     g.start(ids[0], 0);
     const [t1, t2] = g.themeOptions;
     g.vote(ids[0], t1, 0);
     g.vote(ids[1], t2, 0);
     expect([t1, t2]).toContain(g.themeId);
+    expect(g.view('', 0).tiedThemes.sort()).toEqual([t1, t2].sort());
+    expect(g.duration).toBe(g.durations.chosen + g.durations.draw);
+    expect(g.view('', 0).drawNoVotes).toBe(false);
+  });
+
+  it('sem empate não há roleta', () => {
+    const { g, ids } = setup(2);
+    g.start(ids[0], 0);
+    const [t1] = g.themeOptions;
+    g.vote(ids[0], t1, 0);
+    g.vote(ids[1], t1, 0);
+    expect(g.view('', 0).tiedThemes).toEqual([]);
+    expect(g.duration).toBe(g.durations.chosen);
   });
 });
 

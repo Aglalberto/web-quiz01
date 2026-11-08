@@ -28,7 +28,7 @@ class HostRoom {
     this.game = new Game({
       bank: BANK,
       winScore: Number(params.get('vitoria')) || 15,
-      durations: fast ? { voting: 2500, chosen: 800, question: 2500, reveal: 1200 } : undefined,
+      durations: fast ? { voting: 2500, chosen: 800, draw: 800, question: 2500, reveal: 1200 } : undefined,
     });
     // cada vez que a página abre (ou recarrega) é uma sala nova, com código novo
     this.code = roomCode();
