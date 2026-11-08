@@ -9,7 +9,7 @@ Roda direto pelo **GitHub Pages**. Não precisa instalar nada nem manter servido
 - Todos respondem ao mesmo tempo, com 20 segundos por pergunta, e dá para trocar de resposta até o tempo acabar. Cada acerto vale +1.
 - Vence quem chegar primeiro a **15 acertos**. Se dois ou mais chegarem juntos, há **morte súbita** ☠️.
 - O jogo mostra sequências de acertos 🔥, sons no celular e confete.
-- São **788 perguntas** em 23 temas. O tema Música tem 11 gêneros, com 10 perguntas cada. Blind Items traz fofocas e teorias do mundo das celebridades (a maioria internacional), e Conspirações traz teorias da conspiração clássicas.
+- São **1.283 perguntas** em 23 temas (50 por tema na maioria). O tema Música tem 11 gêneros, com 15 perguntas cada. Blind Items traz fofocas e teorias do mundo das celebridades (a maioria internacional), e Conspirações traz teorias da conspiração clássicas.
 
 A TV é só tela: não há nada para clicar nela.
 
