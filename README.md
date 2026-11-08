@@ -24,7 +24,7 @@ A TV é só tela: não há nada para clicar nela.
 
 Todos os aparelhos precisam de **internet**, mas não precisam estar na mesma rede: dá para jogar até com o 4G do celular.
 
-**Se a TV recarregar a página**, a partida continua de onde parou: a mesma sala, os mesmos jogadores e o mesmo placar. Para começar uma sala nova do zero, abra o endereço com `?nova` no final (`.../web-quiz01/?nova`).
+**Para começar do zero, basta recarregar a página da TV:** cada carregamento cria uma sala nova, com outro código, e os jogadores leem o QR Code de novo. Para jogar outra partida com as mesmas pessoas, o host toca em **JOGAR DE NOVO** no fim do jogo.
 
 ### Como funciona por dentro
 
@@ -43,7 +43,6 @@ A cada `push`, o GitHub Actions roda os testes, gera o site e publica (`.github/
 | Parâmetro | Exemplo | Para quê |
 |---|---|---|
 | `vitoria` | `?vitoria=10` | Acertos para vencer (padrão 15) |
-| `nova` | `?nova` | Ignora a partida salva e cria outra sala |
 | `fast` | `?fast=1` | Tempos curtos (para testes) |
 | `broker` | `?broker=ws://localhost:8883` | Usa outro servidor MQTT (para testes) |
 

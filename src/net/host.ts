@@ -5,36 +5,8 @@ import { BANK } from '../../shared/questions';
 import type { DirectMsg, PublicState, UpEnvelope } from '../../shared/types';
 import { BROKERS, brokerFromUrl, connect, connectFirst, roomCode, topics } from './mqtt';
 
-const SAVE_KEY = 'quizparty:tv';
-const SAVE_MAX_AGE = 6 * 60 * 60 * 1000; // 6 h
 const PLAYER_TIMEOUT = 12_000; // sem sinal do celular por 12 s = desconectado
 const HEARTBEAT = 3_000; // TV reenvia o estado a cada 3 s (sinal de vida)
-
-interface Saved {
-  code: string;
-  broker: string;
-  savedAt: number;
-  game: ReturnType<Game['snapshot']>;
-}
-
-function load(): Saved | null {
-  try {
-    const raw = localStorage.getItem(SAVE_KEY);
-    if (!raw) return null;
-    const s = JSON.parse(raw) as Saved;
-    return Date.now() - s.savedAt < SAVE_MAX_AGE ? s : null;
-  } catch {
-    return null;
-  }
-}
-
-function save(s: Saved) {
-  try {
-    localStorage.setItem(SAVE_KEY, JSON.stringify(s));
-  } catch {
-    /* sem armazenamento: segue sem salvar */
-  }
-}
 
 /**
  * A TV é o “servidor”: roda as regras do jogo no navegador e conversa com os
@@ -58,17 +30,13 @@ class HostRoom {
       winScore: Number(params.get('vitoria')) || 15,
       durations: fast ? { voting: 2500, chosen: 800, question: 2500, reveal: 1200 } : undefined,
     });
-    const saved = load();
-    const forced = brokerFromUrl(params);
-    if (saved && (!forced || forced === saved.broker) && !params.has('nova')) {
-      this.code = saved.code;
-      this.brokerUrl = saved.broker;
-      this.game.restore(saved.game);
-      // prazo de carência: quem não der sinal em 12 s é marcado como desconectado
-      for (const p of this.game.players) this.lastSeen.set(p.id, Date.now());
-    } else {
-      this.code = roomCode();
-      this.brokerUrl = forced ?? '';
+    // cada vez que a página abre (ou recarrega) é uma sala nova, com código novo
+    this.code = roomCode();
+    this.brokerUrl = brokerFromUrl(params) ?? '';
+    try {
+      localStorage.removeItem('quizparty:tv'); // limpa partidas salvas por versões antigas
+    } catch {
+      /* ignora */
     }
   }
 
@@ -203,10 +171,9 @@ class HostRoom {
     this.client.publish(topics(this.code).state, JSON.stringify(this.view()), { qos: 0, retain: true });
   }
 
-  /** Publica o estado, salva no navegador e reprograma o timer da fase. */
+  /** Publica o estado e reprograma o timer da fase. */
   changed() {
     this.publish();
-    save({ code: this.code, broker: this.brokerUrl, savedAt: Date.now(), game: this.game.snapshot() });
     if (this.timer) clearTimeout(this.timer);
     this.timer = null;
     const deadline = this.game.deadline;

@@ -60,7 +60,7 @@ const fail = async (msg) => {
 try {
   const tv = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   tv.on('pageerror', (e) => console.error('TV pageerror:', e.message));
-  await tv.goto(`${BASE}?broker=${encodeURIComponent(broker.url)}&fast=1&vitoria=${process.env.WIN_SCORE || 4}&nova=1`);
+  await tv.goto(`${BASE}?broker=${encodeURIComponent(broker.url)}&fast=1&vitoria=${process.env.WIN_SCORE || 4}`);
   await tv.waitForSelector('canvas');
   if ((await tv.locator('button, input, a').count()) > 0) await fail('A TV não deveria ter elementos clicáveis');
   const code = (await tv.locator('text=/^Sala [A-Z0-9]{5}$/').innerText()).split(' ')[1];
@@ -90,11 +90,6 @@ try {
     await phones[1].reload();
     await phones[1].waitForSelector('text=Você está dentro!', { timeout: 15000 });
   }
-
-  // a TV recarrega no lobby e a sala continua a mesma, com todos dentro
-  await tv.goto(`${BASE}?broker=${encodeURIComponent(broker.url)}&fast=1&vitoria=${process.env.WIN_SCORE || 4}`);
-  await tv.waitForSelector(`text=Sala ${code}`);
-  await tv.waitForSelector(`text=${N}/8 jogadores`);
 
   // celulares dão sinal de vida em até ~4 s
   await phones[0].waitForSelector('button:has-text("COMEÇAR!"):not([disabled])', { timeout: 15000 });
@@ -155,6 +150,13 @@ try {
 
   await phones[0].click('text=JOGAR DE NOVO');
   await tv.waitForSelector('text=Escolham o tema!');
+
+  // recarregar a TV cria uma sala nova (código diferente, ninguém dentro)
+  await tv.reload();
+  await tv.waitForSelector('text=/^Sala [A-Z0-9]{5}$/');
+  const newCode = (await tv.locator('text=/^Sala [A-Z0-9]{5}$/').innerText()).split(' ')[1];
+  if (newCode === code) await fail('Recarregar a TV deveria criar uma sala nova');
+  await tv.waitForSelector('text=0/8 jogadores');
   console.log(`✔ Partida completa com ${N} jogadores (sala ${code}). Screenshots em ./${OUT}`);
 } catch (e) {
   await fail(e.stack || String(e));
