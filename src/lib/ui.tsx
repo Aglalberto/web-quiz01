@@ -46,25 +46,24 @@ export function Avatar({ name, seat, size = '3rem', ring = false }: { name: stri
   );
 }
 
-/** Logo animado com letras saltitantes */
+/**
+ * Logo “Quiz Party” em letreiro de neon (estilo fliperama).
+ * Brilho estático (text-shadow / box-shadow pintados uma vez) para não pesar na TV;
+ * a única animação é uma letra que “pisca” de leve a cada poucos segundos (só opacidade).
+ */
 export function Logo({ size = 'text-6xl' }: { size?: string }) {
-  const letters = 'QUIZ PARTY'.split('');
-  const palette = PLAYER_COLORS.map((c) => c.hex);
   return (
-    <h1 class={`font-display ${size} font-bold tracking-wide select-none`} aria-label="Quiz Party">
-      {letters.map((ch, i) =>
-        ch === ' ' ? (
-          <span key={i} class="inline-block w-[0.4em]" />
-        ) : (
-          <span
-            key={i}
-            class="text-outline inline-block animate-float"
-            style={{ color: palette[i % palette.length], animationDelay: `${i * 0.12}s` }}
-          >
-            {ch}
-          </span>
-        ),
-      )}
-    </h1>
+    <div class={`neon-sign font-display ${size} select-none`} role="img" aria-label="Quiz Party">
+      <span class="neon-star" aria-hidden="true">
+        ✦
+      </span>
+      <span class="neon-pink">
+        QU<span class="neon-flicker">I</span>Z
+      </span>
+      <span class="neon-cyan">PARTY</span>
+      <span class="neon-star" aria-hidden="true">
+        ✦
+      </span>
+    </div>
   );
 }

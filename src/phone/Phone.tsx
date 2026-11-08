@@ -78,7 +78,7 @@ function Splash({ text }: { text: string }) {
   return (
     <div class="party-bg grid min-h-full place-items-center p-6 text-center text-white">
       <div>
-        <Logo size="text-5xl" />
+        <Logo size="text-[2.1rem]" />
         <p class="mt-6 animate-pulse text-xl font-semibold">{text}</p>
       </div>
     </div>
@@ -121,7 +121,7 @@ function Join({ conn, state }: { conn: Conn; state: PublicState }) {
   };
   return (
     <div class="party-bg flex min-h-full flex-col items-center justify-center p-6 text-center">
-      <Logo size="text-5xl" />
+      <Logo size="text-[2.1rem]" />
       <form onSubmit={submit} class="mt-8 w-full max-w-sm animate-pop rounded-[2rem] bg-white p-6 chunky-lg">
         <label class="block text-2xl font-bold" for="name">
           Qual é o seu nome?
@@ -355,7 +355,7 @@ function AnswerScreen({ state, me, conn }: { state: PublicState; me: PublicPlaye
     <div class="flex flex-1 flex-col gap-3">
       <div class="rounded-2xl bg-white/20 px-4 py-3 text-center text-white">
         <div class="text-sm font-semibold opacity-90">{themeLabel(q.themeId, q.sub)}</div>
-        <div class="text-lg leading-snug font-bold">{q.text}</div>
+        <div class="text-lg leading-snug font-bold">📺 Leia a pergunta na TV e escolha:</div>
       </div>
       <SmallTimer state={state} offset={conn.offset} />
       <div class="grid flex-1 grid-cols-1 gap-3">

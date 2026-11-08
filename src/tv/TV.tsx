@@ -237,8 +237,8 @@ function QuestionView({ state, offset }: { state: PublicState; offset: number })
           {state.suddenDeath ? '☠️ Morte súbita' : `Pergunta ${state.roundQuestion}/${state.questionsPerRound}`}
         </span>
       </div>
-      <Panel class="animate-pop !py-[1.8rem]">
-        <h2 key={q.text} class="text-center text-[3rem] leading-[1.15] font-bold text-balance">
+      <Panel class={`animate-pop ${revealing ? '!py-[1rem]' : '!py-[1.8rem]'}`}>
+        <h2 key={q.text} class={`text-center leading-[1.15] font-bold text-balance ${revealing ? 'text-[2.2rem]' : 'text-[3.6rem]'}`}>
           {q.text}
         </h2>
         {!revealing && (
@@ -247,44 +247,81 @@ function QuestionView({ state, offset }: { state: PublicState; offset: number })
           </div>
         )}
       </Panel>
-      <div class="grid grid-cols-2 gap-[1.1rem]">
-        {q.options.map((opt, i) => {
-          const s = OPTION_STYLES[i];
-          const isRight = revealing && q.correct === i;
-          const faded = revealing && q.correct !== i;
-          const pickers = revealing ? state.players.filter((p) => p.choice === i) : [];
-          return (
-            <div
-              key={i}
-              class={`relative flex min-h-[6.2rem] items-center space-x-4 rounded-[1.8rem] px-[1.4rem] py-[1rem] text-white chunky-lg transition-all duration-500 ${
-                faded ? 'scale-95 opacity-35' : ''
-              } ${isRight ? 'animate-pulse-big ring-[0.4rem] ring-white' : ''}`}
-              style={{ background: s.bg }}
-            >
-              <span class="text-[2.4rem] leading-none opacity-90">{s.shape}</span>
-              <span class="flex-1 text-[2rem] leading-tight font-bold drop-shadow">{opt}</span>
-              {isRight && <span class="text-[2.6rem]">✅</span>}
-              {pickers.length > 0 && (
-                <div class="absolute -bottom-[1.2rem] right-4 flex -space-x-2">
-                  {pickers.map((p) => (
-                    <div key={p.id} class="animate-pop">
-                      <Avatar name={p.name} seat={p.seat} size="2.6rem" ring />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      {!revealing && <AnswerHint state={state} />}
+      {revealing && q.correct !== null && <CorrectAnswer state={state} />}
       {revealing && q.fact && (
-        <div class="animate-bounce-in mt-2 flex items-start space-x-3 rounded-[1.6rem] bg-yellow-300 px-6 py-3 text-[1.5rem] font-medium chunky">
+        <div class="animate-bounce-in flex items-start space-x-3 rounded-[1.6rem] bg-yellow-300 px-6 py-2 text-[1.35rem] font-medium chunky">
           <span class="text-[2rem] leading-none">💡</span>
           <span>
             <b>Você sabia?</b> {q.fact}
           </span>
         </div>
       )}
+    </div>
+  );
+}
+
+/** Durante a pergunta: as alternativas ficam só no celular */
+function AnswerHint({ state }: { state: PublicState }) {
+  const list = state.players.filter((p) => p.connected && (!state.suddenDeath || p.contender));
+  const done = list.filter((p) => p.answered).length;
+  return (
+    <div class="flex items-center justify-center space-x-4 text-white">
+      <span class="rounded-full bg-white/15 px-7 py-3 text-[1.8rem] font-bold">📱 Escolha a resposta no celular!</span>
+      <span class="rounded-full bg-white px-6 py-3 text-[1.6rem] font-bold text-grape chunky">
+        {done}/{list.length} responderam
+      </span>
+    </div>
+  );
+}
+
+/** Na revelação: só a resposta certa + quem acertou e quem errou */
+function CorrectAnswer({ state }: { state: PublicState }) {
+  const q = state.question!;
+  const idx = q.correct!;
+  const s = OPTION_STYLES[idx];
+  const eligible = state.players.filter((p) => p.correct !== null);
+  const right = eligible.filter((p) => p.correct);
+  const wrong = eligible.filter((p) => !p.correct);
+  return (
+    <div class="flex flex-col items-center space-y-[1.1rem]">
+      <div
+        class="animate-pop flex w-full items-center space-x-5 rounded-[2rem] px-[2rem] py-[0.9rem] text-white chunky-lg ring-[0.4rem] ring-white"
+        style={{ background: s.bg }}
+      >
+        <span class="text-[3rem] leading-none">{s.shape}</span>
+        <div class="flex-1">
+          <div class="text-[1.3rem] font-semibold uppercase tracking-wider opacity-90">Resposta certa</div>
+          <div class="text-[2.5rem] leading-tight font-bold drop-shadow">{q.options[idx]}</div>
+        </div>
+        <span class="text-[3.4rem]">✅</span>
+      </div>
+      <div class="flex w-full space-x-[1.1rem]">
+        <PlayerRow title={state.suddenDeath ? 'Acertou' : 'Acertaram +1'} tone="bg-green-500" players={right} />
+        <PlayerRow title="Erraram" tone="bg-red-500" players={wrong} />
+      </div>
+    </div>
+  );
+}
+
+function PlayerRow({ title, tone, players }: { title: string; tone: string; players: PublicState['players'] }) {
+  return (
+    <div class="flex-1 rounded-[1.6rem] bg-white/15 px-4 py-2 text-white">
+      <span class={`inline-block rounded-full px-4 py-1 text-[1.3rem] font-bold ${tone}`}>
+        {title} · {players.length}
+      </span>
+      <div class="-m-1 mt-1 flex min-h-[2.8rem] flex-wrap items-center">
+        {players.length === 0 ? (
+          <span class="m-1 text-[1.4rem] opacity-70">ninguém</span>
+        ) : (
+          players.map((p) => (
+            <span key={p.id} class="m-1 flex items-center rounded-full bg-white/20 py-1 pl-1 pr-4 animate-pop">
+              <Avatar name={p.name} seat={p.seat} size="2.2rem" />
+              <span class="ml-2 text-[1.25rem] font-bold">{p.name}</span>
+            </span>
+          ))
+        )}
+      </div>
     </div>
   );
 }
