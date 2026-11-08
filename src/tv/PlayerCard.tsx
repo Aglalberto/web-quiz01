@@ -60,14 +60,12 @@ export function PlayerCard({ player, state }: { player: PublicPlayer; state: Pub
         <Avatar name={player.name} seat={player.seat} size="3.6rem" />
         <div class="min-w-0 flex-1">
           <div class="truncate text-[1.7rem] leading-tight font-bold">{player.name}</div>
-          <div class="flex items-center space-x-2 text-[1.1rem] font-semibold text-ink/60">
+          <div class="flex min-h-[1.5rem] items-center space-x-2 text-[1.1rem] font-semibold text-ink/60">
             {!player.connected ? (
               <span>📵 reconectando…</span>
             ) : player.streak >= 2 ? (
               <span class="font-bold text-orange-500">🔥 {player.streak} seguidas</span>
-            ) : (
-              <span>{c.name}</span>
-            )}
+            ) : null}
           </div>
         </div>
         <div class="text-right">
