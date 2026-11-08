@@ -17,6 +17,7 @@ export const THEMES: Theme[] = [
   { id: 'musica', name: 'Música', emoji: '🎸', color: '#d946ef' },
   { id: 'celebridades', name: 'Celebridades', emoji: '🌟', color: '#f59e0b' },
   { id: 'blind-items', name: 'Blind Items', emoji: '🕶️', color: '#64748b' },
+  { id: 'conspiracoes', name: 'Conspirações', emoji: '👽', color: '#0f766e' },
   { id: 'natureza', name: 'Natureza', emoji: '🌿', color: '#22c55e' },
   { id: 'animais', name: 'Animais', emoji: '🦁', color: '#f97316' },
   { id: 'historia', name: 'História', emoji: '🏛️', color: '#a16207' },

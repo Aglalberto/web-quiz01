@@ -31,6 +31,15 @@ const questions: RawQuestion[] = [
   { q: 'Qual carro vira máquina do tempo em De Volta para o Futuro?', a: 'DeLorean', w: ['Mustang', 'Camaro', 'Fusca'], fact: 'Para viajar no tempo, ele precisa atingir 88 milhas por hora.' },
   { q: 'Em Matrix, qual pílula Neo escolhe tomar?', a: 'Vermelha', w: ['Azul', 'Verde', 'Branca'] },
   { q: 'Em que ano foi lançado o primeiro iPhone?', a: '2007', w: ['2005', '2008', '2010'], fact: 'Steve Jobs apresentou o aparelho em janeiro de 2007.' },
+  // ── Teorias de fãs ──
+  { q: 'Teoria de fãs: todos os filmes desse estúdio se passariam no mesmo universo, numa única linha do tempo.', a: 'Pixar', w: ['DreamWorks', 'Illumination', 'Blue Sky'], fact: 'A “Teoria Pixar” foi popularizada em 2013 pelo escritor Jon Negroni e coloca Valente no começo de tudo.' },
+  { q: 'Teoria de fãs: o protagonista desse anime estaria em coma desde o 1º episódio, e tudo seria um sonho.', a: 'Pokémon', w: ['Digimon', 'Dragon Ball', 'Yu-Gi-Oh!'], fact: 'Os fãs usam como “prova” o fato de Ash ter ficado com 10 anos por mais de 25 anos de série.' },
+  { q: 'Teoria de fãs: os bebês desse desenho da Nickelodeon seriam só imaginação da Angélica.', a: 'Os Anjinhos', w: ['Hey Arnold!', 'Doug', 'Os Padrinhos Mágicos'], fact: 'No Brasil, “Rugrats” passou como “Os Anjinhos”. A teoria nunca foi confirmada.' },
+  { q: 'Teoria de fãs: como o Gênio imita coisas modernas, esse filme se passaria num futuro distante.', a: 'Aladdin', w: ['Mulan', 'Hércules', 'Pocahontas'], fact: 'O Gênio faz imitações e referências à cultura pop do século XX, o que alimenta a teoria.' },
+  { q: 'Teoria de fãs: a menina Boo, de “Monstros S.A.”, seria a bruxa de qual filme da Pixar?', a: 'Valente', w: ['Up: Altas Aventuras', 'Ratatouille', 'Divertida Mente'], fact: 'Na oficina da bruxa de Valente aparece um entalhe do Sulley, o que deu origem à teoria.' },
+  { q: 'Teoria de fãs: um personagem trapalhão de “Star Wars: Episódio I” seria secretamente um lorde Sith.', a: 'Jar Jar Binks', w: ['C-3PO', 'Watto', 'Chewbacca'], fact: 'A teoria “Darth Jar Jar” viralizou no Reddit em 2015.' },
+  { q: 'Teoria de fãs: a mãe do Andy seria a antiga dona de qual brinquedo de “Toy Story”?', a: 'Jessie', w: ['Betty', 'Sr. Cabeça de Batata', 'Rex'], fact: 'Fãs notaram semelhanças entre Emily, a dona da Jessie, e a mãe do Andy. A Pixar nunca confirmou.' },
+  { q: 'Teoria de fãs: Rony seria uma versão do futuro, que voltou no tempo, de qual personagem de Harry Potter?', a: 'Dumbledore', w: ['Hagrid', 'Sirius Black', 'Snape'], fact: 'A própria autora, J.K. Rowling, já desmentiu essa teoria.' },
 ];
 
 export default questions;

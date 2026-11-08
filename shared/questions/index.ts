@@ -9,6 +9,7 @@ import consoles from './consoles';
 import musica from './musica';
 import celebridades from './celebridades';
 import blindItems from './blind-items';
+import conspiracoes from './conspiracoes';
 import natureza from './natureza';
 import animais from './animais';
 import historia from './historia';
@@ -34,6 +35,7 @@ export const BANK: Record<string, RawQuestion[]> = {
   musica,
   celebridades,
   'blind-items': blindItems,
+  conspiracoes,
   natureza,
   animais,
   historia,
