@@ -13,8 +13,8 @@ export interface Durations {
 export const DEFAULT_DURATIONS: Durations = {
   voting: 15_000,
   chosen: 3_500,
-  question: 15_000,
-  reveal: 7_000,
+  question: 20_000,
+  reveal: 8_000,
 };
 
 export interface GameOptions {
@@ -229,7 +229,6 @@ export class Game {
     const p = this.getPlayer(playerId);
     if (!p || this.phase !== 'question' || !this.question) return false;
     if (this.suddenDeath && !this.contenders.includes(p.id)) return false;
-    if (p.choice !== null) return false; // resposta é definitiva
     if (!Number.isInteger(index) || index < 0 || index >= this.question.options.length) return false;
     p.choice = index;
     this.checkEarlyEnd(now);

@@ -93,7 +93,7 @@ describe('votação', () => {
     const { g, ids } = setup(2);
     g.start(ids[0], 0);
     const opts = [...g.themeOptions];
-    g.tick(15_000);
+    g.tick(g.durations.voting);
     expect(g.phase).toBe('chosen');
     expect(opts).toContain(g.themeId);
   });
@@ -140,19 +140,24 @@ describe('perguntas', () => {
     expect(g.getPlayer(ids[1])!.score).toBe(0);
   });
 
-  it('resposta é definitiva', () => {
+  it('pode trocar de resposta enquanto o tempo corre; vale a última', () => {
     const { g, ids } = setup(3);
     g.start(ids[0], 0);
     voteAndGo(g, ids);
     expect(g.answer(ids[0], wrongIdx(g), 0)).toBe(true);
-    expect(g.answer(ids[0], correctIdx(g), 0)).toBe(false);
+    expect(g.answer(ids[0], correctIdx(g), 0)).toBe(true);
+    expect(g.phase).toBe('question');
+    g.tick(1e12);
+    expect(g.phase).toBe('reveal');
+    expect(g.getPlayer(ids[0])!.correct).toBe(true);
+    expect(g.answer(ids[0], wrongIdx(g), 0)).toBe(false); // depois do tempo, não muda
   });
 
   it('tempo esgotado conta como erro e zera sequência', () => {
     const { g, ids } = setup(2);
     g.start(ids[0], 0);
     voteAndGo(g, ids);
-    g.tick(99_999 + 15_000);
+    g.tick(99_999 + g.durations.question);
     expect(g.phase).toBe('reveal');
     expect(g.getPlayer(ids[0])!.correct).toBe(false);
   });

@@ -5,22 +5,13 @@ import { MAX_PLAYERS } from '../../shared/types';
 import { themeById } from '../../shared/themes';
 import { useCountdown } from '../net/client';
 import { useHostRoom } from '../net/host';
-import { Avatar, Logo, OPTION_STYLES, burst, colorOf, themeLabel } from '../lib/ui';
+import { Avatar, Logo, OPTION_STYLES, colorOf, themeLabel } from '../lib/ui';
 import { EmptySeat, PlayerCard, SEAT_AREAS } from './PlayerCard';
 
 export function TV() {
   const room = useHostRoom();
   const { state, online, joinUrl } = room;
   const phase = state?.phase;
-
-  // confete na TV quando há vencedor
-  useEffect(() => {
-    if (phase === 'gameover' && state?.winnerId) {
-      burst(true);
-      const id = setInterval(() => burst(true), 2500);
-      return () => clearInterval(id);
-    }
-  }, [phase, state?.winnerId]);
 
   const bySeat = new Map(state?.players.map((p) => [p.seat, p]) ?? []);
   const inGame = phase && phase !== 'lobby';

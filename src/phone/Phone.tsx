@@ -68,10 +68,8 @@ function useSoundEffects(state: PublicState | null, me: PublicPlayer | undefined
       } else sfx.wrong();
     }
     if (state.phase === 'gameover') {
-      if (state.winnerId === me.id) {
-        sfx.win();
-        burst(true);
-      } else sfx.lose();
+      if (state.winnerId === me.id) sfx.win();
+      else sfx.lose();
     }
   }, [state, me]);
 }
@@ -367,14 +365,13 @@ function AnswerScreen({ state, me, conn }: { state: PublicState; me: PublicPlaye
           return (
             <button
               key={i}
-              disabled={chosen !== null}
               onClick={() => {
                 sfx.tap();
                 setPicked(i);
                 conn.send({ type: 'answer', index: i });
               }}
               class={`press flex min-h-[4.5rem] items-center gap-3 rounded-[1.6rem] px-4 py-3 text-left text-white chunky-lg ${
-                chosen !== null && !isMine ? 'opacity-30' : ''
+                chosen !== null && !isMine ? 'opacity-60' : ''
               } ${isMine ? 'ring-[6px] ring-white' : ''}`}
               style={{ background: s.bg }}
             >
@@ -386,7 +383,7 @@ function AnswerScreen({ state, me, conn }: { state: PublicState; me: PublicPlaye
         })}
       </div>
       {chosen !== null && (
-        <p class="animate-pop text-center text-xl font-bold text-white">Resposta enviada! Agora é torcer 🤞</p>
+        <p class="animate-pop text-center text-xl font-bold text-white">Resposta enviada! 🤞 Pode trocar até o tempo acabar</p>
       )}
     </div>
   );

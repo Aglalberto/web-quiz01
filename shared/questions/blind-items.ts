@@ -31,6 +31,25 @@ const questions: RawQuestion[] = [
   { q: 'Adivinhe quem: atriz, viveu Katniss Everdeen na saga \'Jogos Vorazes\'.', a: 'Jennifer Lawrence', w: ['Emma Stone', 'Shailene Woodley', 'Kristen Stewart'], fact: 'Ela ganhou o Oscar de Melhor Atriz por \'O Lado Bom da Vida\'.' },
   { q: 'Adivinhe quem: skatista, a “Fadinha”, ganhou medalha olímpica aos 13 anos.', a: 'Rayssa Leal', w: ['Pâmela Rosa', 'Letícia Bufoni', 'Dora Varella'], fact: 'Ela levou a prata em Tóquio 2020 e o bronze em Paris 2024.' },
   { q: 'Adivinhe quem: cartunista, criou a Turma da Mônica e o Cebolinha.', a: 'Maurício de Sousa', w: ['Ziraldo', 'Monteiro Lobato', 'Henfil'], fact: 'A Mônica foi inspirada em uma das filhas do próprio Maurício.' },
+  // ── Teorias famosas da internet (sempre teorias, nunca fatos) ──
+  { q: 'Teoria da internet: um Beatle teria morrido em 1966 e sido trocado por um sósia. Qual?', a: 'Paul McCartney', w: ['John Lennon', 'George Harrison', 'Ringo Starr'], fact: 'A lenda “Paul is Dead” surgiu em 1969; fãs viam “pistas” até na capa de Abbey Road. Paul está vivo.' },
+  { q: 'Teoria da internet: essa cantora teria sido trocada por uma sósia chamada Melissa no começo dos anos 2000.', a: 'Avril Lavigne', w: ['Britney Spears', 'Pink', 'Kelly Clarkson'], fact: 'A teoria nasceu em um blog brasileiro, em 2011, e viralizou no mundo todo. É só boato.' },
+  { q: 'Teoria da internet: retratos antigos de homens muito parecidos com ele fariam desse ator um imortal.', a: 'Keanu Reeves', w: ['Johnny Depp', 'Brad Pitt', 'Tom Cruise'], fact: 'O meme “Keanu é imortal” compara o ator a pessoas de pinturas e fotos de séculos atrás.' },
+  { q: 'Teoria da internet: uma foto antiga, de cerca de 1870, provaria que esse ator é um vampiro.', a: 'Nicolas Cage', w: ['Christian Bale', 'Al Pacino', 'Robert Pattinson'], fact: 'Em 2011, a foto foi anunciada no eBay por US$ 1 milhão como “prova” da teoria.' },
+  { q: 'Teoria da internet: esse cantor teria fingido a própria morte em 1977 e vivido escondido.', a: 'Elvis Presley', w: ['Michael Jackson', 'Freddie Mercury', 'John Lennon'], fact: 'Por décadas surgiram “avistamentos” do Rei do Rock, que morreu em Graceland, em 1977.' },
+  { q: 'Teoria da internet: esse cantor e produtor parece não envelhecer e, por isso, seria um vampiro.', a: 'Pharrell Williams', w: ['Bruno Mars', 'Usher', 'Justin Timberlake'], fact: 'O cantor de “Happy” vira meme a cada foto nova por parecer ter a mesma idade há décadas.' },
+  { q: 'Teoria da internet: esse diretor teria filmado uma falsa chegada do homem à Lua em 1969.', a: 'Stanley Kubrick', w: ['Steven Spielberg', 'Alfred Hitchcock', 'George Lucas'], fact: 'A teoria se apoia em “2001: Uma Odisseia no Espaço” (1968). A ida à Lua foi real.' },
+  { q: 'Teoria da internet: esse rapper, morto em 1996, estaria vivo e escondido em Cuba.', a: 'Tupac Shakur', w: ['The Notorious B.I.G.', 'Eminem', 'Dr. Dre'], fact: 'A teoria cresceu porque saíram muitos discos dele depois de sua morte, em Las Vegas.' },
+
+  // ── Teorias de fãs sobre filmes, desenhos e animes ──
+  { q: 'Teoria de fãs: todos os filmes desse estúdio se passariam no mesmo universo, numa única linha do tempo.', a: 'Pixar', w: ['DreamWorks', 'Illumination', 'Blue Sky'], fact: 'A “Teoria Pixar” foi popularizada em 2013 pelo escritor Jon Negroni e coloca Valente no começo de tudo.' },
+  { q: 'Teoria de fãs: o protagonista desse anime estaria em coma desde o 1º episódio, e tudo seria um sonho.', a: 'Pokémon', w: ['Digimon', 'Dragon Ball', 'Yu-Gi-Oh!'], fact: 'Os fãs usam como “prova” o fato de Ash ter ficado com 10 anos por mais de 25 anos de série.' },
+  { q: 'Teoria de fãs: os bebês desse desenho da Nickelodeon seriam só imaginação da Angélica.', a: 'Os Anjinhos', w: ['Hey Arnold!', 'Doug', 'Os Padrinhos Mágicos'], fact: 'No Brasil, “Rugrats” passou como “Os Anjinhos”. A teoria nunca foi confirmada.' },
+  { q: 'Teoria de fãs: como o Gênio imita coisas modernas, esse filme se passaria num futuro distante.', a: 'Aladdin', w: ['Mulan', 'Hércules', 'Pocahontas'], fact: 'O Gênio faz imitações e referências à cultura pop do século XX, o que alimenta a teoria.' },
+  { q: 'Teoria de fãs: a menina Boo, de “Monstros S.A.”, seria a bruxa de qual filme da Pixar?', a: 'Valente', w: ['Up: Altas Aventuras', 'Ratatouille', 'Divertida Mente'], fact: 'Na oficina da bruxa de Valente aparece um entalhe do Sulley, o que deu origem à teoria.' },
+  { q: 'Teoria de fãs: um personagem trapalhão de “Star Wars: Episódio I” seria secretamente um lorde Sith.', a: 'Jar Jar Binks', w: ['C-3PO', 'Watto', 'Chewbacca'], fact: 'A teoria “Darth Jar Jar” viralizou no Reddit em 2015.' },
+  { q: 'Teoria de fãs: a mãe do Andy seria a antiga dona de qual brinquedo de “Toy Story”?', a: 'Jessie', w: ['Betty', 'Sr. Cabeça de Batata', 'Rex'], fact: 'Fãs notaram semelhanças entre Emily, a dona da Jessie, e a mãe do Andy. A Pixar nunca confirmou.' },
+  { q: 'Teoria de fãs: Rony seria uma versão do futuro, que voltou no tempo, de qual personagem de Harry Potter?', a: 'Dumbledore', w: ['Hagrid', 'Sirius Black', 'Snape'], fact: 'A própria autora, J.K. Rowling, já desmentiu essa teoria.' },
 ];
 
 export default questions;

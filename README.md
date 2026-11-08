@@ -6,10 +6,10 @@ Roda direto pelo **GitHub Pages**. Não precisa instalar nada nem manter servido
 
 - O primeiro a entrar vira o **host** 👑. Ele começa a partida, pode pular uma etapa, remover jogadores e iniciar outra partida, tudo pelo celular. O host também joga.
 - A cada rodada, **3 temas** são sorteados e todos votam no celular. O tema vencedor rende **3 perguntas**.
-- Todos respondem ao mesmo tempo, com 15 segundos por pergunta. Cada acerto vale +1.
+- Todos respondem ao mesmo tempo, com 20 segundos por pergunta, e dá para trocar de resposta até o tempo acabar. Cada acerto vale +1.
 - Vence quem chegar primeiro a **15 acertos**. Se dois ou mais chegarem juntos, há **morte súbita** ☠️.
 - O jogo mostra sequências de acertos 🔥, sons no celular e confete.
-- São **740 perguntas** em 22 temas. O tema Música tem 11 gêneros, com 10 perguntas cada.
+- São **756 perguntas** em 22 temas. O tema Música tem 11 gêneros, com 10 perguntas cada, e Blind Items inclui teorias famosas da internet e de fãs.
 
 A TV é só tela: não há nada para clicar nela.
 
