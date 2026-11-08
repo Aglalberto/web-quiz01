@@ -41,16 +41,45 @@ export function Avatar({ name, seat, size = '3rem', ring = false }: { name: stri
  * Brilho estático (text-shadow / box-shadow pintados uma vez) para não pesar na TV;
  * a única animação é uma letra que “pisca” de leve a cada poucos segundos (só opacidade).
  */
+/** Uma cor de neon por letra, nas cores dos jogadores (como o logo antigo) */
+const LOGO_LETTERS: { ch: string; color: string; flicker?: boolean }[] = [
+  { ch: 'Q', color: '#ff4d6d' },
+  { ch: 'U', color: '#ff9f1c' },
+  { ch: 'I', color: '#ffd60a', flicker: true },
+  { ch: 'Z', color: '#38d36b' },
+  { ch: ' ', color: '' },
+  { ch: 'P', color: '#22d3ee' },
+  { ch: 'A', color: '#4d7cff' },
+  { ch: 'R', color: '#a66bff' },
+  { ch: 'T', color: '#ff6bd6' },
+  { ch: 'Y', color: '#ff4d6d' },
+];
+
 export function Logo({ size = 'text-6xl' }: { size?: string }) {
   return (
     <div class={`neon-sign font-display ${size} select-none`} role="img" aria-label="Quiz Party">
       <span class="neon-star" aria-hidden="true">
         ✦
       </span>
-      <span class="neon-pink">
-        QU<span class="neon-flicker">I</span>Z
+      <span class="neon-word" aria-hidden="true">
+        {LOGO_LETTERS.map((l, i) =>
+          l.ch === ' ' ? (
+            <span key={i} class="inline-block w-[0.32em]" />
+          ) : (
+            <span
+              key={i}
+              class={l.flicker ? 'neon-flicker' : undefined}
+              style={{
+                color: l.color,
+                // brilho estático na cor da letra (pintado uma vez, leve para a TV)
+                textShadow: `0 0 0.03em #fff, 0 0 0.12em ${l.color}, 0 0 0.32em ${l.color}`,
+              }}
+            >
+              {l.ch}
+            </span>
+          ),
+        )}
       </span>
-      <span class="neon-cyan">PARTY</span>
       <span class="neon-star" aria-hidden="true">
         ✦
       </span>

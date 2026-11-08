@@ -80,25 +80,8 @@ html.tv {
   letter-spacing: 0.06em;
   white-space: nowrap;
 }
-.neon-pink,
-.neon-cyan {
-  margin: 0 0.12em;
-}
-.neon-pink {
-  color: #ffe3fa;
-  text-shadow:
-    0 0 0.03em #fff,
-    0 0 0.1em #ff4fd8,
-    0 0 0.25em #ff4fd8,
-    0 0 0.55em #ff1fc8;
-}
-.neon-cyan {
-  color: #e3fdff;
-  text-shadow:
-    0 0 0.03em #fff,
-    0 0 0.1em #22e4ff,
-    0 0 0.25em #22e4ff,
-    0 0 0.55em #00b8ff;
+.neon-word {
+  margin: 0 0.15em;
 }
 .neon-star {
   font-size: 0.45em;
