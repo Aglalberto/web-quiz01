@@ -5,6 +5,7 @@ import { MAX_PLAYERS } from '../../shared/types';
 import { themeById } from '../../shared/themes';
 import { useCountdown } from '../net/client';
 import { useHostRoom } from '../net/host';
+import { keepScreenAwake } from '../lib/keepAwake';
 import { Avatar, Logo, OPTION_STYLES, colorOf, themeLabel } from '../lib/ui';
 import { EmptySeat, PlayerCard, SEAT_AREAS } from './PlayerCard';
 
@@ -12,6 +13,9 @@ export function TV() {
   const room = useHostRoom();
   const { state, online, joinUrl } = room;
   const phase = state?.phase;
+
+  // impede a TV de entrar em modo de descanso / proteção de tela
+  useEffect(() => keepScreenAwake(), []);
 
   const bySeat = new Map(state?.players.map((p) => [p.seat, p]) ?? []);
   const inGame = phase && phase !== 'lobby';
