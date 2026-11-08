@@ -192,9 +192,7 @@ function Header({ me, state }: { me: PublicPlayer; state: PublicState }) {
         <div class="truncate text-xl leading-tight font-bold">
           {me.name} {me.isHost && <span title="Host">👑</span>}
         </div>
-        <div class="text-sm font-medium opacity-90">
-          {me.streak >= 2 ? `🔥 ${me.streak} seguidas!` : colorOf(me.seat).name}
-        </div>
+        {me.streak >= 2 && <div class="text-sm font-medium opacity-90">🔥 {me.streak} seguidas!</div>}
       </div>
       <div class="rounded-2xl bg-white/25 px-3 py-1 text-center">
         <div class="text-2xl leading-none font-bold">{me.score}</div>
@@ -239,7 +237,7 @@ function LobbyScreen({ state, me, conn }: { state: PublicState; me: PublicPlayer
       <Card class="animate-pop">
         <div class="text-6xl animate-wiggle">🎉</div>
         <h2 class="mt-2 text-3xl font-bold">Você está dentro!</h2>
-        <p class="mt-1 text-lg text-ink/70">Seu card está na TV com a cor {colorOf(me.seat).name.toLowerCase()}.</p>
+        <p class="mt-1 text-lg text-ink/70">Seu card já apareceu na TV 📺</p>
       </Card>
       {me.isHost ? (
         <Card>
