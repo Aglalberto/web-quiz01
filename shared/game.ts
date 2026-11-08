@@ -17,7 +17,7 @@ export const DEFAULT_DURATIONS: Durations = {
   chosen: 3_500,
   draw: 2_600,
   question: 20_000,
-  reveal: 8_000,
+  reveal: 18_000,
 };
 
 export interface GameOptions {
