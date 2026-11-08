@@ -26,9 +26,12 @@ Todos os aparelhos precisam de **internet**, mas não precisam estar na mesma re
 
 **Para começar do zero, basta recarregar a página da TV:** cada carregamento cria uma sala nova, com outro código, e os jogadores leem o QR Code de novo. Para jogar outra partida com as mesmas pessoas, o host toca em **JOGAR DE NOVO** no fim do jogo.
 
-### A TV não entra em modo de descanso
+### A TV não escurece nem entra em descanso
 
-Na borda de baixo da TV há uma faixa fina de luz colorida que é um vídeo leve (320×180, 8 s em loop, ~40 KB) tocando sem som. Ela é fina porque a LG desenha vídeos por cima da página. Smart TVs não entram em proteção de tela enquanto há vídeo tocando. Se o navegador pausar o vídeo, o jogo dá play de novo na hora. Quando o navegador suporta, o jogo também pede para manter a tela ligada (Wake Lock). Para conferir o que a sua TV suporta, abra o endereço com `?diag`.
+- **TVs OLED (ex.: LG):** escurecem a tela quando a imagem fica parada por ~2–3 minutos (proteção do painel). Por isso as manchas de cor do fundo da TV flutuam devagar pela tela inteira; para o painel, a imagem nunca fica parada. É uma única camada animada pelo chip de vídeo, sem pesar.
+- **Faixa de vídeo:** na borda de baixo há uma faixa fina de luz colorida que é um vídeo tocando sem som; ajuda TVs que entram em descanso quando não há vídeo tocando.
+- **Tela cheia:** na sala do QR Code aparece a dica para apertar **OK** no controle, o que deixa a tela cheia.
+- **Diagnóstico:** para conferir o que a sua TV suporta, abra o endereço com `?diag`.
 
 ### Como funciona por dentro
 

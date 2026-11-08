@@ -105,3 +105,33 @@ html.tv {
 .tshadow {
   text-shadow: 0 0.08em 0 rgba(0, 0, 0, 0.25);
 }
+
+/* ───────── Fundo da TV que flutua devagar ─────────
+   TVs OLED (ex.: LG) escurecem a tela quando a imagem fica parada por ~2–3 min
+   (proteção contra marca no painel). As manchas de cor se movem pela tela inteira
+   num ciclo lento: para o painel a imagem nunca fica parada. É uma única camada
+   animada só com transform (feito pelo chip de vídeo, sem redesenhar a página). */
+.tv-bg {
+  background: linear-gradient(135deg, #3b1a8f 0%, #5b2bd6 50%, #2a1270 100%);
+}
+.ambient {
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 32% 32%, rgba(255, 107, 214, 0.55), transparent 15%),
+    radial-gradient(circle at 68% 28%, rgba(34, 211, 238, 0.5), transparent 16%),
+    radial-gradient(circle at 66% 70%, rgba(255, 214, 10, 0.45), transparent 16%),
+    radial-gradient(circle at 32% 68%, rgba(56, 211, 107, 0.45), transparent 16%),
+    radial-gradient(circle at 50% 50%, rgba(166, 107, 255, 0.35), transparent 20%);
+  will-change: transform;
+  animation: ambient-drift 56s ease-in-out infinite alternate;
+}
+@keyframes ambient-drift {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(11%, -9%, 0) rotate(9deg); }
+  100% { transform: translate3d(-9%, 11%, 0) rotate(-7deg); }
+}

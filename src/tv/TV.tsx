@@ -24,7 +24,8 @@ export function TV() {
   const inGame = phase && phase !== 'lobby';
 
   return (
-    <div class="party-bg relative h-full w-full cursor-none overflow-hidden select-none">
+    <div class="tv-bg relative h-full w-full cursor-none overflow-hidden select-none">
+      <div class="ambient" />
       <div class="dots pointer-events-none absolute left-0 top-0 h-full w-full" />
       <div class="relative grid h-full grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto] gap-[1.6rem] p-[1.8rem]">
         {Array.from({ length: MAX_PLAYERS }, (_, seat) => {
@@ -158,8 +159,21 @@ function Lobby({ state, joinUrl }: { state: PublicState; joinUrl: string }) {
           <>O primeiro a entrar vira o host 👑</>
         )}
       </div>
+      <FullscreenHint />
     </div>
   );
+}
+
+/** Dica para apertar OK no controle (tela cheia); some quando entra em tela cheia */
+function FullscreenHint() {
+  const [full, setFull] = useState(() => !!document.fullscreenElement);
+  useEffect(() => {
+    const on = () => setFull(!!document.fullscreenElement);
+    document.addEventListener('fullscreenchange', on);
+    return () => document.removeEventListener('fullscreenchange', on);
+  }, []);
+  if (full) return null;
+  return <div class="text-[1.3rem] font-semibold text-white/75">💡 Aperte OK no controle para tela cheia</div>;
 }
 
 function TimerBar({ state, offset }: { state: PublicState; offset: number }) {
