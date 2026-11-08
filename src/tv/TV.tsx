@@ -209,7 +209,7 @@ function Chosen({ state }: { state: PublicState }) {
     <div class="flex flex-col items-center space-y-[1.6rem] text-center text-white">
       {state.suddenDeath ? (
         <>
-          <h2 class="text-outline animate-bounce-in text-[5.4rem] font-bold text-red-400">☠️ MORTE SÚBITA! ☠️</h2>
+          <h2 class="text-outline animate-bounce-in whitespace-nowrap text-[5rem] font-bold text-red-400">☠️ MORTE SÚBITA! ☠️</h2>
           <div class="flex items-center space-x-4 text-[2rem] font-semibold">
             {contenders.map((p, i) => (
               <span key={p.id} class="flex items-center space-x-2">

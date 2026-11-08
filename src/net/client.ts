@@ -7,6 +7,7 @@ const NAME_KEY = 'quizparty:name';
 const idKey = (room: string) => `quizparty:id:${room}`;
 const PING_EVERY = 4_000;
 const TV_SILENCE = 10_000; // sem notícias da TV por 10 s = TV desconectada
+const TV_GRACE = 6_000; // logo após conectar, espera o 1º sinal da TV antes de avisar
 
 function lsGet(key: string) {
   try {
@@ -65,6 +66,7 @@ export function usePlayerConnection(): Connection {
   const [state, setState] = useState<PublicState | null>(null);
   const [online, setOnline] = useState(false);
   const [lastLive, setLastLive] = useState(0);
+  const [connectedAt, setConnectedAt] = useState(0);
   const [now, setNow] = useState(Date.now());
   const [joined, setJoined] = useState(() => lsGet(`${idKey(room)}:joined`) === '1');
   const [error, setError] = useState<string | null>(null);
@@ -91,6 +93,7 @@ export function usePlayerConnection(): Connection {
 
     client.on('connect', () => {
       setOnline(true);
+      setConnectedAt(Date.now());
       directTopic = t.to(meRef.current);
       client.subscribe([t.state, directTopic], { qos: 0 });
       send({ type: 'ping' });
@@ -142,7 +145,7 @@ export function usePlayerConnection(): Connection {
     room,
     state,
     online,
-    tvOnline: online && now - lastLive < TV_SILENCE,
+    tvOnline: online && (now - lastLive < TV_SILENCE || now - connectedAt < TV_GRACE),
     meId,
     joined,
     error,
