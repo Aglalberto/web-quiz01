@@ -28,7 +28,7 @@ Todos os aparelhos precisam de **internet**, mas não precisam estar na mesma re
 
 ### A TV não entra em modo de descanso
 
-O fundo animado da TV é um vídeo leve (320×180, 8 s em loop, ~40 KB) tocando sem som. Smart TVs não entram em proteção de tela enquanto há vídeo tocando. Se o navegador pausar o vídeo, o jogo dá play de novo na hora. Quando o navegador suporta, o jogo também pede para manter a tela ligada (Wake Lock). Para conferir o que a sua TV suporta, abra o endereço com `?diag`.
+Na borda de baixo da TV há uma faixa fina de luz colorida que é um vídeo leve (320×180, 8 s em loop, ~40 KB) tocando sem som. Ela é fina porque a LG desenha vídeos por cima da página. Smart TVs não entram em proteção de tela enquanto há vídeo tocando. Se o navegador pausar o vídeo, o jogo dá play de novo na hora. Quando o navegador suporta, o jogo também pede para manter a tela ligada (Wake Lock). Para conferir o que a sua TV suporta, abra o endereço com `?diag`.
 
 ### Como funciona por dentro
 

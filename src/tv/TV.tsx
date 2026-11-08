@@ -25,19 +25,6 @@ export function TV() {
 
   return (
     <div class="party-bg relative h-full w-full cursor-none overflow-hidden select-none">
-      <video
-        ref={bgVideo}
-        class="pointer-events-none absolute left-0 top-0 h-full w-full object-cover opacity-60"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-      >
-        <source src="fundo.mp4" type="video/mp4" />
-        <source src="fundo.webm" type="video/webm" />
-      </video>
       <div class="dots pointer-events-none absolute left-0 top-0 h-full w-full" />
       <div class="relative grid h-full grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto] gap-[1.6rem] p-[1.8rem]">
         {Array.from({ length: MAX_PLAYERS }, (_, seat) => {
@@ -75,6 +62,22 @@ export function TV() {
           </div>
         </div>
       )}
+      {/* Faixa de luz animada na borda de baixo: é um vídeo de verdade tocando, o que impede a
+          TV de entrar em descanso. Fica fininha porque algumas TVs (LG webOS) desenham o vídeo
+          numa camada própria, por cima da página — assim ele nunca cobre o jogo. */}
+      <video
+        ref={bgVideo}
+        class="pointer-events-none absolute bottom-0 left-0 h-[0.55rem] w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="fundo.mp4" type="video/mp4" />
+        <source src="fundo.webm" type="video/webm" />
+      </video>
       {diag && awake && (
         <div class="absolute bottom-3 left-3 rounded-xl bg-black/80 px-4 py-2 font-mono text-[1.1rem] leading-snug text-white">
           <div>📺 diagnóstico da tela</div>

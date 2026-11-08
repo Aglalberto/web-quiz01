@@ -1,11 +1,12 @@
 // Mantém a tela da TV ligada durante o jogo, sem ninguém tocar no controle.
 //
 // Smart TVs (LG webOS, Samsung Tizen…) não entram em proteção de tela enquanto há um VÍDEO
-// TOCANDO E VISÍVEL. Por isso o fundo animado da TV é um vídeo de verdade (public/fundo.mp4,
-// 320×180, 8 s em loop, ~40 KB) — leve para decodificar e ainda assim “vídeo em reprodução”.
+// TOCANDO E VISÍVEL. Por isso a TV mostra uma faixa de luz animada na borda de baixo que é um
+// vídeo de verdade (public/fundo.mp4, 320×180, 8 s em loop, ~40 KB). Ela é fininha porque a
+// LG desenha vídeos numa camada própria, por cima da página: assim nunca cobre o jogo.
 //
 // Camadas de proteção:
-//  1) vídeo de fundo visível, mudo e em loop, com retomada automática se o navegador pausar;
+//  1) faixa de vídeo visível, muda e em loop, com retomada automática se o navegador pausar;
 //  2) Screen Wake Lock API, quando o navegador suporta (precisa de HTTPS — o GitHub Pages é);
 //  3) se alguém apertar OK no controle, aproveita o gesto para tela cheia + reforçar 1 e 2.
 
