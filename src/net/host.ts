@@ -160,6 +160,12 @@ class HostRoom {
       case 'endGame':
         g.endGame(from);
         break;
+      case 'pause':
+        g.pause(from, now);
+        break;
+      case 'unpause':
+        g.unpause(from, now);
+        break;
       case 'kick':
         if (g.kick(from, msg.playerId, now)) {
           this.direct(msg.playerId, { type: 'kicked' });

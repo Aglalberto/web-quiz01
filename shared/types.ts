@@ -63,6 +63,10 @@ export interface PublicState {
   /** duração total da fase atual (ms), p/ desenhar o timer */
   duration: number | null;
   suddenDeath: boolean;
+  /** pausado pelo host */
+  paused: boolean;
+  /** tempo que faltava quando pausou (ms) */
+  pausedLeft: number | null;
   /** temas empatados na votação: o celular mostra a roleta do sorteio */
   tiedThemes: string[];
   /** o sorteio aconteceu porque ninguém votou */
@@ -84,7 +88,9 @@ export type ClientMsg =
   | { type: 'skip' }
   | { type: 'kick'; playerId: string }
   | { type: 'playAgain' }
-  | { type: 'endGame' };
+  | { type: 'endGame' }
+  | { type: 'pause' }
+  | { type: 'unpause' };
 
 /** Envelope publicado pelos celulares no tópico "up" da sala */
 export interface UpEnvelope {

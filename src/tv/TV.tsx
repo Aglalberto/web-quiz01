@@ -49,6 +49,16 @@ export function TV() {
           )}
         </div>
       </div>
+      {state?.paused && (
+        // tela escurecida (sem blur, leve para a TV) com o aviso no centro
+        <div class="absolute left-0 top-0 grid h-full w-full place-items-center bg-black/60">
+          <div class="rounded-[2.6rem] bg-white px-[4rem] py-[2.4rem] text-center chunky-lg">
+            <div class="text-[5.4rem] leading-none">⏸</div>
+            <div class="mt-3 text-[3.8rem] font-bold">Jogo pausado</div>
+            <div class="mt-1 text-[1.7rem] text-ink/70">O host pode continuar pelo celular 👑</div>
+          </div>
+        </div>
+      )}
       {!online && state && (
         <div class="absolute top-4 left-1/2 -translate-x-1/2 rounded-full bg-red-500 px-6 py-2 text-[1.4rem] font-bold text-white chunky">
           Sem internet… tentando reconectar
@@ -125,11 +135,19 @@ function Lobby({ state, joinUrl }: { state: PublicState; joinUrl: string }) {
 
 function TimerBar({ state, offset }: { state: PublicState; offset: number }) {
   // o número atualiza poucas vezes por segundo; a barra anda sozinha via CSS (sem JS por quadro)
-  const { secLeft } = useCountdown(state.deadline, offset, 250);
+  const live = useCountdown(state.deadline, offset, 250);
+  const secLeft = state.paused ? Math.ceil((state.pausedLeft ?? 0) / 1000) : live.secLeft;
   const bar = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = bar.current;
-    if (!el || state.deadline === null) return;
+    if (!el) return;
+    if (state.paused) {
+      // pausado: barra parada onde estava
+      el.style.transition = 'none';
+      el.style.transform = `scaleX(${Math.min(1, (state.pausedLeft ?? 0) / (state.duration ?? 1))})`;
+      return;
+    }
+    if (state.deadline === null) return;
     const total = state.duration ?? 1;
     const left = Math.max(0, state.deadline - (Date.now() + offset));
     el.style.transition = 'none';
@@ -137,7 +155,7 @@ function TimerBar({ state, offset }: { state: PublicState; offset: number }) {
     void el.offsetWidth; // aplica o ponto de partida antes de animar
     el.style.transition = `transform ${left}ms linear`;
     el.style.transform = 'scaleX(0)';
-  }, [state.deadline, state.duration, offset]);
+  }, [state.deadline, state.duration, state.paused, state.pausedLeft, offset]);
   const urgent = secLeft <= 5;
   return (
     <div class="flex w-full items-center space-x-4">

@@ -47,7 +47,28 @@ export function Phone() {
       <main class="flex flex-1 flex-col px-4 pb-6">
         <Screen state={state} me={me} conn={conn} />
       </main>
-      {me.isHost && state.phase !== 'lobby' && state.phase !== 'gameover' && <HostBar conn={conn} />}
+      {state.paused && (
+        <div class="fixed inset-0 z-20 grid place-items-center bg-black/60 px-4">
+        <div class="w-full rounded-[2rem] bg-white p-6 text-center chunky-lg">
+          <div class="text-6xl">⏸</div>
+          <div class="mt-2 text-3xl font-bold">Jogo pausado</div>
+          <p class="mt-1 text-lg text-ink/70">
+            {me.isHost ? 'Toque em Continuar quando quiser voltar.' : 'Aguarde o host continuar 👑'}
+          </p>
+          {me.isHost && (
+            <button
+              class="press mt-4 w-full rounded-2xl bg-green-500 py-4 text-2xl font-bold text-white chunky"
+              onClick={() => conn.send({ type: 'unpause' })}
+            >
+              ▶ Continuar
+            </button>
+          )}
+        </div>
+        </div>
+      )}
+      {me.isHost && state.phase !== 'lobby' && state.phase !== 'gameover' && (
+        <HostBar conn={conn} paused={state.paused} />
+      )}
     </div>
   );
 }
@@ -261,11 +282,13 @@ function LobbyScreen({ state, me, conn }: { state: PublicState; me: PublicPlayer
 }
 
 function SmallTimer({ state, offset }: { state: PublicState; offset: number }) {
-  const { msLeft, secLeft } = useCountdown(state.deadline, offset);
+  const live = useCountdown(state.deadline, offset);
+  const msLeft = state.paused ? state.pausedLeft ?? 0 : live.msLeft;
+  const secLeft = state.paused ? Math.ceil(msLeft / 1000) : live.secLeft;
   const pct = state.duration ? msLeft / state.duration : 0;
   const lastTick = useRef(-1);
   useEffect(() => {
-    if (state.phase === 'question' && secLeft <= 3 && secLeft > 0 && secLeft !== lastTick.current) {
+    if (!state.paused && state.phase === 'question' && secLeft <= 3 && secLeft > 0 && secLeft !== lastTick.current) {
       lastTick.current = secLeft;
       sfx.tick();
     }
@@ -515,27 +538,35 @@ function GameOverScreen({ state, me, conn }: { state: PublicState; me: PublicPla
   );
 }
 
-function HostBar({ conn }: { conn: Conn }) {
+function HostBar({ conn, paused }: { conn: Conn; paused: boolean }) {
   const [open, setOpen] = useState(false);
   return (
     <div class="sticky bottom-0 px-4 pb-4">
       {open ? (
-        <div class="flex gap-2 rounded-2xl bg-white/95 p-2 chunky">
+        <div class="flex flex-col gap-2 rounded-2xl bg-white/95 p-2 chunky">
           <button
-            class="press flex-1 rounded-xl bg-grape py-3 font-bold text-white"
-            onClick={() => conn.send({ type: 'skip' })}
+            class={`press w-full rounded-xl py-3 text-lg font-bold text-white ${paused ? 'bg-green-500' : 'bg-orange-500'}`}
+            onClick={() => conn.send({ type: paused ? 'unpause' : 'pause' })}
           >
-            ⏭ Pular
+            {paused ? '▶ Continuar' : '⏸ Pausar jogo'}
           </button>
-          <button
-            class="press flex-1 rounded-xl bg-red-500 py-3 font-bold text-white"
-            onClick={() => confirm('Encerrar a partida e voltar para a sala?') && conn.send({ type: 'endGame' })}
-          >
-            ⏹ Encerrar
-          </button>
-          <button class="press rounded-xl bg-ink/10 px-4 font-bold" onClick={() => setOpen(false)}>
-            ✕
-          </button>
+          <div class="flex gap-2">
+            <button
+              class="press flex-1 rounded-xl bg-grape py-3 font-bold text-white"
+              onClick={() => conn.send({ type: 'skip' })}
+            >
+              ⏭ Pular
+            </button>
+            <button
+              class="press flex-1 rounded-xl bg-red-500 py-3 font-bold text-white"
+              onClick={() => confirm('Encerrar a partida e voltar para a sala?') && conn.send({ type: 'endGame' })}
+            >
+              ⏹ Encerrar
+            </button>
+            <button class="press rounded-xl bg-ink/10 px-4 font-bold" onClick={() => setOpen(false)}>
+              ✕
+            </button>
+          </div>
         </div>
       ) : (
         <button

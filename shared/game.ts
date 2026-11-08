@@ -65,6 +65,9 @@ export class Game {
   themeId: string | null = null;
   /** temas empatados na votação (sorteio) — vazio se não houve empate */
   tiedThemes: string[] = [];
+  /** jogo pausado pelo host: o tempo restante fica guardado em pausedLeft */
+  paused = false;
+  pausedLeft: number | null = null;
   /** o sorteio aconteceu porque ninguém votou */
   drawNoVotes = false;
   roundQuestion = 0;
@@ -217,6 +220,24 @@ export class Game {
   }
 
   /** Host pula a fase atual (avança imediatamente). */
+  /** Host pausa: congela o tempo da fase atual. */
+  pause(byId: string, now: number): boolean {
+    if (byId !== this.hostId || this.paused || this.deadline === null) return false;
+    this.pausedLeft = Math.max(0, this.deadline - now);
+    this.deadline = null;
+    this.paused = true;
+    return true;
+  }
+
+  /** Host continua: o tempo volta de onde parou. */
+  unpause(byId: string, now: number): boolean {
+    if (byId !== this.hostId || !this.paused) return false;
+    this.deadline = now + (this.pausedLeft ?? 0);
+    this.paused = false;
+    this.pausedLeft = null;
+    return true;
+  }
+
   skip(byId: string, now: number): boolean {
     if (byId !== this.hostId) return false;
     if (this.phase === 'lobby' || this.phase === 'gameover') return false;
@@ -226,7 +247,7 @@ export class Game {
 
   vote(playerId: string, themeId: string, now: number): boolean {
     const p = this.getPlayer(playerId);
-    if (!p || this.phase !== 'voting' || !this.themeOptions.includes(themeId)) return false;
+    if (!p || this.paused || this.phase !== 'voting' || !this.themeOptions.includes(themeId)) return false;
     p.vote = themeId;
     this.checkEarlyEnd(now);
     return true;
@@ -234,7 +255,7 @@ export class Game {
 
   answer(playerId: string, index: number, now: number): boolean {
     const p = this.getPlayer(playerId);
-    if (!p || this.phase !== 'question' || !this.question) return false;
+    if (!p || this.paused || this.phase !== 'question' || !this.question) return false;
     if (this.suddenDeath && !this.contenders.includes(p.id)) return false;
     if (!Number.isInteger(index) || index < 0 || index >= this.question.options.length) return false;
     p.choice = index;
@@ -269,6 +290,9 @@ export class Game {
   }
 
   private setDeadline(now: number | null, ms: number) {
+    // toda mudança de fase tira o jogo da pausa
+    this.paused = false;
+    this.pausedLeft = null;
     if (now === null) {
       this.deadline = null;
       this.duration = null;
@@ -279,6 +303,7 @@ export class Game {
   }
 
   private checkEarlyEnd(now: number) {
+    if (this.paused) return;
     if (this.phase === 'voting') {
       const voters = this.connectedPlayers();
       if (voters.length > 0 && voters.every((p) => p.vote)) this.advance(now);
@@ -464,6 +489,8 @@ export class Game {
       deadline: this.deadline,
       duration: this.duration,
       suddenDeath: this.suddenDeath,
+      paused: this.paused,
+      pausedLeft: this.pausedLeft,
       winnerId: this.winnerId,
       joinUrl,
       serverNow: now,

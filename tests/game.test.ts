@@ -289,6 +289,32 @@ describe('conexão', () => {
     expect(g.players).toHaveLength(2);
   });
 
+  it('host pausa e continua: o tempo congela e ninguém responde', () => {
+    const { g, ids } = setup(2);
+    g.start(ids[0], 0);
+    voteAndGo(g, ids, 0);
+    const left = g.deadline! - 100_000;
+    expect(g.pause(ids[1], 100_000)).toBe(false); // só o host
+    expect(g.pause(ids[0], 100_000)).toBe(true);
+    expect(g.view('', 0).paused).toBe(true);
+    expect(g.view('', 0).pausedLeft).toBe(left);
+    expect(g.answer(ids[0], 0, 100_000)).toBe(false);
+    g.tick(1e12); // o tempo não passa pausado
+    expect(g.phase).toBe('question');
+    expect(g.unpause(ids[0], 500_000)).toBe(true);
+    expect(g.deadline).toBe(500_000 + left);
+    expect(g.answer(ids[0], 0, 500_000)).toBe(true);
+  });
+
+  it('pular tira o jogo da pausa', () => {
+    const { g, ids } = setup(2);
+    g.start(ids[0], 0);
+    g.pause(ids[0], 0);
+    expect(g.skip(ids[0], 0)).toBe(true);
+    expect(g.paused).toBe(false);
+    expect(g.phase).toBe('chosen');
+  });
+
   it('host pula fase', () => {
     const { g, ids } = setup(2);
     g.start(ids[0], 0);
